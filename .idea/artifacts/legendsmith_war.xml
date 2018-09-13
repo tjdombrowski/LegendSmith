@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="legendsmith:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="legendsmith.war">
+      <element id="artifact" artifact-name="legendsmith:war exploded" />
+    </root>
+  </artifact>
+</component>

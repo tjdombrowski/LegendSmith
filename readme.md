@@ -7,3 +7,11 @@ Guild Wars 2 is an MMORPG offering a diverse array of challenges and tasks for p
 The plan is to create a website that can be used to easily see the requirements of making a legendary, and organizing and keeping track of the various tasks required. 
 
 ### Project Technologies and Techniques
+
+### Design
+* [Screen Design]()
+* [Application Flow]()
+* [Database Design]()
+
+### [Project Plan](projectplan.md)
+### [Development Journal](journal.md)

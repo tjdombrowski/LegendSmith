@@ -17,11 +17,24 @@
 
 ### Dashboard
 * The first page the user encounters when logging in
-* 
+* Provides an overview of what the user is working on
+* Shows recently completed tasks
+* Shows progress on most recent legendary (as a percentage)
+* Can scroll though completed and in-progress legendaries
 
 ### Search
+* Displays all legendaries by default
+* Can filter based on user input or by weapon type
+* Clicking any takes them to the overview page for that weapon
 
 ### Legendary Overview
+* Brief information on the weapon, including picture and a total price estimation
+* Your progress with the legendary is tracked either by selecting the option here, or by completing a task marked here
+* Shows the four main items needed to create the legendary weapon, and some info on the necessary tasks and materials to obtain them
+* Items can be selected for a more detailed view
 
 ### Task Overview
-
+* A detailed section on one of the four main ingredients for making the legendary weapon
+* Sums the estimated costs of making this item, which updates based on what the the user completes
+* Allows the user to check off things they obtained/tasks they completed
+* Can go back to the weapon's overview or access the other three items

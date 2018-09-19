@@ -18,8 +18,9 @@
 ### Dashboard
 * The first page the user encounters when logging in
 * Provides an overview of what the user is working on
-* Shows recently completed tasks
-* Shows progress on most recent legendary (as a percentage)
+* Shows progress on the user's current legendary (most recent, or what they want to focus on)
+* Possibly allow user to sticky tasks, which would then show up here
+* Updates on the website will be posted here
 * Can scroll though completed and in-progress legendaries
 
 ### Search

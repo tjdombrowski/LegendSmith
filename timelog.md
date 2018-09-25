@@ -33,3 +33,15 @@ Worked on screen designs
 
 Sept 19. 		1.5 hours
 Worked on Week 3 Activity 2. Set everything up, but the tag test doesn’t display anything
+
+Sept 20.    1.5 hours
+Worked on Week 3 Activity 2. Got the tag to display correctly and started work on the exercise, setting everything up and making new classes for the tags. 
+
+Sept 21.  1 hours
+Worked on the screen designs for my indie project, and worked on the exercise a bit. Everything's displaying fine.
+
+Sept 23.  0.5 hours
+Started adding the logic for figuring out the dates and times for the exercise. 
+
+Sept 24.  0.5 hours
+Finished the screen designs for my indie project.

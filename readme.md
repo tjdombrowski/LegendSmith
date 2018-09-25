@@ -14,4 +14,4 @@ The plan is to create a website that can be used to easily see the requirements 
 * [Database Design]()
 
 ### [Project Plan](projectplan.md)
-### [Development Journal](journal.md)
+### [Development Journal](timelog.md)

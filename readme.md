@@ -27,7 +27,7 @@ The plan is to create a website that can be used to easily see the requirements 
     * JQuery UI for some user interface features and effects
 
 ### Design
-* [Screen Design](screendesign.md)
+* [Screen Design](screendesign)
 * [Application Flow](applicationflow.md)
 * [Database Design](databasedesign.md)
 

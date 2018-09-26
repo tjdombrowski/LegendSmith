@@ -7,9 +7,24 @@ Guild Wars 2 is an MMORPG offering a diverse array of challenges and tasks for p
 The plan is to create a website that can be used to easily see the requirements of making a legendary, and organizing and keeping track of the various tasks required. 
 
 ### Project Technologies and Techniques
- * MySQL database
- * JQuery UI for some user interface features and effects
- * Possibly use some other JQuery for validation purposes
+ * Security and Authentication
+    * Tomcat JDBC Realm Authentication
+ * Data Validation
+    * Either custom or possibly using bootstrap
+ * Database
+    * MySQL
+ * CSS
+    * Either custom or with bootstrap (or some combination)
+ * Hosting
+    * AWS
+ * Logging
+    * Log4j
+ * Depedency Management
+    * Maven
+ * Unit Testing
+    * JUnit
+ * Additional Tools and Resources
+    * JQuery UI for some user interface features and effects
 
 ### Design
 * [Screen Design](screendesign.md)

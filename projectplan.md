@@ -22,12 +22,15 @@
  * Make the data acccessable on the website, trying to implement the basic tracking capabilities
 
 ### Week 9
- * Add the progress bar functionality
+ * Add the search functionality
 
 ### Week 10
+ * Add the progress bar functionality
+ 
+### Week 11
  * Clean things up and make sure everything tests okay
  * Adjust the layout, ui features, and anything else as needed
- 
+
 ### Week 12+ (optional stuff)
  * If possible, add a dynamic cost calculation feature
  * Continue to work with the layout, look, and interface and any issues that may have come up

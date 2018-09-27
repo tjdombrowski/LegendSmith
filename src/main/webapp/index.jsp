@@ -7,7 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Legendsmith</title>
 </head>
+
+
 <body>
-<h2>Hello World!</h2>
+    <!-- Menu here -->
+    <%@include file="sections/menu.jsp"%>
+    <div class="container">
+        <h2>Hello World!</h2>
+        <!-- Place legendary info here, or a message to start one -->
+        <div class="row">
+            <div class="col-md-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dolores, eligendi fuga in laudantium nisi nobis, odit quae, quos ratione repudiandae temporibus. A alias fugiat hic impedit tenetur voluptatem voluptatum!</div>
+        </div>
+
+        <!-- The three sections representing: Updates, Tasks, Legendaries-->
+        <div class="row">
+            <div class="col-sm-3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam cumque cupiditate delectus doloribus dolorum enim incidunt iure iusto laudantium nisi nulla, perferendis qui quod tempora voluptas voluptate voluptates?
+            </div>
+            <div class="col-sm-3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam cumque cupiditate delectus doloribus dolorum enim incidunt iure iusto laudantium nisi nulla, perferendis qui quod tempora voluptas voluptate voluptates?
+            </div>
+            <div class="col-sm-3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam cumque cupiditate delectus doloribus dolorum enim incidunt iure iusto laudantium nisi nulla, perferendis qui quod tempora voluptas voluptate voluptates?
+            </div>
+        </div>
+
+    </div>
 </body>
+
+
 </html>

@@ -36,8 +36,9 @@ Represents the intersection between a legendary weapon and the primary item it r
 
 ### UserLegendaryPrimaryItem
 Represents the intersection between a user and the specific primary item (corresponding to a single legendary).
-* LegendaryPrimaryItemId [pk/fk]
-* UserId [pk/fk]
+* Id [pk]
+* LegendaryPrimaryItemId [fk]
+* UserId [fk]
 * Progress (stored as a percentage and calculated from completion of corresponding tasks)
 
 ### Task

@@ -19,12 +19,17 @@ The plan is to create a website that can be used to easily see the requirements 
     * AWS
  * Logging
     * Log4j
+ * ORM Framework
+    * Hibernate
  * Depedency Management
     * Maven
  * Unit Testing
     * JUnit
+ * IDE
+    * IntelliJ IDEA
  * Additional Tools and Resources
     * JQuery UI for some user interface features and effects
+ 
 
 ### Design
 * [Screen Design](screendesign)

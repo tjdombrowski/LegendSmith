@@ -4,9 +4,9 @@ CREATE TABLE Legendary
   id               INT         NOT NULL
     AUTO_INCREMENT PRIMARY KEY,
   name             VARCHAR(20) NULL,
-  PictureReference VARCHAR(40) NULL,
-  Type             VARCHAR(20) NULL,
-  Game             VARCHAR(30) NULL
+  pictureReference VARCHAR(40) NULL,
+  type             VARCHAR(20) NULL,
+  game             VARCHAR(30) NULL
 );
 
 -- auto-generated definition

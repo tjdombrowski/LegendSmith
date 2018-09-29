@@ -1,11 +1,29 @@
 package edu.matc.legendsmith.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity(name = "Legendary")
+@Table(name = "Legendary")
 public class Legendary {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column (name = "PictureReference") //uncapitalize
     private String pictureReference;
-    private String type;
-    private String Game;
+
+    @Column (name = "Type") //uncapitalize
+    private String type; //uncapitalize
+
+    @Column (name = "Game")
+    private String game;
 
     public Legendary() {
 
@@ -44,11 +62,11 @@ public class Legendary {
     }
 
     public String getGame() {
-        return Game;
+        return game;
     }
 
     public void setGame(String game) {
-        Game = game;
+        this.game = game;
     }
 
 

@@ -19,7 +19,9 @@ import org.apache.logging.log4j.Logger;
 public class SearchLegendary extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LegendaryDao legendaryDao = new LegendaryDao();
 
+        req.setAttribute("legendaries", legendaryDao.getLegendaries());
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/search.jsp");
         dispatcher.forward(req, resp);

@@ -72,7 +72,7 @@ public class Legendary {
     @Override
     public String toString() {
         return "Legendary{id = " + id + '\''
-                + ", name = " + name + '\'
+                + ", name = " + name + '\''
                 + ", type = " + type + '\''
                 + ", game = " + game + '\''
                 + "}";

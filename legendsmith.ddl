@@ -2,7 +2,7 @@
 CREATE TABLE Legendary
 (
   id               INT         NOT NULL
-    PRIMARY KEY,
+    AUTO_INCREMENT PRIMARY KEY,
   name             VARCHAR(20) NULL,
   PictureReference VARCHAR(40) NULL,
   Type             VARCHAR(20) NULL,
@@ -13,7 +13,7 @@ CREATE TABLE Legendary
 CREATE TABLE User
 (
   id       INT         NOT NULL
-    PRIMARY KEY,
+    AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(20) NULL,
   password VARCHAR(20) NULL
 );
@@ -22,7 +22,7 @@ CREATE TABLE User
 CREATE TABLE PrimaryItem
 (
   id               INT         NOT NULL
-    PRIMARY KEY,
+    AUTO_INCREMENT PRIMARY KEY,
   name             VARCHAR(30) NULL,
   pictureReference VARCHAR(40) NULL
 );
@@ -31,7 +31,7 @@ CREATE TABLE PrimaryItem
 CREATE TABLE Task
 (
   id            INT         NOT NULL
-    PRIMARY KEY,
+    AUTO_INCREMENT PRIMARY KEY,
   name          VARCHAR(30) NULL,
   primaryItemId INT         NULL,
   CONSTRAINT Task_ibfk_1

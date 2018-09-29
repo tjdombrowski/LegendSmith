@@ -69,7 +69,14 @@ public class Legendary {
         this.game = game;
     }
 
-
+    @Override
+    public String toString() {
+        return "Legendary{id = " + id + '\''
+                + ", name = " + name + '\'
+                + ", type = " + type + '\''
+                + ", game = " + game + '\''
+                + "}";
+    }
 
 
 }

@@ -1,6 +1,6 @@
 package edu.matc.legendsmith.controller;
 
-import edu.matc.legendsmith.LegendaryDao;
+import edu.matc.legendsmith.persistence.LegendaryDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,4 +17,11 @@ import org.apache.logging.log4j.Logger;
 )
 
 public class SearchLegendary extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/search.jsp");
+        dispatcher.forward(req, resp);
+    }
 }

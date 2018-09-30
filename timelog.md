@@ -45,3 +45,17 @@ Started adding the logic for figuring out the dates and times for the exercise.
 
 Sept 24.  0.5 hours
 Finished the screen designs for my indie project.
+
+Sept 25.    1.5 hours
+Completed the project plan and database design for the indie project. 
+
+Sept 26. 2.5 hours
+Read through things on Hibernate. Worked on creating the jsp pages and adding bootstrap. Also started the database, but had to redo things when things crashed.
+
+Sept 27.    1 hours
+Worked on the hibernate demo and watched videos. 
+
+Sept 29.    2 hours
+Adapted Hibernate to my project, testing the functionality with the Legendary entity/class. Just displaying everything is working fine.
+
+

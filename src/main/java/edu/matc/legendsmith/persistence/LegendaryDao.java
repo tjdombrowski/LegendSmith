@@ -46,6 +46,17 @@ public class LegendaryDao {
         return legendaries;
     }
 
+    public Legendary getLegendaryById(int id) {
+        Session session = sessionFactory.openSession();
+
+        Legendary legendary = session.get(Legendary.class, id);
+
+        session.close();
+
+
+        return legendary;
+    }
+
 
 
 }

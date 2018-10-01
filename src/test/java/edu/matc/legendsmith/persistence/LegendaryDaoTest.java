@@ -1,6 +1,7 @@
 package edu.matc.legendsmith.persistence;
 
 import edu.matc.legendsmith.entity.Legendary;
+import edu.matc.legendsmith.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,9 @@ class LegendaryDaoTest {
 
     @BeforeEach
     void setUp() {
+        Database database = Database.getInstance();
+        database.runSQL("cleandb.sql");
+
         dao = new LegendaryDao();
 
     }
@@ -32,13 +36,20 @@ class LegendaryDaoTest {
     }
 
     @Test
-    void getLegendaryById() {
+    void getLegendaryByIdSuccess() {
         Legendary legendary = dao.getLegendaryById(7);
 
         assertEquals("The Binding of Ipos", legendary.getName());
     }
 
     @Test
-    void
+    void insertLegendarySuccess() {
+        Legendary newLegendary = new Legendary("Xiuquatl", "Scepter", "PoF");
+        dao.insert(newLegendary);
+
+        Legendary returnedLegendary = dao.getLegendaryById(8);
+
+        assertEquals("Xiuquatl", returnedLegendary.getName());
+    }
 
 }

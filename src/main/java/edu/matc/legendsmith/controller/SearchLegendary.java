@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @WebServlet(
         urlPatterns = {"/searchLegendary"}
@@ -21,7 +19,7 @@ public class SearchLegendary extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LegendaryDao legendaryDao = new LegendaryDao();
 
-        req.setAttribute("legendaries", legendaryDao.getLegendaries());
+        req.setAttribute("legendaries", legendaryDao.getAllLegendaries());
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/search.jsp");
         dispatcher.forward(req, resp);

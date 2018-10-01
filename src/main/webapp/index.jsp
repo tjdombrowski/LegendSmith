@@ -23,10 +23,7 @@
         <!-- The three sections representing: Updates, Tasks, Legendaries-->
         <div class="row">
             <div class="col-sm-3">
-                <form action="/searchLegendary" method="post">
-                    <input type="text" name="name">
-                    <input type="submit" value="Search" name="search">
-                </form>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores, autem consequuntur dolore ea illum incidunt magni minima minus nemo nesciunt nihil obcaecati porro reiciendis reprehenderit sed veritatis voluptas voluptatem?
             </div>
             <div class="col-sm-3">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aperiam cumque cupiditate delectus doloribus dolorum enim incidunt iure iusto laudantium nisi nulla, perferendis qui quod tempora voluptas voluptate voluptates?

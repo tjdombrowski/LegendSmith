@@ -1,4 +1,4 @@
-package edu.matc.legendsmith.test.persistence;
+package edu.matc.legendsmith.persistence;
 
 
 import org.apache.logging.log4j.LogManager;

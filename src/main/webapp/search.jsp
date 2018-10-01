@@ -22,7 +22,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque est fugit maxime quia ullam! Ab ducimus fugiat maiores maxime possimus qui quisquam sequi totam? Excepturi expedita iure placeat praesentium sapiente?
+                <form action="searchLegendary" type="post">
+                    <input type="text" name="name">
+                    <input type="submit" value="Search" name="search">
+                </form>
             </div>
         </div>
         <div class="row">

@@ -38,4 +38,7 @@ class LegendaryDaoTest {
         assertEquals("The Binding of Ipos", legendary.getName());
     }
 
+    @Test
+    void
+
 }

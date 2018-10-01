@@ -29,6 +29,12 @@ public class Legendary {
 
     }
 
+    public Legendary(String name, String type, String game) {
+        this.name = name;
+        this.type = type;
+        this.game = game;
+    }
+
     public int getId() {
         return id;
     }

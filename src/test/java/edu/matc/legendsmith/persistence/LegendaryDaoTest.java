@@ -28,12 +28,12 @@ class LegendaryDaoTest {
     void getLegendariesByNameSuccess() {
         List<Legendary> legendaries = dao.getLegendariesByName("the");
 
-        assertEquals(legendaries.size(), 2);
+        assertEquals(legendaries.size(), 3);
     }
 
     @Test
     void getLegendaryById() {
-        Legendary legendary = dao.getLegendaryById(6);
+        Legendary legendary = dao.getLegendaryById(7);
 
         assertEquals("The Binding of Ipos", legendary.getName());
     }

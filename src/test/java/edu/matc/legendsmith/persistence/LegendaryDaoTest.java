@@ -25,7 +25,7 @@ class LegendaryDaoTest {
     void getAllLegendariesSuccess() {
         List<Legendary> legendaries = dao.getAllLegendaries();
 
-        assertEquals(legendaries.size(), 8);
+        assertEquals(legendaries.size(), 7);
     }
 
     @Test
@@ -45,11 +45,23 @@ class LegendaryDaoTest {
     @Test
     void insertLegendarySuccess() {
         Legendary newLegendary = new Legendary("Xiuquatl", "Scepter", "PoF");
-        dao.insert(newLegendary);
+        int id = dao.insert(newLegendary);
 
-        Legendary returnedLegendary = dao.getLegendaryById(8);
+        Legendary returnedLegendary = dao.getLegendaryById(id);
 
         assertEquals("Xiuquatl", returnedLegendary.getName());
+    }
+
+    @Test
+    void updateLegendarySuccess() {
+        Legendary newLegendary = new Legendary("Claw of the Khan-Ur", "Dagger", "PoF");
+        newLegendary.setId(4);
+
+        dao.saveOrUpdate(newLegendary);
+
+        Legendary returnedLegendary = dao.getLegendaryById(4);
+
+        assertEquals("Claw of the Khan-Ur", returnedLegendary.getName());
     }
 
 }

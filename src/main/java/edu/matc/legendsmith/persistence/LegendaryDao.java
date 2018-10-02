@@ -59,7 +59,7 @@ public class LegendaryDao {
     }
 
     /**
-     * update user
+     * update legendary
      * @param legendary  User to be inserted or updated
      */
     public void saveOrUpdate(Legendary legendary) {
@@ -71,7 +71,7 @@ public class LegendaryDao {
     }
 
     /**
-     * update user
+     * update a legendary
      * @param legendary  Legendary to be inserted or updated
      */
     public int insert(Legendary legendary) {
@@ -85,7 +85,7 @@ public class LegendaryDao {
     }
 
     /**
-     * Delete a user
+     * Delete a legendary
      * @param legendary Legendary to be deleted
      */
     public void delete(Legendary legendary) {

@@ -64,4 +64,12 @@ class LegendaryDaoTest {
         assertEquals("Claw of the Khan-Ur", returnedLegendary.getName());
     }
 
+    @Test
+    void deleteLegendarySuccess() {
+        Legendary returnedLegendary = dao.getLegendaryById(5);
+        dao.delete(returnedLegendary);
+
+        assertNull(dao.getLegendaryById(5));
+    }
+
 }

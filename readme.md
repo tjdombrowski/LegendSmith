@@ -25,6 +25,8 @@ The plan is to create a website that can be used to easily see the requirements 
     * Maven
  * Unit Testing
     * JUnit
+ * Web Service(s)
+   * Guild Wars 2 Official API
  * IDE
     * IntelliJ IDEA
  * Additional Tools and Resources

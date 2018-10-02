@@ -4,6 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+/**
+ * The type Legendary.
+ */
 @Entity(name = "Legendary")
 @Table(name = "Legendary")
 public class Legendary {
@@ -25,56 +28,121 @@ public class Legendary {
     @Column (name = "Game")
     private String game;
 
+    /**
+     * Instantiates a new Legendary.
+     */
     public Legendary() {
 
     }
 
+    /**
+     * Instantiates a new Legendary.
+     *
+     * @param name the name
+     * @param type the type
+     * @param game the game
+     */
     public Legendary(String name, String type, String game) {
         this.name = name;
         this.type = type;
         this.game = game;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets picture reference.
+     *
+     * @return the picture reference
+     */
     public String getPictureReference() {
         return pictureReference;
     }
 
+    /**
+     * Sets picture reference.
+     *
+     * @param pictureReference the picture reference
+     */
     public void setPictureReference(String pictureReference) {
         this.pictureReference = pictureReference;
     }
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * Gets game.
+     *
+     * @return the game
+     */
     public String getGame() {
         return game;
     }
 
+    /**
+     * Sets game.
+     *
+     * @param game the game
+     */
     public void setGame(String game) {
         this.game = game;
     }
 
+    /**
+     * Returns a string of Legendary information.
+     *
+     * @return a string consisting of Legendary information
+     */
     @Override
     public String toString() {
         return "Legendary{id = " + id + '\''

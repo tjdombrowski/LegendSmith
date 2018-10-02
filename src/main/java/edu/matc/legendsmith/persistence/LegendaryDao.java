@@ -14,39 +14,50 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+
+/**
+ * The type Legendary dao.
+ */
 public class LegendaryDao {
 
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    public List<Legendary> getAllLegendaries() {
-        Session session = sessionFactory.openSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Legendary> query = builder.createQuery(Legendary.class);
-        Root<Legendary> root = query.from(Legendary.class);
-        List<Legendary> legendaries = session.createQuery(query).getResultList();
-
-        session.close();
-
-        return legendaries;
-    }
-
+    /**
+     * Gets legendaries by name. If nothing is specified, retrieve everything.
+     *
+     * TODO alter this so that it retrieves by weapon type as well
+     *
+     * @param searchTerm the search term
+     * @return the legendaries by name
+     */
     public List<Legendary> getLegendariesByName(String searchTerm) {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Legendary> query = builder.createQuery(Legendary.class);
         Root<Legendary> root = query.from(Legendary.class);
+        List<Legendary> legendaries;
 
-        Expression<String> propertyPath = root.get("name"); //beginning of 'where'
-        query.where(builder.like(propertyPath, "%" + searchTerm + "%"));
+        if (searchTerm.isEmpty()) {
+            legendaries = session.createQuery(query).getResultList();
+        } else {
+            Expression<String> propertyPath = root.get("name"); //beginning of 'where'
+            query.where(builder.like(propertyPath, "%" + searchTerm + "%"));
 
-        List<Legendary> legendaries = session.createQuery(query).getResultList();
+            legendaries = session.createQuery(query).getResultList();
+        }
 
         session.close();
 
         return legendaries;
     }
 
+    /**
+     * Gets legendary by id.
+     *
+     * @param id the id
+     * @return the legendary by id
+     */
     public Legendary getLegendaryById(int id) {
         Session session = sessionFactory.openSession();
 
@@ -59,8 +70,9 @@ public class LegendaryDao {
     }
 
     /**
-     * update legendary
-     * @param legendary  User to be inserted or updated
+     * Update a legendary.
+     *
+     * @param legendary to be inserted or updated
      */
     public void saveOrUpdate(Legendary legendary) {
         Session session = sessionFactory.openSession();
@@ -71,8 +83,10 @@ public class LegendaryDao {
     }
 
     /**
-     * update a legendary
-     * @param legendary  Legendary to be inserted or updated
+     * Insert a legendary.
+     *
+     * @param legendary Legendary to be inserted
+     * @return the id
      */
     public int insert(Legendary legendary) {
         int id = 0;
@@ -85,7 +99,8 @@ public class LegendaryDao {
     }
 
     /**
-     * Delete a legendary
+     * Delete a legendary.
+     *
      * @param legendary Legendary to be deleted
      */
     public void delete(Legendary legendary) {

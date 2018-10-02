@@ -9,9 +9,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Legendary dao test.
+ */
 class LegendaryDaoTest {
     LegendaryDao dao;
 
+    /**
+     * Sets up the tests by resetting the database and instantiating the necessary dao.
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -21,13 +27,19 @@ class LegendaryDaoTest {
 
     }
 
+    /**
+     * Tests for successfully retrieving all legendaries, when the search term is empty.
+     */
     @Test
-    void getAllLegendariesSuccess() {
-        List<Legendary> legendaries = dao.getAllLegendaries();
+    void getAllLegendariesWithEmptySearchSuccess() {
+        List<Legendary> legendaries = dao.getLegendariesByName("");
 
         assertEquals(legendaries.size(), 7);
     }
 
+    /**
+     * Gets legendaries by name success.
+     */
     @Test
     void getLegendariesByNameSuccess() {
         List<Legendary> legendaries = dao.getLegendariesByName("the");
@@ -35,6 +47,9 @@ class LegendaryDaoTest {
         assertEquals(legendaries.size(), 3);
     }
 
+    /**
+     * Tests whether getting a legendary by its id is successful.
+     */
     @Test
     void getLegendaryByIdSuccess() {
         Legendary legendary = dao.getLegendaryById(7);
@@ -42,6 +57,9 @@ class LegendaryDaoTest {
         assertEquals("The Binding of Ipos", legendary.getName());
     }
 
+    /**
+     * Tests whether inserting a legendary is successful.
+     */
     @Test
     void insertLegendarySuccess() {
         Legendary newLegendary = new Legendary("Xiuquatl", "Scepter", "PoF");
@@ -52,6 +70,9 @@ class LegendaryDaoTest {
         assertEquals("Xiuquatl", returnedLegendary.getName());
     }
 
+    /**
+     * Tests whether updating a legendary is successful.
+     */
     @Test
     void updateLegendarySuccess() {
         Legendary newLegendary = new Legendary("Claw of the Khan-Ur", "Dagger", "PoF");
@@ -64,6 +85,9 @@ class LegendaryDaoTest {
         assertEquals("Claw of the Khan-Ur", returnedLegendary.getName());
     }
 
+    /**
+     * Tests whether deleting a legendary is successful.
+     */
     @Test
     void deleteLegendarySuccess() {
         Legendary returnedLegendary = dao.getLegendaryById(5);

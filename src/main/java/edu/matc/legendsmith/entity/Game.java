@@ -1,10 +1,18 @@
 package edu.matc.legendsmith.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 /**
  * The type Game.
  */
+@Entity(name = "Game")
+@Table(name = "Game")
 public class Game {
-
+    //TODO Determine what kind of annotations are needed here
+    @Id
+    @GenericGenerator(name = "native",strategy = "native")
     private String name;
 
     /**

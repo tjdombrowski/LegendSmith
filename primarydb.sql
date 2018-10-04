@@ -179,6 +179,67 @@ INSERT into Game values(
     'PoF'
 );
 
+-- insert data for GameLegendary
+INSERT into GameLegendary VALUES (
+  1, 'Base'
+);
+
+INSERT into GameLegendary VALUES (
+  2, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  2, 'PoF'
+);
+
+INSERT into GameLegendary VALUES (
+  3, 'Base'
+);
+
+INSERT into GameLegendary VALUES (
+  4, 'Base'
+);
+
+INSERT into GameLegendary VALUES (
+  5, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  5, 'PoF'
+);
+
+INSERT into GameLegendary VALUES (
+  6, 'Base'
+);
+
+INSERT into GameLegendary VALUES (
+  7, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  8, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  8, 'PoF'
+);
+
+INSERT into GameLegendary VALUES (
+  9, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  10, 'Base'
+);
+
+INSERT into GameLegendary VALUES (
+  11, 'HoT'
+);
+
+INSERT into GameLegendary VALUES (
+  11, 'PoF'
+);
+
 -- insert data for PrimaryItem
 -- for The Shining Blade
 insert into PrimaryItem (name) VALUES(
@@ -232,3 +293,10 @@ insert into Task (name, description, primaryItemId) values (
 );
 
 -- for The Shining Blade, Save the Queen
+insert into Task (name, description, primaryItemId) values (
+  'Exemplar\'s Edge', 'The first tier precursor of Save the Queen.', 1
+);
+
+insert into Task (name, description, primaryItemId) VALUE (
+    'Vengeance', 'The second tier precursor of Save The Queen.', 1
+);

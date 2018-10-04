@@ -1,11 +1,25 @@
 package edu.matc.legendsmith.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 /**
  * The type Primary item.
  */
+@Entity(name = "PrimaryItem")
+@Table(name = "PrimaryItem")
 public class PrimaryItem {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "pictureReference")
     private String pictureReference;
 
     /**

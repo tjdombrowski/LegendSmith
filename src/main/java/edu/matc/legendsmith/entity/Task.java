@@ -1,12 +1,28 @@
 package edu.matc.legendsmith.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 /**
  * The type Task.
  */
+@Entity(name = "Task")
+@Table(name = "Task")
 public class Task {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "primaryItemId")
     private int primaryItemId;
+
+    @Column(name = "quantity")
     private int quantity;
 
     /**

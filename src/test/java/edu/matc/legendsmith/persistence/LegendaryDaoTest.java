@@ -62,7 +62,7 @@ class LegendaryDaoTest {
      */
     @Test
     void insertLegendarySuccess() {
-        Legendary newLegendary = new Legendary("Xiuquatl", "Scepter", "PoF");
+        Legendary newLegendary = new Legendary("Xiuquatl", "Scepter");
         int id = dao.insert(newLegendary);
 
         Legendary returnedLegendary = dao.getLegendaryById(id);
@@ -75,7 +75,7 @@ class LegendaryDaoTest {
      */
     @Test
     void updateLegendarySuccess() {
-        Legendary newLegendary = new Legendary("Claw of the Khan-Ur", "Dagger", "PoF");
+        Legendary newLegendary = new Legendary("Claw of the Khan-Ur", "Dagger");
         newLegendary.setId(4);
 
         dao.saveOrUpdate(newLegendary);

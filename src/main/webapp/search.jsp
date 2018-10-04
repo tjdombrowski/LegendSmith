@@ -36,7 +36,6 @@
                             <td>${legendary.id}</td>
                             <td>${legendary.name}</td>
                             <td>${legendary.type}</td>
-                            <td>${legendary.game}</td>
                         </tr>
                     </c:forEach>
                 </table>

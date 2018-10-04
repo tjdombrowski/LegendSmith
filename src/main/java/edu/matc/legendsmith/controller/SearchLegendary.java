@@ -29,7 +29,8 @@ public class SearchLegendary extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LegendaryDao legendaryDao = new LegendaryDao();
 
-        String searchTerm = req.getParameter("name");
+        String searchTerm = "";
+        searchTerm = req.getParameter("name");
 
         //TODO I'm going to want to make sure this retrieves everything by default
         req.setAttribute("legendaries", legendaryDao.getLegendariesByName(searchTerm));

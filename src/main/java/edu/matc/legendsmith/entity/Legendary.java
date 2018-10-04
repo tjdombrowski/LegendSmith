@@ -25,9 +25,6 @@ public class Legendary {
     @Column (name = "Type") //uncapitalize
     private String type; //uncapitalize
 
-    @Column (name = "Game")
-    private String game;
-
     /**
      * Instantiates a new Legendary.
      */
@@ -40,12 +37,10 @@ public class Legendary {
      *
      * @param name the name
      * @param type the type
-     * @param game the game
      */
-    public Legendary(String name, String type, String game) {
+    public Legendary(String name, String type) {
         this.name = name;
         this.type = type;
-        this.game = game;
     }
 
     /**
@@ -121,24 +116,6 @@ public class Legendary {
     }
 
     /**
-     * Gets game.
-     *
-     * @return the game
-     */
-    public String getGame() {
-        return game;
-    }
-
-    /**
-     * Sets game.
-     *
-     * @param game the game
-     */
-    public void setGame(String game) {
-        this.game = game;
-    }
-
-    /**
      * Returns a string of Legendary information.
      *
      * @return a string consisting of Legendary information
@@ -148,7 +125,6 @@ public class Legendary {
         return "Legendary{id = " + id + '\''
                 + ", name = " + name + '\''
                 + ", type = " + type + '\''
-                + ", game = " + game + '\''
                 + "}";
     }
 

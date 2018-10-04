@@ -18,6 +18,20 @@ CREATE TABLE Legendary
   game             VARCHAR(30) NULL
 );
 
+CREATE TABLE Game
+(
+  name varchar(6) primary key
+);
+
+CREATE TABLE GameLegendary
+(
+  legendaryId int,
+  gameName varchar(6),
+  primary key (legendaryId, gameName),
+  FOREIGN KEY (legendaryId) REFERENCES Legendary(id),
+  FOREIGN KEY (gameName) REFERENCES Game(name)
+);
+
 -- auto-generated definition
 CREATE TABLE User
 (
@@ -108,50 +122,62 @@ CREATE TABLE UserLegendaryPrimaryItemTask
 );
 
 -- insert data for Legendary
-INSERT into Legendary (name, type, game) values(
-  'Bolt', 'Sword', 'Base'
+INSERT into Legendary (name, type) values(
+  'Bolt', 'Sword'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'The Shining Blade', 'Sword', 'HoT'
+INSERT into Legendary (name, type) values(
+  'The Shining Blade', 'Sword'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Twilight', 'Greatsword', 'Base'
+INSERT into Legendary (name, type) values(
+  'Twilight', 'Greatsword'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Kudzu', 'Longbow', 'Base'
+INSERT into Legendary (name, type) values(
+  'Kudzu', 'Longbow'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Xiuquatl', 'Scepter', 'PoF'
+INSERT into Legendary (name, type) values(
+  'Xiuquatl', 'Scepter'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Sunrise', 'Greatsword', 'Base'
+INSERT into Legendary (name, type) values(
+  'Sunrise', 'Greatsword'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Astralaria', 'Axe', 'HoT'
+INSERT into Legendary (name, type) values(
+  'Astralaria', 'Axe'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Sharur', 'Hammer', 'HoT'
+INSERT into Legendary (name, type) values(
+  'Sharur', 'Hammer'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Chuka and Champawat', 'Shortbow', 'HoT'
+INSERT into Legendary (name, type) values(
+  'Chuka and Champawat', 'Shortbow'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'Frostfang', 'Axe', 'Base'
+INSERT into Legendary (name, type) values(
+  'Frostfang', 'Axe'
 );
 
-INSERT into Legendary (name, type, game) values(
-  'The Binding of Ipos', 'Focus', 'PoF'
+INSERT into Legendary (name, type) values(
+  'The Binding of Ipos', 'Focus'
 );
 
+-- insert data for Game
+INSERT into Game values(
+    'Base'
+);
+
+INSERT into Game values(
+    'HoT'
+);
+
+INSERT into Game values(
+    'PoF'
+);
 
 -- insert data for PrimaryItem
 -- for The Shining Blade

@@ -1,3 +1,12 @@
+drop table UserLegendaryPrimaryItemTask;
+drop table UserLegendaryPrimaryItem;
+drop table LegendaryPrimaryItem;
+drop table UserLegendary;
+drop table User;
+drop table Legendary;
+drop table Task;
+drop table PrimaryItem;
+
 -- auto-generated definition
 CREATE TABLE Legendary
 (
@@ -33,6 +42,8 @@ CREATE TABLE Task
   id            INT         NOT NULL
   AUTO_INCREMENT PRIMARY KEY,
   name          VARCHAR(30) NULL,
+  description   VARCHAR(500) NULL,
+  quantity      INT DEFAULT 1,
   primaryItemId INT         NULL,
   CONSTRAINT Task_ibfk_1
   FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
@@ -59,7 +70,7 @@ CREATE TABLE UserLegendary
 CREATE TABLE LegendaryPrimaryItem
 (
   id            INT NOT NULL
-    PRIMARY KEY,
+    PRIMARY KEY AUTO_INCREMENT,
   legendaryId   INT NULL,
   primaryItemId INT NULL,
   CONSTRAINT LegendaryPrimaryItem_ibfk_1
@@ -72,7 +83,7 @@ CREATE TABLE LegendaryPrimaryItem
 CREATE TABLE UserLegendaryPrimaryItem
 (
   id                     INT NOT NULL
-    PRIMARY KEY,
+    PRIMARY KEY AUTO_INCREMENT,
   legendaryPrimaryItemId INT NULL,
   userId                 INT NULL,
   progress               INT NULL,
@@ -96,8 +107,54 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   FOREIGN KEY (taskId) REFERENCES Task (id)
 );
 
--- insert data
+-- insert data for Legendary
+INSERT into Legendary (name, type, game) values(
+  'Bolt', 'Sword', 'Base'
+);
 
+INSERT into Legendary (name, type, game) values(
+  'The Shining Blade', 'Sword', 'HoT'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Twilight', 'Greatsword', 'Base'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Kudzu', 'Longbow', 'Base'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Xiuquatl', 'Scepter', 'PoF'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Sunrise', 'Greatsword', 'Base'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Astralaria', 'Axe', 'HoT'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Sharur', 'Hammer', 'HoT'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Chuka and Champawat', 'Shortbow', 'HoT'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'Frostfang', 'Axe', 'Base'
+);
+
+INSERT into Legendary (name, type, game) values(
+  'The Binding of Ipos', 'Focus', 'PoF'
+);
+
+
+-- insert data for PrimaryItem
+-- for The Shining Blade
 insert into PrimaryItem (name) VALUES(
   'Save the Queen'
 );
@@ -114,6 +171,38 @@ insert into PrimaryItem (name) VALUES(
   'Mystic Tribute'
 );
 
+-- insert data for Task
+-- for The Shining Blade, Gift of Maguuma Mastery
+insert into Task (name, description, primaryItemId) values (
+  'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 3
+);
 
+insert into Task (name, description, primaryItemId) values (
+  'Gift of Insights', '<Mystic Forge Recipe>', 3
+);
 
+insert into Task (name, description, primaryItemId) values (
+  'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 3
+);
 
+insert into Task (name, description, primaryItemId, quantity) values (
+  'Crystalline Ingot', '<recipe>', 3, 250
+);
+
+insert into Task (name, description, primaryItemId) values (
+  'Gift of the Fleet', 'Obtained upon map completion of Verdant Brink.', 3
+);
+
+insert into Task (name, description, primaryItemId) values (
+  'Gift of Tarir', 'Obtained upon map completion of Auric Basin.', 3
+);
+
+insert into Task (name, description, primaryItemId) values (
+  'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 3
+);
+
+insert into Task (name, description, primaryItemId) values (
+  'Gift of the Jungle', 'Obtained upon map completion of Dragon\'s Stand.', 3
+);
+
+-- for The Shining Blade, Save the Queen

@@ -12,7 +12,13 @@ Represents each individual legendary weapon.
  * Name
  * PictureReference
  * Type (Weapon type)
- * Game (Establishing which requirements it has, such as Base, Heart of Thorns, or Path of Fire - may want to alter into a lookup table)
+ 
+ ### Game
+ * Name [pk]
+ 
+ ### GameLegendary
+ * GameName [pk/fk]
+ * LegendaryId [pk/fk] 
 
 ### UserLegendary
 Represents the intersection between the user

@@ -3,6 +3,7 @@ package edu.matc.legendsmith.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.*;
 
 /**
  * The type Legendary.
@@ -25,6 +26,9 @@ public class Legendary {
     @Column (name = "Type") //uncapitalize
     private String type; //uncapitalize
 
+    @ManyToMany(mappedBy = "Legendary")
+    private Set<PrimaryItem> primaryItems = new HashSet<>();
+
     /**
      * Instantiates a new Legendary.
      */
@@ -41,6 +45,42 @@ public class Legendary {
     public Legendary(String name, String type) {
         this.name = name;
         this.type = type;
+    }
+
+    /**
+     * Gets primary items.
+     *
+     * @return the primary items
+     */
+    public Set<PrimaryItem> getPrimaryItems() {
+        return primaryItems;
+    }
+
+    /**
+     * Sets primary items.
+     *
+     * @param primaryItems the primary items
+     */
+    public void setPrimaryItems(Set<PrimaryItem> primaryItems) {
+        this.primaryItems = primaryItems;
+    }
+
+    /**
+     * Add primary item.
+     *
+     * @param primaryItem the primary item
+     */
+    public void addPrimaryItem(PrimaryItem primaryItem) {
+        primaryItems.add(primaryItem);
+    }
+
+    /**
+     * Remove primary item.
+     *
+     * @param primaryItem the primary item
+     */
+    public void removePrimaryItem(PrimaryItem primaryItem) {
+        primaryItems.remove(primaryItem);
     }
 
     /**

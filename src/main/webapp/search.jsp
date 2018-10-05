@@ -33,8 +33,8 @@
                 <table class="table">
                     <c:forEach var="legendary" items="${legendaries}">
                         <tr>
-                            <td>${legendary.id}</td>
-                            <td>${legendary.name}</td>
+                            <!-- TODO The name/picture should link to the page -->
+                            <td><a href="/legendary">${legendary.name}</a></td>
                             <td>${legendary.type}</td>
                         </tr>
                     </c:forEach>

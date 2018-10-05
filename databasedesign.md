@@ -14,9 +14,11 @@ Represents each individual legendary weapon.
  * Type (Weapon type)
  
  ### Game
+ Denotes base game, or an expansion, which is relevant to the requirement of a legendary weapon. 
  * Name [pk]
  
  ### GameLegendary
+ The intersection between a legendary and a game. Most only correspond to one game, but some correspond to two. 
  * GameName [pk/fk]
  * LegendaryId [pk/fk] 
 

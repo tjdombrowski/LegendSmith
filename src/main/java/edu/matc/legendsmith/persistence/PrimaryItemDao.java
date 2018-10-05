@@ -1,6 +1,5 @@
 package edu.matc.legendsmith.persistence;
 
-import edu.matc.legendsmith.entity.Legendary;
 import edu.matc.legendsmith.entity.PrimaryItem;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +28,14 @@ public class PrimaryItemDao {
         return orders;
     }
 
-    public void insert(PrimaryItem primaryItem) {
+    public PrimaryItem getById(int id) {
+        Session session = sessionFactory.openSession();
+        PrimaryItem order = session.get(PrimaryItem.class, id);
+        session.close();
+        return order;
+    }
+
+    public int insert(PrimaryItem primaryItem) {
         int id = 0;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

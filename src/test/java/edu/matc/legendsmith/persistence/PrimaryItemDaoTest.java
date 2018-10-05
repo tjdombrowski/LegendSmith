@@ -1,24 +1,40 @@
 package edu.matc.legendsmith.persistence;
 
+import edu.matc.legendsmith.test.util.Database;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PrimaryItemDaoTest {
-    @Test
-    void getAllPrimaryItems() {
+    PrimaryItemDao dao;
+
+    /**
+     * Sets up the tests by resetting the database and instantiating the necessary dao.
+     */
+    @BeforeEach
+    void setUp() {
+        Database database = Database.getInstance();
+        database.runSQL("cleandb.sql");
+
+        dao = new PrimaryItemDao();
+
     }
 
     @Test
-    void insert() {
+    void getAllPrimaryItemsSuccess() {
     }
 
     @Test
-    void saveOrUpdate() {
+    void insertSuccess() {
     }
 
     @Test
-    void delete() {
+    void saveOrUpdateSuccess() {
+    }
+
+    @Test
+    void deleteSuccess() {
     }
 
 }

@@ -58,9 +58,9 @@ CREATE TABLE Task
   name          VARCHAR(30) NULL,
   description   VARCHAR(500) NULL,
   quantity      INT DEFAULT 1,
-  primaryItemId INT         NULL,
+  legendaryPrimaryItemId INT         NULL,
   CONSTRAINT Task_ibfk_1
-  FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
+  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
 );
 
 
@@ -258,33 +258,51 @@ insert into PrimaryItem (name) VALUES(
   'Mystic Tribute'
 );
 
+-- insert data for LegendaryPrimaryItem
+-- for The Shining Blade
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES(
+  1, 2
+);
+
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES(
+  2, 2
+);
+
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES(
+  3, 2
+);
+
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES(
+  4, 2
+);
+
 -- insert data for Task
 -- for The Shining Blade, Gift of Maguuma Mastery
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 3
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of Insights', '<Mystic Forge Recipe>', 3
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 3
 );
 
-insert into Task (name, description, primaryItemId, quantity) values (
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
   'Crystalline Ingot', '<recipe>', 3, 250
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of the Fleet', 'Obtained upon map completion of Verdant Brink.', 3
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of Tarir', 'Obtained upon map completion of Auric Basin.', 3
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 3
 );
 

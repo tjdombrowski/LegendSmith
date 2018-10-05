@@ -52,10 +52,15 @@ Completed the project plan and database design for the indie project.
 Sept 26. 2.5 hours
 Read through things on Hibernate. Worked on creating the jsp pages and adding bootstrap. Also started the database, but had to redo things when things crashed.
 
-Sept 27.    1 hours
+Sept 27.    1 hour
 Worked on the hibernate demo and watched videos. 
 
 Sept 29.    2 hours
 Adapted Hibernate to my project, testing the functionality with the Legendary entity/class. Just displaying everything is working fine.
 
+Sept 30.    1 hour
+Added additional dao methods and tests to the project. 
+
+Oct 1.      1 hour
+Cleaned things up a bit and made some modifications to better suit my project's needs. Continued work with the testing. 
 

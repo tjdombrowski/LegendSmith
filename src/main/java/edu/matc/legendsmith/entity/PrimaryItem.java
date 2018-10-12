@@ -23,7 +23,6 @@ public class PrimaryItem {
     @Column(name = "pictureReference")
     private String pictureReference;
 
-    @ManyToMany
     private Set<Legendary> legendaries = new HashSet<>();
 
 

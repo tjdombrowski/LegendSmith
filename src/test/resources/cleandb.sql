@@ -1,11 +1,11 @@
 delete from Legendary;
-INSERT into Legendary (id, name, type, game) values(1, 'Bolt', 'Sword');
-INSERT into Legendary (id, name, type, game) values(2, 'The Shining Blade', 'Sword');
-INSERT into Legendary (id, name, type, game) values(3, 'Chuka and Champawat', 'Shortbow');
-INSERT into Legendary (id, name, type, game) values(4, 'Sharur', 'Hammer');
-INSERT into Legendary (id, name, type, game) values(5, 'Astralaria', 'Axe');
-INSERT into Legendary (id, name, type, game) values(6, 'The Minstrel', 'Focus');
-INSERT into Legendary (id, name, type, game) values(7, 'The Binding of Ipos', 'Focus');
+INSERT into Legendary (id, name, type) values(1, 'Bolt', 'Sword');
+INSERT into Legendary (id, name, type) values(2, 'The Shining Blade', 'Sword');
+INSERT into Legendary (id, name, type) values(3, 'Chuka and Champawat', 'Shortbow');
+INSERT into Legendary (id, name, type) values(4, 'Sharur', 'Hammer');
+INSERT into Legendary (id, name, type) values(5, 'Astralaria', 'Axe');
+INSERT into Legendary (id, name, type) values(6, 'The Minstrel', 'Focus');
+INSERT into Legendary (id, name, type) values(7, 'The Binding of Ipos', 'Focus');
 delete from PrimaryItem;
 insert into PrimaryItem (id, name) VALUES(1, 'Save the Queen');
 insert into PrimaryItem (id, name) VALUES(2, 'Gift of the Blade');

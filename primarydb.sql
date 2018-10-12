@@ -306,15 +306,15 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 3
 );
 
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Gift of the Jungle', 'Obtained upon map completion of Dragon\'s Stand.', 3
 );
 
 -- for The Shining Blade, Save the Queen
-insert into Task (name, description, primaryItemId) values (
+insert into Task (name, description, legendaryPrimaryItemId) values (
   'Exemplar\'s Edge', 'The first tier precursor of Save the Queen.', 1
 );
 
-insert into Task (name, description, primaryItemId) VALUE (
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
     'Vengeance', 'The second tier precursor of Save The Queen.', 1
 );

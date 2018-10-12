@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Table(name = "Game")
 public class Game {
     //TODO Determine what kind of annotations are needed here
-    @Id
-    @GenericGenerator(name = "native",strategy = "native")
     private String name;
 
     /**

@@ -26,7 +26,6 @@ public class Legendary {
     @Column (name = "Type") //uncapitalize
     private String type; //uncapitalize
 
-    @ManyToMany(mappedBy = "Legendary")
     private Set<PrimaryItem> primaryItems = new HashSet<>();
 
     /**

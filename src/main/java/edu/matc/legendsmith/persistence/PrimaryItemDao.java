@@ -23,16 +23,16 @@ public class PrimaryItemDao {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<PrimaryItem> query = builder.createQuery(PrimaryItem.class);
         Root<PrimaryItem> root = query.from(PrimaryItem.class);
-        List<PrimaryItem> orders = session.createQuery(query).getResultList();
+        List<PrimaryItem> primaryItems = session.createQuery(query).getResultList();
         session.close();
-        return orders;
+        return primaryItems;
     }
 
     public PrimaryItem getById(int id) {
         Session session = sessionFactory.openSession();
-        PrimaryItem order = session.get(PrimaryItem.class, id);
+        PrimaryItem primaryItem = session.get(PrimaryItem.class, id);
         session.close();
-        return order;
+        return primaryItem;
     }
 
     public int insert(PrimaryItem primaryItem) {

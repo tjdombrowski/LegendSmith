@@ -19,11 +19,9 @@ public class Legendary {
 
     private String name;
 
-    @Column (name = "PictureReference") //uncapitalize
     private String pictureReference;
 
-    @Column (name = "Type") //uncapitalize
-    private String type; //uncapitalize
+    private String type;
 
     @OneToMany(mappedBy = "Legendary")
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();

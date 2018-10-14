@@ -1,11 +1,13 @@
 drop table UserLegendaryPrimaryItemTask;
 drop table UserLegendaryPrimaryItem;
-drop table LegendaryPrimaryItem;
 drop table UserLegendary;
+drop table LegendaryPrimaryItem;
 drop table User;
-drop table Legendary;
+drop table GameLegendary;
+drop table Game;
 drop table Task;
 drop table PrimaryItem;
+drop table Legendary;
 
 -- auto-generated definition
 CREATE TABLE Legendary
@@ -53,6 +55,18 @@ CREATE TABLE PrimaryItem
 );
 
 -- auto-generated definition
+CREATE TABLE LegendaryPrimaryItem
+(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  legendaryId   INT NULL,
+  primaryItemId INT NULL,
+  CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
+  FOREIGN KEY (legendaryId) REFERENCES Legendary (id),
+  CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
+  FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
+);
+
+-- auto-generated definition
 CREATE TABLE Task
 (
   id            INT         NOT NULL
@@ -86,18 +100,6 @@ CREATE TABLE UserLegendary
 
 
 -- auto-generated definition
-CREATE TABLE LegendaryPrimaryItem
-(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  legendaryId   INT NULL,
-  primaryItemId INT NULL,
-  CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary (id),
-  CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
-  FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
-);
-
--- auto-generated definition
 CREATE TABLE UserLegendaryPrimaryItem
 (
   id                     INT NOT NULL
@@ -105,9 +107,9 @@ CREATE TABLE UserLegendaryPrimaryItem
   legendaryPrimaryItemId INT NULL,
   userId                 INT NULL,
   progress               INT NULL,
-  CONSTRAINT UserLegendaryPrimaryItem_legendaryPrimaryItemId_fk
+  CONSTRAINT UserLegendaryPrimaryItem_fk1
   FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id),
-  CONSTRAINT UserLegendaryPrimaryItem_userId_fk
+  CONSTRAINT UserLegendaryPrimaryItem_userId_fk2
   FOREIGN KEY (userId) REFERENCES User (id)
 );
 
@@ -119,9 +121,9 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   completion                 INT DEFAULT '0' NULL,
   dateCompleted              DATE            NULL,
   PRIMARY KEY (taskId, userLegendaryPrimaryItemId),
-  CONSTRAINT UserLegendaryPrimaryItemTask_userLegendaryPrimaryItemId_fk
+  CONSTRAINT UserLegendPrimItem_fk1
   FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id),
-  CONSTRAINT UserLegendaryPrimaryItemTask_taskId_fk
+  CONSTRAINT UserLegendPrimItem_fk2
   FOREIGN KEY (taskId) REFERENCES Task (id)
 );
 

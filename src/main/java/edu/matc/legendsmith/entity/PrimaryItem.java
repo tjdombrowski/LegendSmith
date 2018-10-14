@@ -17,10 +17,8 @@ public class PrimaryItem {
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "pictureReference")
     private String pictureReference;
 
     @OneToMany(mappedBy = "PrimaryItem")

@@ -17,6 +17,11 @@ import java.io.Serializable;
 @Entity(name = "LegendaryPrimaryItem")
 @Table(name = "LegendaryPrimaryItem")
 public class LegendaryPrimaryItem {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
+    private int id;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Legendary legendary;
 

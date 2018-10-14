@@ -64,3 +64,27 @@ Added additional dao methods and tests to the project.
 Oct 1.      1 hour
 Cleaned things up a bit and made some modifications to better suit my project's needs. Continued work with the testing. 
 
+Oct 2.      1.5 hours
+Finished up everything for the week's exercise/project.
+
+Oct 4.      1.5 hours
+Explored the one to many and many to many relationships with Hibernate. Nothing is quite the same as what I need for my project however.
+
+Oct 5.      1 hour
+Continued to try and work with Hibernate and figure out how to set up the right relationship for my many to many tables. Nothing's working yet.
+
+Oct 8.      1.5 hours
+Started working with the week 5 exercise instead of configuring hibernate to my project. 
+
+Oct 9.      0.5 hours
+Continued to work with the week 5 exercise.
+
+Oct 10.     2.5 hours
+Finished the week 5 exercise.
+
+Oct 11.     1.5 hours
+Spent some time accessing my AWS account and exploring JQueryUI. I set some stuff up in my project and got the accordion widget working.
+
+Oct 13      1.5 hours
+Continued to look at hibernate annotations and reconsidered my database design, but decided to keep it the same for the most part. I made a join table entity, but it's not being recognized.
+

@@ -17,7 +17,6 @@ public class Legendary {
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @Column(name = "name")
     private String name;
 
     @Column (name = "PictureReference") //uncapitalize
@@ -26,7 +25,7 @@ public class Legendary {
     @Column (name = "Type") //uncapitalize
     private String type; //uncapitalize
 
-    @OneToMany(mappedBy = "Legendary", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "Legendary")
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
     /**

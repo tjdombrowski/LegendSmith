@@ -23,7 +23,7 @@ public class PrimaryItem {
     @Column(name = "pictureReference")
     private String pictureReference;
 
-    @OneToMany(mappedBy = "PrimaryItem", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "PrimaryItem")
     private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
 
 
@@ -132,4 +132,6 @@ public class PrimaryItem {
     public void setPictureReference(String pictureReference) {
         this.pictureReference = pictureReference;
     }
+
+
 }

@@ -28,7 +28,9 @@ CREATE TABLE GameLegendary
   legendaryId int,
   gameName varchar(6),
   primary key (legendaryId, gameName),
+  CONSTRAINT GameLegendary_legendaryId_fk
   FOREIGN KEY (legendaryId) REFERENCES Legendary(id),
+  CONSTRAINT GameLegendary_gameName_fk
   FOREIGN KEY (gameName) REFERENCES Game(name)
 );
 
@@ -58,9 +60,12 @@ CREATE TABLE Task
   name          VARCHAR(30) NULL,
   description   VARCHAR(500) NULL,
   quantity      INT DEFAULT 1,
+  prerequisite INT NULL,
   legendaryPrimaryItemId INT         NULL,
-  CONSTRAINT Task_ibfk_1
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
+  CONSTRAINT Task_legendaryPrimaryItemId_fk
+  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id),
+  CONSTRAINT Task_prerequisite_fk
+  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES Task (id)
 );
 
 
@@ -73,9 +78,9 @@ CREATE TABLE UserLegendary
   tracking    INT DEFAULT '0' NULL,
   priority    INT DEFAULT '0' NULL,
   PRIMARY KEY (userId, legendaryId),
-  CONSTRAINT UserLegendary_ibfk_1
+  CONSTRAINT UserLegendary_userId_fk
   FOREIGN KEY (userId) REFERENCES User (id),
-  CONSTRAINT UserLegendary_ibfk_2
+  CONSTRAINT UserLegendary_legendaryId_fk
   FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
 );
 
@@ -83,13 +88,12 @@ CREATE TABLE UserLegendary
 -- auto-generated definition
 CREATE TABLE LegendaryPrimaryItem
 (
-  id            INT NOT NULL
-    PRIMARY KEY AUTO_INCREMENT,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   legendaryId   INT NULL,
   primaryItemId INT NULL,
-  CONSTRAINT LegendaryPrimaryItem_ibfk_1
+  CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
   FOREIGN KEY (legendaryId) REFERENCES Legendary (id),
-  CONSTRAINT LegendaryPrimaryItem_ibfk_2
+  CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
   FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
 );
 
@@ -101,9 +105,9 @@ CREATE TABLE UserLegendaryPrimaryItem
   legendaryPrimaryItemId INT NULL,
   userId                 INT NULL,
   progress               INT NULL,
-  CONSTRAINT UserLegendaryPrimaryItem_ibfk_1
+  CONSTRAINT UserLegendaryPrimaryItem_legendaryPrimaryItemId_fk
   FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id),
-  CONSTRAINT UserLegendaryPrimaryItem_ibfk_2
+  CONSTRAINT UserLegendaryPrimaryItem_userId_fk
   FOREIGN KEY (userId) REFERENCES User (id)
 );
 
@@ -115,9 +119,9 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   completion                 INT DEFAULT '0' NULL,
   dateCompleted              DATE            NULL,
   PRIMARY KEY (taskId, userLegendaryPrimaryItemId),
-  CONSTRAINT UserLegendaryPrimaryItemTask_ibfk_1
+  CONSTRAINT UserLegendaryPrimaryItemTask_userLegendaryPrimaryItemId_fk
   FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id),
-  CONSTRAINT UserLegendaryPrimaryItemTask_ibfk_2
+  CONSTRAINT UserLegendaryPrimaryItemTask_taskId_fk
   FOREIGN KEY (taskId) REFERENCES Task (id)
 );
 

@@ -17,15 +17,10 @@ import java.io.Serializable;
 @Entity(name = "LegendaryPrimaryItem")
 @Table(name = "LegendaryPrimaryItem")
 public class LegendaryPrimaryItem {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
-    private int id;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Legendary legendary;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private PrimaryItem primaryItem;
 
 
@@ -89,5 +84,23 @@ public class LegendaryPrimaryItem {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        LegendaryPrimaryItem that = (LegendaryPrimaryItem) o;
+
+        if (id != that.id) return false;
+        if (legendary != null ? !legendary.equals(that.legendary) : that.legendary != null) return false;
+        return primaryItem != null ? primaryItem.equals(that.primaryItem) : that.primaryItem == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (legendary != null ? legendary.hashCode() : 0);
+        result = 31 * result + (primaryItem != null ? primaryItem.hashCode() : 0);
+        return result;
+    }
 }

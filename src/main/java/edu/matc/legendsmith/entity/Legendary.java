@@ -26,7 +26,8 @@ public class Legendary {
     @Column (name = "Type") //uncapitalize
     private String type; //uncapitalize
 
-    private Set<PrimaryItem> primaryItems = new HashSet<>();
+    @OneToMany(mappedBy = "Legendary", fetch = FetchType.EAGER)
+    private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
     /**
      * Instantiates a new Legendary.
@@ -51,7 +52,7 @@ public class Legendary {
      *
      * @return the primary items
      */
-    public Set<PrimaryItem> getPrimaryItems() {
+    public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
     }
 
@@ -60,7 +61,7 @@ public class Legendary {
      *
      * @param primaryItems the primary items
      */
-    public void setPrimaryItems(Set<PrimaryItem> primaryItems) {
+    public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
         this.primaryItems = primaryItems;
     }
 
@@ -69,7 +70,7 @@ public class Legendary {
      *
      * @param primaryItem the primary item
      */
-    public void addPrimaryItem(PrimaryItem primaryItem) {
+    public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.add(primaryItem);
     }
 
@@ -78,7 +79,7 @@ public class Legendary {
      *
      * @param primaryItem the primary item
      */
-    public void removePrimaryItem(PrimaryItem primaryItem) {
+    public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.remove(primaryItem);
     }
 

@@ -7,10 +7,10 @@ import java.io.Serializable;
 
 /**
  * The type Legendary primary item.
- *
+ * <p>
  * The join table between PrimaryItem and Legendary.
  * Id is the pk
- *
+ * <p>
  * One to many with Legendary
  * One to many with PrimaryItem
  */
@@ -25,11 +25,50 @@ public class LegendaryPrimaryItem {
     @ManyToOne
     private Legendary legendary;
 
+    @ManyToOne
+    private PrimaryItem primaryItem;
+
 
     /**
      * Instantiates a new Legendary primary item.
      */
     public LegendaryPrimaryItem() {}
+
+    /**
+     * Gets legendary.
+     *
+     * @return the legendary
+     */
+    public Legendary getLegendary() {
+        return legendary;
+    }
+
+    /**
+     * Sets legendary.
+     *
+     * @param legendary the legendary
+     */
+    public void setLegendary(Legendary legendary) {
+        this.legendary = legendary;
+    }
+
+    /**
+     * Gets primary item.
+     *
+     * @return the primary item
+     */
+    public PrimaryItem getPrimaryItem() {
+        return primaryItem;
+    }
+
+    /**
+     * Sets primary item.
+     *
+     * @param primaryItem the primary item
+     */
+    public void setPrimaryItem(PrimaryItem primaryItem) {
+        this.primaryItem = primaryItem;
+    }
 
     /**
      * Gets id.

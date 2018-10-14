@@ -23,7 +23,8 @@ public class PrimaryItem {
     @Column(name = "pictureReference")
     private String pictureReference;
 
-    private Set<Legendary> legendaries = new HashSet<>();
+    @OneToMany(mappedBy = "PrimaryItem", fetch = FetchType.EAGER)
+    private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
 
 
     /**
@@ -47,7 +48,7 @@ public class PrimaryItem {
      *
      * @return the legendaries
      */
-    public Set<Legendary> getLegendaries() {
+    public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 
@@ -56,7 +57,7 @@ public class PrimaryItem {
      *
      * @param legendaries the legendaries
      */
-    public void setLegendaries(Set<Legendary> legendaries) {
+    public void setLegendaries(List<LegendaryPrimaryItem> legendaries) {
         this.legendaries = legendaries;
     }
 
@@ -65,7 +66,7 @@ public class PrimaryItem {
      *
      * @param legendary the legendary
      */
-    public void addLegendary(Legendary legendary) {
+    public void addLegendary(LegendaryPrimaryItem legendary) {
         legendaries.add(legendary);
     }
 
@@ -74,7 +75,7 @@ public class PrimaryItem {
      *
      * @param legendary the legendary
      */
-    public void removeLegendary(Legendary legendary) {
+    public void removeLegendary(LegendaryPrimaryItem legendary) {
         legendaries.remove(legendary);
     }
 

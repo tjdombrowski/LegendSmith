@@ -23,8 +23,10 @@ public class Legendary {
 
     private String type;
 
+    /*
     @OneToMany(mappedBy = "Legendary")
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
+    */
 
     /**
      * Instantiates a new Legendary.
@@ -44,41 +46,24 @@ public class Legendary {
         this.type = type;
     }
 
-    /**
-     * Gets primary items.
-     *
-     * @return the primary items
-     */
+    /*
+
     public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
     }
 
-    /**
-     * Sets primary items.
-     *
-     * @param primaryItems the primary items
-     */
     public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
         this.primaryItems = primaryItems;
     }
 
-    /**
-     * Add primary item.
-     *
-     * @param primaryItem the primary item
-     */
     public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.add(primaryItem);
     }
 
-    /**
-     * Remove primary item.
-     *
-     * @param primaryItem the primary item
-     */
     public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.remove(primaryItem);
     }
+    */
 
     /**
      * Gets id.
@@ -152,11 +137,7 @@ public class Legendary {
         this.type = type;
     }
 
-    /**
-     * Returns a string of Legendary information.
-     *
-     * @return a string consisting of Legendary information
-     */
+
     @Override
     public String toString() {
         return "Legendary{id = " + id + '\''
@@ -165,5 +146,26 @@ public class Legendary {
                 + "}";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Legendary legendary = (Legendary) o;
+
+        if (id != legendary.id) return false;
+        if (name != null ? !name.equals(legendary.name) : legendary.name != null) return false;
+        if (pictureReference != null ? !pictureReference.equals(legendary.pictureReference) : legendary.pictureReference != null)
+            return false;
+        return type != null ? type.equals(legendary.type) : legendary.type == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (pictureReference != null ? pictureReference.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 }

@@ -21,8 +21,8 @@ public class PrimaryItem {
 
     private String pictureReference;
 
-    @OneToMany(mappedBy = "PrimaryItem")
-    private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
+    /*@OneToMany(mappedBy = "PrimaryItem")
+    private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();*/
 
 
     /**
@@ -41,41 +41,22 @@ public class PrimaryItem {
         this.name = name;
     }
 
-    /**
-     * Gets legendaries.
-     *
-     * @return the legendaries
-     */
+    /*
     public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 
-    /**
-     * Sets legendaries.
-     *
-     * @param legendaries the legendaries
-     */
     public void setLegendaries(List<LegendaryPrimaryItem> legendaries) {
         this.legendaries = legendaries;
     }
 
-    /**
-     * Add legendary.
-     *
-     * @param legendary the legendary
-     */
     public void addLegendary(LegendaryPrimaryItem legendary) {
         legendaries.add(legendary);
     }
 
-    /**
-     * Remove legendary.
-     *
-     * @param legendary the legendary
-     */
     public void removeLegendary(LegendaryPrimaryItem legendary) {
         legendaries.remove(legendary);
-    }
+    }*/
 
     /**
      * Gets id.
@@ -131,5 +112,23 @@ public class PrimaryItem {
         this.pictureReference = pictureReference;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        PrimaryItem that = (PrimaryItem) o;
+
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return pictureReference != null ? pictureReference.equals(that.pictureReference) : that.pictureReference == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (pictureReference != null ? pictureReference.hashCode() : 0);
+        return result;
+    }
 }

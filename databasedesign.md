@@ -1,5 +1,8 @@
 # Database Design
 
+### ERD
+(Legendsmith-2018.png)
+
 ### User
 Represents the user. Not a lot of data on the user is stored.
  * Id [pk]
@@ -64,7 +67,6 @@ The intersection between an user's primary item and a single task.
 * TaskId [pk/fk]
 * Completion (a boolean value that is false by default)
 * DateCompleted (Value is established at the same time Completion is set to true, but if set back to false, then the date is removed)
-
 
 
 

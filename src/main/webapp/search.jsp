@@ -34,7 +34,7 @@
                     <c:forEach var="legendary" items="${legendaries}">
                         <tr>
                             <!-- TODO The name/picture should link to the page -->
-                            <td><a href="/legendary">${legendary.name}</a></td>
+                            <td><a href="/legendaries/${legendary.name}">${legendary.name}</a></td>
                             <td>${legendary.type}</td>
                         </tr>
                     </c:forEach>

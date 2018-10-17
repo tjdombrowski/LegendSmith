@@ -1,7 +1,7 @@
 # Database Design
 
 ### ERD
-(Legendsmith-2018.png)
+![ERD](Legendsmith-2018.png)
 
 ### User
 Represents the user. Not a lot of data on the user is stored.

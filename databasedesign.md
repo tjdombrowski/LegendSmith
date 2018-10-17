@@ -54,6 +54,9 @@ Represents each individual task or item needed to complete a primary item. These
 * Id [pk]
 * Name
 * PrimaryItemId [fk]
+* Quantity (defaults to 1 and is used purely to denote how much is needed by the user, but I don't care about keeping track of how many they have)
+* Description (Whatever the user needs to do, whether complete some event, obtain some item, or craft something. In some cases, I will link things to the wiki. I don't want this to be bloated.)
+* Prerequisite [fk] (This links to another Task and is optional. It denotes whether a previous task needs to be completed before this one can be achieved.)
 
 ### UserLegendaryPrimaryItemTask
 The intersection between an user's primary item and a single task.

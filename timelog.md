@@ -88,3 +88,11 @@ Spent some time accessing my AWS account and exploring JQueryUI. I set some stuf
 Oct 13      1.5 hours
 Continued to look at hibernate annotations and reconsidered my database design, but decided to keep it the same for the most part. I made a join table entity, but it's not being recognized.
 
+Oct 15.     1.5 hour
+Attempted to deploy the exercise to AWS, but ran into an issue where I was not connecting to it. I've attempted to retrace what I've done to see if anything's gone wrong, but couldn't figure anything out. 
+
+Oct 16.     2.5 hours
+Tried looking up solutions to the AWS issue and running through possible options. Eventually, I got it to work after trying a bunch of things and bouncing tomcat. I ran into one other issue with hibernate's config file, but other than that, deployment went fine. 
+
+Oct 17.     3.5 hours
+Altered my database description and added the ERD to reflect changes I've made. I also edited the application flow and redesigned the wireframes and jsps to reflect some shuffling around of how I want my project to look and act. I also attempted to figure out my issue with my join table using hibernate, but couldn't get anywhere. Lastly, I replaced my entity-specific daos with a generic dao and changed the tests and controller class to reflect this. 

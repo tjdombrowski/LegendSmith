@@ -1,6 +1,7 @@
 package edu.matc.legendsmith.controller;
 
-import edu.matc.legendsmith.persistence.LegendaryDao;
+import edu.matc.legendsmith.entity.Legendary;
+import edu.matc.legendsmith.persistence.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,13 +28,13 @@ public class SearchLegendary extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LegendaryDao legendaryDao = new LegendaryDao();
+        GenericDao dao = new GenericDao(Legendary.class);
 
         String searchTerm = "";
         searchTerm = req.getParameter("name");
 
         //TODO I'm going to want to make sure this retrieves everything the user is tracking by default
-        req.setAttribute("legendaries", legendaryDao.getLegendariesByName(searchTerm));
+        req.setAttribute("legendaries", dao.getByName(searchTerm));
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);

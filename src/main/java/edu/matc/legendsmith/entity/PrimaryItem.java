@@ -41,8 +41,8 @@ public class PrimaryItem {
         this.name = name;
     }
 
-    /*
-    public List<LegendaryPrimaryItem> getLegendaries() {
+
+    /*public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 

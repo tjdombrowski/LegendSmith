@@ -23,9 +23,11 @@ public class LegendaryPrimaryItem {
     private int id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "id")
     private Legendary legendary;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "id")
     private PrimaryItem primaryItem;
 
 

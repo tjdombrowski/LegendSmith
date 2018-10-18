@@ -1,8 +1,5 @@
 package edu.matc.legendsmith.controller;
 
-import edu.matc.legendsmith.persistence.LegendaryDao;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +17,7 @@ import java.io.IOException;
 public class RetrieveLegendaryData extends HttpServlet {
 
     /**
-     * Retrieves a list of legendaries, either a complete list or a list depending on the search term.
+     * Used for retrieving all the relevant data of a legendary weapon to be displayed on the page.
      *
      * @param req the http servlet request
      * @param resp the http servlet response

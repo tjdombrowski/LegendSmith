@@ -1,6 +1,6 @@
 package edu.matc.legendsmith.persistence;
 
-import edu.matc.legendsmith.entity.Legendary;
+import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * The type Legendary dao test.
  */
 class LegendaryDaoTest {
-    LegendaryDao dao;
+    GenericDao dao;
 
     /**
      * Sets up the tests by resetting the database and instantiating the necessary dao.
@@ -23,7 +23,7 @@ class LegendaryDaoTest {
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
 
-        dao = new LegendaryDao();
+        dao = new GenericDao(Legendary.class);
 
     }
 
@@ -31,10 +31,10 @@ class LegendaryDaoTest {
      * Tests for successfully retrieving all legendaries, when the search term is empty.
      */
     @Test
-    void getAllLegendariesWithEmptySearchSuccess() {
-        List<Legendary> legendaries = dao.getLegendariesByName("");
+    void getAllSuccess() {
+        List<Legendary> legendaries = dao.getAll();
 
-        assertEquals(legendaries.size(), 7);
+        assertEquals(7, legendaries.size());
     }
 
     /**
@@ -42,7 +42,7 @@ class LegendaryDaoTest {
      */
     @Test
     void getLegendariesByNameSuccess() {
-        List<Legendary> legendaries = dao.getLegendariesByName("the");
+        List<Legendary> legendaries = dao.getByName("the");
 
         assertEquals(legendaries.size(), 3);
     }
@@ -52,7 +52,7 @@ class LegendaryDaoTest {
      */
     @Test
     void getLegendaryByIdSuccess() {
-        Legendary legendary = dao.getLegendaryById(7);
+        Legendary legendary = (Legendary)dao.getById(7);
 
         assertEquals("The Binding of Ipos", legendary.getName());
     }
@@ -65,7 +65,7 @@ class LegendaryDaoTest {
         Legendary newLegendary = new Legendary("Xiuquatl", "Scepter");
         int id = dao.insert(newLegendary);
 
-        Legendary returnedLegendary = dao.getLegendaryById(id);
+        Legendary returnedLegendary = (Legendary)dao.getById(id);
 
         assertEquals("Xiuquatl", returnedLegendary.getName());
     }
@@ -80,7 +80,7 @@ class LegendaryDaoTest {
 
         dao.saveOrUpdate(newLegendary);
 
-        Legendary returnedLegendary = dao.getLegendaryById(4);
+        Legendary returnedLegendary = (Legendary)dao.getById(4);
 
         assertEquals("Claw of the Khan-Ur", returnedLegendary.getName());
     }
@@ -90,10 +90,10 @@ class LegendaryDaoTest {
      */
     @Test
     void deleteLegendarySuccess() {
-        Legendary returnedLegendary = dao.getLegendaryById(5);
+        Legendary returnedLegendary = (Legendary)dao.getById(5);
         dao.delete(returnedLegendary);
 
-        assertNull(dao.getLegendaryById(5));
+        assertNull(dao.getById(5));
     }
 
 }

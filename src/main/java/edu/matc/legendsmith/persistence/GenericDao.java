@@ -30,6 +30,11 @@ public class GenericDao<T> {
         this.type = type;
     }
 
+    /**
+     * Gets everything from the table.
+     *
+     * @return list
+     */
     public List<T> getAll() {
         Session session = getSession();
 
@@ -57,6 +62,14 @@ public class GenericDao<T> {
         return entity;
     }
 
+    /**
+     * Get an entity by it's name.
+     *
+     * TODO make this part more dynamic. Not everything I'm pulling has a "name" column.
+     *
+     * @param searchTerm the search term from the user
+     * @return list
+     */
     public List<T> getByName(String searchTerm) {
         Session session = getSession();
 
@@ -74,6 +87,12 @@ public class GenericDao<T> {
         return list;
     }
 
+    /**
+     * Inserts a new entity into the database.
+     *
+     * @param entity the entity being inserted
+     * @return the id on the newly inserted entity
+     */
     public int insert(T entity) {
         int id = 0;
         Session session = getSession();
@@ -87,6 +106,11 @@ public class GenericDao<T> {
         return id;
     }
 
+    /**
+     * Updates the entity.
+     *
+     * @param entity entity to be updated
+     */
     public void saveOrUpdate(T entity) {
         Session session = getSession();
 

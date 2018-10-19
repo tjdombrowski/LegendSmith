@@ -136,6 +136,44 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   FOREIGN KEY (taskId) REFERENCES Task (id)
 );
 
+-- insert data for User
+INSERT INTO User (username, password) VALUES (
+    'valence', 'dancingajnya'
+);
+
+INSERT INTO User (username, password) VALUES (
+    'silkie', 'rabbitscream'
+);
+
+INSERT INTO User (username, password) VALUES (
+    'vinzio', 'immortalgrace'
+);
+
+INSERT INTO User (username, password) VALUES (
+    'thylaeza', 'thelionwhispers'
+);
+
+INSERT INTO User (username, password) VALUES (
+    'anjya', 'salty'
+);
+
+-- insert data for UserRole
+INSERT into UserRole (userId, role) VALUES (
+  1, 'user'
+);
+INSERT into UserRole (userId, role) VALUES (
+  2, 'admin'
+);
+INSERT into UserRole (userId, role) VALUES (
+  3, 'user'
+);
+INSERT into UserRole (userId, role) VALUES (
+  4, 'user'
+);
+INSERT into UserRole (userId, role) VALUES (
+  5, 'user'
+);
+
 -- insert data for Legendary
 INSERT into Legendary (name, type) values(
   'Bolt', 'Sword'

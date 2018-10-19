@@ -1,3 +1,4 @@
+drop table UserRole;
 drop table UserLegendaryPrimaryItemTask;
 drop table UserLegendaryPrimaryItem;
 drop table UserLegendary;
@@ -43,6 +44,14 @@ CREATE TABLE User
   AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(20) NULL,
   password VARCHAR(20) NULL
+);
+
+CREATE TABLE UserRole
+(
+  userId int,
+  role VARCHAR(15),
+  CONSTRAINT UserRole_fk
+  FOREIGN KEY (userId) REFERENCES User(id)
 );
 
 -- auto-generated definition

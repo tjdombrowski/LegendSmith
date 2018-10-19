@@ -1,8 +1,5 @@
 package edu.matc.legendsmith.persistence;
 
-import edu.matc.legendsmith.entity.*;
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

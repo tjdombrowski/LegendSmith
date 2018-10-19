@@ -23,6 +23,7 @@
         <mapping class="edu.matc.legendsmith.entity.PrimaryItem"/>
         <mapping class="edu.matc.legendsmith.entity.LegendaryPrimaryItem"/>
 
+
     </session-factory>
 
 </hibernate-configuration>

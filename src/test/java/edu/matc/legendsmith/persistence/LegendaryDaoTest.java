@@ -28,7 +28,7 @@ class LegendaryDaoTest {
     }
 
     /**
-     * Tests for successfully retrieving all legendaries, when the search term is empty.
+     * Tests for successfully retrieving all legendaries.
      */
     @Test
     void getAllSuccess() {

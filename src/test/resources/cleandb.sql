@@ -1,6 +1,7 @@
 delete from LegendaryPrimaryItem;
 delete from PrimaryItem;
 delete from Legendary;
+delete from User;
 INSERT into Legendary (id, name, type) values(1, 'Bolt', 'Sword');
 INSERT into Legendary (id, name, type) values(2, 'The Shining Blade', 'Sword');
 INSERT into Legendary (id, name, type) values(3, 'Chuka and Champawat', 'Shortbow');
@@ -16,4 +17,8 @@ insert into LegendaryPrimaryItem (id, legendaryId, primaryItemId) VALUES(1, 2, 1
 insert into LegendaryPrimaryItem (id, legendaryId, primaryItemId) VALUES(2, 2, 2);
 insert into LegendaryPrimaryItem (id, legendaryId, primaryItemId) VALUES(3, 2, 3);
 insert into LegendaryPrimaryItem (id, legendaryId, primaryItemId) VALUES(4, 2, 4);
+insert into User VALUES(1, 'silkie', 'rabbitscream');
+insert into User VALUES(2, 'lex', 'cocoahooves');
+insert into User VALUES(3, 'saint', 'believeincrimson');
+insert into User VALUES(4, 'kasperlock', 'iameverywhere');
 

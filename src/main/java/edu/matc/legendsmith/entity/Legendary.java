@@ -23,8 +23,8 @@ public class Legendary {
 
     private String type;
 
-    /*@OneToMany(mappedBy = "Legendary")
-    private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();*/
+    @OneToMany(mappedBy = "legendary")
+    private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
 
     /**
@@ -46,7 +46,7 @@ public class Legendary {
     }
 
 
-    /*public List<LegendaryPrimaryItem> getPrimaryItems() {
+    public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
     }
 
@@ -60,7 +60,7 @@ public class Legendary {
 
     public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.remove(primaryItem);
-    }*/
+    }
 
 
     /**

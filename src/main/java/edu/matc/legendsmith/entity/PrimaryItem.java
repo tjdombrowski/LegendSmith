@@ -21,8 +21,8 @@ public class PrimaryItem {
 
     private String pictureReference;
 
-    /*@OneToMany(mappedBy = "PrimaryItem")
-    private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();*/
+    @OneToMany(mappedBy = "primaryItem")
+    private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
 
 
     /**
@@ -42,7 +42,7 @@ public class PrimaryItem {
     }
 
 
-    /*public List<LegendaryPrimaryItem> getLegendaries() {
+    public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 
@@ -56,7 +56,7 @@ public class PrimaryItem {
 
     public void removeLegendary(LegendaryPrimaryItem legendary) {
         legendaries.remove(legendary);
-    }*/
+    }
 
     /**
      * Gets id.

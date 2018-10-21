@@ -39,6 +39,18 @@ public class UserRole {
 
 
     /**
+     * Instantiates a new User role.
+     *
+     * @param id   the id
+     * @param role the role
+     */
+    public UserRole(int id, String role) {
+        this.id = id;
+        this.role = role;
+    }
+
+
+    /**
      * Gets id.
      *
      * @return the id
@@ -75,11 +87,39 @@ public class UserRole {
     }
 
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserRole userRole = (UserRole) o;
+
+        if (id != userRole.id) return false;
+        return role != null ? role.equals(userRole.role) : userRole.role == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 }

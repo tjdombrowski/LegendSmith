@@ -84,7 +84,31 @@ public class UserDaoTest {
 
         dao.delete(user);
 
+        GenericDao roleDao = new GenericDao(UserRole.class);
+
+        assertNull(roleDao.getById(3));
+
         assertEquals(null, dao.getById(3));
         assertEquals(3, dao.getAll().size());
+    }
+
+    /**
+     * Tests whether adding a user and setting a role on the user is a success.
+     * TODO inserting does not add the role's fk
+     */
+    @Test
+    public void addUserWithRoleSuccess() {
+        User user = new User("pigeon", "beep");
+        UserRole role = new UserRole("user");
+
+        int id = dao.insert(user);
+        assertNotEquals(0, id);
+
+        User insertedUser = (User)dao.getById(id);
+        insertedUser.setRole(role);
+
+        assertEquals(user, insertedUser);
+        assertEquals("user", insertedUser.getRole().getRole());
+
     }
 }

@@ -48,12 +48,13 @@ CREATE TABLE User
 
 CREATE TABLE UserRole
 (
-  -- id int primary key AUTO_INCREMENT,
-  userId int primary key,
+  id int primary key AUTO_INCREMENT,
+  userId int,
   role VARCHAR(15),
   CONSTRAINT UserRole_fk
   FOREIGN KEY (userId) REFERENCES User(id)
-);
+  ON DELETE CASCADE
+  );
 
 -- auto-generated definition
 CREATE TABLE PrimaryItem

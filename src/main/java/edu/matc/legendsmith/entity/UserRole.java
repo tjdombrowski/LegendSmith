@@ -12,13 +12,16 @@ import javax.persistence.*;
 public class UserRole {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
     private String role;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
+    @JoinColumn(name = "id")
     private User user;
+
 
     /**
      * Instantiates a new User role.
@@ -28,11 +31,9 @@ public class UserRole {
     /**
      * Instantiates a new User role.
      *
-     * @param user the user
      * @param role the role
      */
-    public UserRole(User user, String role) {
-        this.user = user;
+    public UserRole(String role) {
         this.role = role;
     }
 
@@ -73,20 +74,11 @@ public class UserRole {
         this.role = role;
     }
 
-    /**
-     * Gets user.
-     *
-     * @return the user
-     */
+
     public User getUser() {
         return user;
     }
 
-    /**
-     * Sets user.
-     *
-     * @param user the user
-     */
     public void setUser(User user) {
         this.user = user;
     }

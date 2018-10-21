@@ -20,7 +20,7 @@ public class User {
 
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserRole role;
 
     /**

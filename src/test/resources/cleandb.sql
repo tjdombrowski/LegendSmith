@@ -1,6 +1,7 @@
 delete from LegendaryPrimaryItem;
 delete from PrimaryItem;
 delete from Legendary;
+delete from UserRole;
 delete from User;
 INSERT into Legendary (id, name, type) values(1, 'Bolt', 'Sword');
 INSERT into Legendary (id, name, type) values(2, 'The Shining Blade', 'Sword');
@@ -21,4 +22,7 @@ insert into User VALUES(1, 'silkie', 'rabbitscream');
 insert into User VALUES(2, 'lex', 'cocoahooves');
 insert into User VALUES(3, 'saint', 'believeincrimson');
 insert into User VALUES(4, 'kasperlock', 'iameverywhere');
-
+insert into UserRole VALUES (1, 'admin');
+insert into UserRole VALUES (2, 'user');
+insert into UserRole VALUES (3, 'user');
+insert into UserRole VALUES (4, 'user');

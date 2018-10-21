@@ -20,6 +20,9 @@ public class User {
 
     private String password;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private UserRole role;
+
     /**
      * Instantiates a new User.
      */
@@ -103,6 +106,24 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * Gets role.
+     *
+     * @return the role
+     */
+    public UserRole getRole() {
+        return role;
+    }
+
+    /**
+     * Sets role.
+     *
+     * @param role the role
+     */
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     @Override

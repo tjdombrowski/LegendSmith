@@ -48,7 +48,8 @@ CREATE TABLE User
 
 CREATE TABLE UserRole
 (
-  userId int,
+  -- id int primary key AUTO_INCREMENT,
+  userId int primary key,
   role VARCHAR(15),
   CONSTRAINT UserRole_fk
   FOREIGN KEY (userId) REFERENCES User(id)
@@ -159,19 +160,19 @@ INSERT INTO User (username, password) VALUES (
 
 -- insert data for UserRole
 INSERT into UserRole (userId, role) VALUES (
-  1, 'user'
+  1, 1, 'user'
 );
 INSERT into UserRole (userId, role) VALUES (
-  2, 'admin'
+  2, 2, 'admin'
 );
 INSERT into UserRole (userId, role) VALUES (
-  3, 'user'
+  3, 3, 'user'
 );
 INSERT into UserRole (userId, role) VALUES (
-  4, 'user'
+  4, 4, 'user'
 );
 INSERT into UserRole (userId, role) VALUES (
-  5, 'user'
+  5, 5, 'user'
 );
 
 -- insert data for Legendary

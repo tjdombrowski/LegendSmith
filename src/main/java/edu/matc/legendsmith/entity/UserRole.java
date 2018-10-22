@@ -18,8 +18,10 @@ public class UserRole {
 
     private String role;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "userId",
+            foreignKey = @ForeignKey(name = "UserRole_fk")
+    )
     private User user;
 
 

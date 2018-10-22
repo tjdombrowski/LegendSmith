@@ -94,7 +94,6 @@ public class UserDaoTest {
 
     /**
      * Tests whether adding a user and setting a role on the user is a success.
-     * TODO inserting does not add the role's fk
      */
     @Test
     public void addUserWithRoleSuccess() {
@@ -105,10 +104,12 @@ public class UserDaoTest {
         assertNotEquals(0, id);
 
         User insertedUser = (User)dao.getById(id);
-        insertedUser.setRole(role);
+        insertedUser.addRole(role);
+
+        dao.saveOrUpdate(insertedUser);
 
         assertEquals(user, insertedUser);
-        assertEquals("user", insertedUser.getRole().getRole());
+        assertEquals(role, insertedUser.getRoles().get(0));
 
     }
 }

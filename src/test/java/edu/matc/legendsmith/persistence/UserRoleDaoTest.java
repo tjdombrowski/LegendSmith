@@ -47,7 +47,6 @@ public class UserRoleDaoTest {
 
     /**
      * Tests whether adding an user's role is a success.
-     * TODO Get the relationship to work. The fk isn't inserting.
      */
     @Test
     public void addUserRoleSuccess() {
@@ -62,10 +61,34 @@ public class UserRoleDaoTest {
 
         int insertedId  = dao.insert(newUserRole);
 
-        //assertEquals(5, dao.getAll().size());
-        //assertEquals(newUserRole, (UserRole)dao.getById(insertedId));
+        assertEquals(5, dao.getAll().size());
+        assertEquals(newUserRole, dao.getById(insertedId));
     }
 
+    @Test
+    public void updateUserRoleSuccess() {
+        UserRole role = (UserRole)dao.getById(1);
+        assertNotNull(role);
+
+        role.setRole("user");
+
+        dao.saveOrUpdate(role);
+
+        UserRole updatedRole = (UserRole)dao.getById(1);
+
+        assertEquals(role, updatedRole);
+    }
+
+    @Test
+    public void deleteUserRoleSuccess() {
+        UserRole role = (UserRole)dao.getById(4);
+
+        assertNotNull(role);
+
+        dao.delete(role);
+
+        assertNull(dao.getById(4));
+    }
 
 
 }

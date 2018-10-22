@@ -3,6 +3,8 @@ package edu.matc.legendsmith.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type User.
@@ -20,8 +22,8 @@ public class User {
 
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private UserRole role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<UserRole> roles = new ArrayList<>();
 
     /**
      * Instantiates a new User.
@@ -109,21 +111,41 @@ public class User {
     }
 
     /**
-     * Gets role.
+     * Gets roles.
      *
-     * @return the role
+     * @return the roles
      */
-    public UserRole getRole() {
-        return role;
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
     /**
-     * Sets role.
+     * Sets roles.
+     *
+     * @param roles the roles
+     */
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+
+    /**
+     * Add role.
      *
      * @param role the role
      */
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void addRole(UserRole role) {
+        roles.add(role);
+        role.setUser(this);
+    }
+
+    /**
+     * Remove role.
+     *
+     * @param role the role
+     */
+    public void removeRole(UserRole role) {
+        roles.remove(role);
+        role.setUser(null);
     }
 
     @Override

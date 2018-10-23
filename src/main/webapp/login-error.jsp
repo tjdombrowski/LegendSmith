@@ -10,6 +10,10 @@
     <div class="row">
         <div class="col-md-12">Welcome!</div>
     </div>
+    <div class="row">
+        <!-- display error information -->
+        <div class="col-md-12">Please enter your information correctly.</div>
+    </div>
 
 
     <div class="row">

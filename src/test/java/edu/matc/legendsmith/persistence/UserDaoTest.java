@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The type User dao test.
+ *
+ * TODO Update User and UserRole with username column
  */
 public class UserDaoTest {
 

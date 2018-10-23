@@ -51,10 +51,11 @@ CREATE TABLE UserRole
   id int primary key AUTO_INCREMENT,
   userId int,
   role VARCHAR(15),
+  username VARCHAR(20),
   CONSTRAINT UserRole_fk
   FOREIGN KEY (userId) REFERENCES User(id)
   ON DELETE CASCADE
-  );
+);
 
 -- auto-generated definition
 CREATE TABLE PrimaryItem
@@ -160,20 +161,20 @@ INSERT INTO User (username, password) VALUES (
 );
 
 -- insert data for UserRole
-INSERT into UserRole (userId, role) VALUES (
-  1, 1, 'user'
+INSERT into UserRole (id, userId, role, username) VALUES (
+  1, 1, 'user', 'valence'
 );
-INSERT into UserRole (userId, role) VALUES (
-  2, 2, 'admin'
+INSERT into UserRole (id, userId, role, username) VALUES (
+  2, 2, 'admin', 'silkie'
 );
-INSERT into UserRole (userId, role) VALUES (
-  3, 3, 'user'
+INSERT into UserRole (id, userId, role, username) VALUES (
+  3, 3, 'user', 'vinzio'
 );
-INSERT into UserRole (userId, role) VALUES (
-  4, 4, 'user'
+INSERT into UserRole (id, userId, role, username) VALUES (
+  4, 4, 'user', 'thylaeza'
 );
-INSERT into UserRole (userId, role) VALUES (
-  5, 5, 'user'
+INSERT into UserRole (id, userId, role, username) VALUES (
+  5, 5, 'user', 'anjya'
 );
 
 -- insert data for Legendary

@@ -15,10 +15,10 @@
     <div class="row">
         <!-- login form -->
         <div class="col-md-5">
-            <form action="j_security_check" type="post">
+            <form action="j_security_check" method="post">
                 <input type="text" name="j_username" />
                 <input type="password" name="j_password" />
-                <input type="submit" value="Log In" name="login" />
+                <input type="submit" value="Log In" />
             </form>
         </div>
     </div>

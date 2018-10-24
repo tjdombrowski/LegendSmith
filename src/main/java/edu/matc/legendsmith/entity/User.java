@@ -22,9 +22,6 @@ public class User {
 
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<UserRole> roles = new ArrayList<>();
-
     /**
      * Instantiates a new User.
      */
@@ -108,44 +105,6 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * Gets roles.
-     *
-     * @return the roles
-     */
-    public List<UserRole> getRoles() {
-        return roles;
-    }
-
-    /**
-     * Sets roles.
-     *
-     * @param roles the roles
-     */
-    public void setRoles(List<UserRole> roles) {
-        this.roles = roles;
-    }
-
-    /**
-     * Add role.
-     *
-     * @param role the role
-     */
-    public void addRole(UserRole role) {
-        roles.add(role);
-        role.setUser(this);
-    }
-
-    /**
-     * Remove role.
-     *
-     * @param role the role
-     */
-    public void removeRole(UserRole role) {
-        roles.remove(role);
-        role.setUser(null);
     }
 
     @Override

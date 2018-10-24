@@ -23,7 +23,7 @@ public class Legendary {
 
     private String type;
 
-    @OneToMany(mappedBy = "legendary")
+    @OneToMany(mappedBy = "legendary", fetch = FetchType.EAGER)
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
 
@@ -45,19 +45,52 @@ public class Legendary {
         this.type = type;
     }
 
+    /**
+     * Instantiates a new Legendary.
+     *
+     * @param id   the id
+     * @param name the name
+     * @param type the type
+     */
+    public Legendary(int id, String name, String type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
 
+
+    /**
+     * Gets primary items.
+     *
+     * @return the primary items
+     */
     public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
     }
 
+    /**
+     * Sets primary items.
+     *
+     * @param primaryItems the primary items
+     */
     public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
         this.primaryItems = primaryItems;
     }
 
+    /**
+     * Add primary item.
+     *
+     * @param primaryItem the primary item
+     */
     public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.add(primaryItem);
     }
 
+    /**
+     * Remove primary item.
+     *
+     * @param primaryItem the primary item
+     */
     public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.remove(primaryItem);
     }

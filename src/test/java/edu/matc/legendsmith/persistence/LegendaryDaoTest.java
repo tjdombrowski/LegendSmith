@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class LegendaryDaoTest {
     GenericDao dao;
+    GenericDao primaryItemDao;
 
     /**
      * Sets up the tests by resetting the database and instantiating the necessary dao.
@@ -24,6 +25,7 @@ class LegendaryDaoTest {
         database.runSQL("cleandb.sql");
 
         dao = new GenericDao(Legendary.class);
+        primaryItemDao =  new GenericDao(PrimaryItem.class);
 
     }
 
@@ -39,6 +41,7 @@ class LegendaryDaoTest {
 
     /**
      * Gets legendaries by name success.
+     * TODO Change the code so it retrieves by property and change test accordingly
      */
     @Test
     void getLegendariesByNameSuccess() {
@@ -52,9 +55,11 @@ class LegendaryDaoTest {
      */
     @Test
     void getLegendaryByIdSuccess() {
-        Legendary legendary = (Legendary)dao.getById(7);
+        Legendary legendary = new Legendary(7, "The Binding of Ipos", "Focus");
 
-        assertEquals("The Binding of Ipos", legendary.getName());
+        Legendary retrievedLegendary = (Legendary)dao.getById(7);
+
+        assertEquals(legendary, retrievedLegendary);
     }
 
     /**
@@ -67,7 +72,7 @@ class LegendaryDaoTest {
 
         Legendary returnedLegendary = (Legendary)dao.getById(id);
 
-        assertEquals("Xiuquatl", returnedLegendary.getName());
+        assertEquals(newLegendary, returnedLegendary);
     }
 
     /**
@@ -82,7 +87,7 @@ class LegendaryDaoTest {
 
         Legendary returnedLegendary = (Legendary)dao.getById(4);
 
-        assertEquals("Claw of the Khan-Ur", returnedLegendary.getName());
+        assertEquals(newLegendary, returnedLegendary);
     }
 
     /**
@@ -91,9 +96,50 @@ class LegendaryDaoTest {
     @Test
     void deleteLegendarySuccess() {
         Legendary returnedLegendary = (Legendary)dao.getById(5);
+        assertNotNull(returnedLegendary);
+
         dao.delete(returnedLegendary);
 
         assertNull(dao.getById(5));
+    }
+
+    /**
+     * Tests whether retrieving a legendary's (The Shining Blade) primary items is a success.
+     */
+    @Test
+    void getLegendaryPrimaryItemsSuccess() {
+        Legendary legendary = (Legendary)dao.getById(2);
+
+        List<LegendaryPrimaryItem> primaryItems = legendary.getPrimaryItems();
+
+        assertEquals(4, primaryItems.size());
+
+        //Assert Primary Item, Save the Queen (id of 1) matches what is retrieved from the Legendary, The Shining Blade
+        assertEquals(primaryItemDao.getById(1), primaryItems.get(0).getPrimaryItem());
+    }
+
+    /**
+     * Tests whether removing a legendary's (The Shining Blade) primary item (Gift of the Blade) is a success.
+     * TODO Add cascade to LegendaryPrimaryItem (on table and annotations)
+     */
+    @Test
+    void removeLegendaryPrimaryItemSuccess() {
+        GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
+
+        LegendaryPrimaryItem giftOfTheBlade = (LegendaryPrimaryItem)legendaryPrimaryItemDao.getById(2);
+        assertNotNull(giftOfTheBlade);
+        Legendary legendary = (Legendary)dao.getById(2);
+
+        List<LegendaryPrimaryItem> primaryItems = legendary.getPrimaryItems();
+        assertNotNull(primaryItems);
+        primaryItems.remove(1);
+
+        dao.saveOrUpdate(legendary);
+
+        giftOfTheBlade = (LegendaryPrimaryItem)legendaryPrimaryItemDao.getById(2);
+
+        assertNull(giftOfTheBlade);
+
     }
 
 }

@@ -23,11 +23,13 @@ public class LegendaryPrimaryItem {
     private int id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "id")
+    @JoinColumn(name = "legendaryId",
+        foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_legendaryId_fk"))
     private Legendary legendary;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "id")
+    @JoinColumn(name = "primaryItemId",
+        foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_primaryItemId_fk"))
     private PrimaryItem primaryItem;
 
 

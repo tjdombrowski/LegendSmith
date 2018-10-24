@@ -21,7 +21,7 @@ public class PrimaryItem {
 
     private String pictureReference;
 
-    @OneToMany(mappedBy = "primaryItem")
+    @OneToMany(mappedBy = "primaryItem", fetch = FetchType.EAGER)
     private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
 
 

@@ -96,3 +96,15 @@ Tried looking up solutions to the AWS issue and running through possible options
 
 Oct 17.     3.5 hours
 Altered my database description and added the ERD to reflect changes I've made. I also edited the application flow and redesigned the wireframes and jsps to reflect some shuffling around of how I want my project to look and act. I also attempted to figure out my issue with my join table using hibernate, but couldn't get anywhere. Lastly, I replaced my entity-specific daos with a generic dao and changed the tests and controller class to reflect this. 
+
+Oct 18.     2.5 hours
+Worked on User entity related tests and experimented with the annotations. Fixed an issue I was having with my dao tests.
+
+Oct 19.     1.5   hours
+Finished making changes to my database for my user role table and added a login jsp page. 
+
+Oct 20.     1   hour
+Started work on implementing tomcat's authentication to my project. 
+
+Oct 22.     2 hours
+Finished adding authentication to my project, but I still need to add the other error pages. 

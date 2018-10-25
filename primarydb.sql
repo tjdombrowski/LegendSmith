@@ -2,15 +2,15 @@ drop table UserRole;
 drop table UserLegendaryPrimaryItemTask;
 drop table UserLegendaryPrimaryItem;
 drop table UserLegendary;
+drop table Task;
 drop table LegendaryPrimaryItem;
 drop table User;
 drop table GameLegendary;
 drop table Game;
-drop table Task;
 drop table PrimaryItem;
 drop table Legendary;
 
--- auto-generated definition
+-- create tables
 CREATE TABLE Legendary
 (
   id               INT         NOT NULL
@@ -32,12 +32,13 @@ CREATE TABLE GameLegendary
   gameName varchar(6),
   primary key (legendaryId, gameName),
   CONSTRAINT GameLegendary_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary(id),
+  FOREIGN KEY (legendaryId) REFERENCES Legendary(id)
+  ON DELETE CASCADE,
   CONSTRAINT GameLegendary_gameName_fk
   FOREIGN KEY (gameName) REFERENCES Game(name)
+  ON DELETE CASCADE
 );
 
--- auto-generated definition
 CREATE TABLE User
 (
   id       INT         NOT NULL
@@ -57,7 +58,6 @@ CREATE TABLE UserRole
   ON DELETE CASCADE
 );
 
--- auto-generated definition
 CREATE TABLE PrimaryItem
 (
   id               INT         NOT NULL
@@ -66,19 +66,19 @@ CREATE TABLE PrimaryItem
   pictureReference VARCHAR(40) NULL
 );
 
--- auto-generated definition
 CREATE TABLE LegendaryPrimaryItem
 (
   id INT PRIMARY KEY AUTO_INCREMENT,
   legendaryId   INT NULL,
   primaryItemId INT NULL,
   CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary (id),
+  FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
+  ON DELETE CASCADE,
   CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
   FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
+  ON DELETE CASCADE
 );
 
--- auto-generated definition
 CREATE TABLE Task
 (
   id            INT         NOT NULL
@@ -89,13 +89,14 @@ CREATE TABLE Task
   prerequisite INT NULL,
   legendaryPrimaryItemId INT         NULL,
   CONSTRAINT Task_legendaryPrimaryItemId_fk
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id),
+  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
+  ON DELETE CASCADE,
   CONSTRAINT Task_prerequisite_fk
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES Task (id)
+  FOREIGN KEY (prerequisite) REFERENCES Task (id)
+  ON DELETE CASCADE
 );
 
 
--- auto-generated definition
 CREATE TABLE UserLegendary
 (
   userId      INT             NOT NULL,
@@ -105,13 +106,14 @@ CREATE TABLE UserLegendary
   priority    INT DEFAULT '0' NULL,
   PRIMARY KEY (userId, legendaryId),
   CONSTRAINT UserLegendary_userId_fk
-  FOREIGN KEY (userId) REFERENCES User (id),
+  FOREIGN KEY (userId) REFERENCES User (id)
+  ON DELETE CASCADE,
   CONSTRAINT UserLegendary_legendaryId_fk
   FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
+  ON DELETE CASCADE
 );
 
 
--- auto-generated definition
 CREATE TABLE UserLegendaryPrimaryItem
 (
   id                     INT NOT NULL
@@ -120,12 +122,14 @@ CREATE TABLE UserLegendaryPrimaryItem
   userId                 INT NULL,
   progress               INT NULL,
   CONSTRAINT UserLegendaryPrimaryItem_fk1
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id),
+  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
+  ON DELETE CASCADE,
   CONSTRAINT UserLegendaryPrimaryItem_userId_fk2
   FOREIGN KEY (userId) REFERENCES User (id)
+  ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 CREATE TABLE UserLegendaryPrimaryItemTask
 (
   userLegendaryPrimaryItemId INT             NOT NULL,
@@ -134,9 +138,11 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   dateCompleted              DATE            NULL,
   PRIMARY KEY (taskId, userLegendaryPrimaryItemId),
   CONSTRAINT UserLegendPrimItem_fk1
-  FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id),
+  FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id)
+  ON DELETE CASCADE,
   CONSTRAINT UserLegendPrimItem_fk2
   FOREIGN KEY (taskId) REFERENCES Task (id)
+  ON DELETE CASCADE
 );
 
 -- insert data for User

@@ -120,7 +120,7 @@ class LegendaryDaoTest {
 
     /**
      * Tests whether removing a legendary's (The Shining Blade) primary item (Gift of the Blade) is a success.
-     * TODO Add cascade to LegendaryPrimaryItem (on table and annotations)
+     *
      */
     @Test
     void removeLegendaryPrimaryItemSuccess() {

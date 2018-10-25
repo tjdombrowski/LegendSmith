@@ -21,7 +21,7 @@ public class PrimaryItem {
 
     private String pictureReference;
 
-    @OneToMany(mappedBy = "primaryItem", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "primaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LegendaryPrimaryItem> legendaries = new ArrayList<>();
 
 
@@ -33,27 +33,45 @@ public class PrimaryItem {
     /**
      * Instantiates a new Primary item.
      *
-     * @param id   the id
      * @param name the name
      */
-    public PrimaryItem(int id, String name) {
-        this.id = id;
+    public PrimaryItem(String name) {
         this.name = name;
     }
 
 
+    /**
+     * Gets legendaries.
+     *
+     * @return the legendaries
+     */
     public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 
+    /**
+     * Sets legendaries.
+     *
+     * @param legendaries the legendaries
+     */
     public void setLegendaries(List<LegendaryPrimaryItem> legendaries) {
         this.legendaries = legendaries;
     }
 
+    /**
+     * Add legendary.
+     *
+     * @param legendary the legendary
+     */
     public void addLegendary(LegendaryPrimaryItem legendary) {
         legendaries.add(legendary);
     }
 
+    /**
+     * Remove legendary.
+     *
+     * @param legendary the legendary
+     */
     public void removeLegendary(LegendaryPrimaryItem legendary) {
         legendaries.remove(legendary);
     }

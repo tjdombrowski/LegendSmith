@@ -23,7 +23,7 @@ public class Legendary {
 
     private String type;
 
-    @OneToMany(mappedBy = "legendary", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
 

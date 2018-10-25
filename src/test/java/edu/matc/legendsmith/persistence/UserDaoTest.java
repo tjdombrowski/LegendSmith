@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The type User dao test.
  *
- * TODO Add username tests
  */
 public class UserDaoTest {
 

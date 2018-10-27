@@ -23,9 +23,12 @@ public class Legendary {
 
     private String type;
 
-    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
+    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserLegendary> userLegendaries = new ArrayList<>();
 
+    /*@OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
+*/
 
     /**
      * Instantiates a new Legendary.
@@ -64,36 +67,38 @@ public class Legendary {
      *
      * @return the primary items
      */
-    public List<LegendaryPrimaryItem> getPrimaryItems() {
+    /*public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
-    }
+    }*/
 
     /**
      * Sets primary items.
      *
      * @param primaryItems the primary items
      */
-    public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
+    /*public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
         this.primaryItems = primaryItems;
-    }
+    }*/
 
     /**
      * Add primary item.
      *
      * @param primaryItem the primary item
      */
-    public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
+    /*public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
+
         primaryItems.add(primaryItem);
-    }
+        primaryItem.setLegendary(this);
+    }*/
 
     /**
      * Remove primary item.
      *
      * @param primaryItem the primary item
      */
-    public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
+    /*public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
         primaryItems.remove(primaryItem);
-    }
+    }*/
 
 
     /**
@@ -168,6 +173,38 @@ public class Legendary {
         this.type = type;
     }
 
+    /**
+     * Gets user legendaries.
+     *
+     * @return the user legendaries
+     */
+    public List<UserLegendary> getUserLegendaries() {
+        return userLegendaries;
+    }
+
+    /**
+     * Sets user legendaries.
+     *
+     * @param userLegendaries the user legendaries
+     */
+    public void setUserLegendaries(List<UserLegendary> userLegendaries) {
+        this.userLegendaries = userLegendaries;
+    }
+
+    /**
+     * Add user legendary.
+     *
+     * @param userLegendary the user legendary
+     */
+    public void addUserLegendary(UserLegendary userLegendary) {
+        userLegendaries.add(userLegendary);
+        userLegendary.setLegendary(this);
+    }
+
+    public void removeUserLegendary(UserLegendary userLegendary) {
+        userLegendaries.remove(userLegendary);
+        userLegendary.setLegendary(null);
+    }
 
     @Override
     public String toString() {

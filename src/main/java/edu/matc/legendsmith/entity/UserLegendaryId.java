@@ -1,5 +1,6 @@
 package edu.matc.legendsmith.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
@@ -9,7 +10,10 @@ import java.io.Serializable;
 @Embeddable
 public class UserLegendaryId implements Serializable {
 
+    @Column(name = "userId")
     private int userId;
+
+    @Column(name = "legendaryId")
     private int legendaryId;
 
     private UserLegendaryId() {}

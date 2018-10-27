@@ -20,6 +20,14 @@ public class UserLegendary {
     private int tracking;
     private int priority;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("userId")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("legendaryId")
+    private Legendary legendary;
+
     /**
      * Instantiates a new User legendary.
      */
@@ -104,5 +112,41 @@ public class UserLegendary {
      */
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * Gets legendary.
+     *
+     * @return the legendary
+     */
+    public Legendary getLegendary() {
+        return legendary;
+    }
+
+    /**
+     * Sets legendary.
+     *
+     * @param legendary the legendary
+     */
+    public void setLegendary(Legendary legendary) {
+        this.legendary = legendary;
     }
 }

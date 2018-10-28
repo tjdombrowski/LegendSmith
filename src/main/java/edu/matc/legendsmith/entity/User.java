@@ -21,8 +21,8 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<UserLegendary> userLegendaries = new ArrayList<>();
+    /*@OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<UserLegendary> userLegendaries = new ArrayList<>();*/
 
     /**
      * Instantiates a new User.

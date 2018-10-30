@@ -97,7 +97,9 @@ public class Legendary {
      * @param primaryItem the primary item
      */
     public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
+
         primaryItems.remove(primaryItem);
+        primaryItem.setLegendary(null);
     }
 
 

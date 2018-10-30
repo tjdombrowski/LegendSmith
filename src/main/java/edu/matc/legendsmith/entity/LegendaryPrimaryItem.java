@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Legendary primary item.
@@ -32,11 +34,31 @@ public class LegendaryPrimaryItem {
         foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_primaryItemId_fk"))
     private PrimaryItem primaryItem;
 
+    @OneToMany(mappedBy = "legendaryPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Task> tasks = new ArrayList<>();
 
     /**
      * Instantiates a new Legendary primary item.
      */
     public LegendaryPrimaryItem() {}
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Gets legendary.
@@ -75,23 +97,32 @@ public class LegendaryPrimaryItem {
     }
 
     /**
-     * Gets id.
+     * Gets tasks.
      *
-     * @return the id
+     * @return the tasks
      */
-    public int getId() {
-        return id;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     /**
-     * Sets id.
+     * Sets tasks.
      *
-     * @param id the id
+     * @param tasks the tasks
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
+    public void addTask(Task task) {
+        tasks.add(task);
+        task.setLegendaryPrimaryItem(this);
+    }
+
+    public void removeTask(Task task) {
+        tasks.remove(task);
+        task.setLegendaryPrimaryItem(null);
+    }
 
     @Override
     public boolean equals(Object o) {

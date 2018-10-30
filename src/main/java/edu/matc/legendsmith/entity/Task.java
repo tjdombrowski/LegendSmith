@@ -16,14 +16,14 @@ public class Task {
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "primaryItemId")
-    private int primaryItemId;
-
-    @Column(name = "quantity")
     private int quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "legendaryPrimaryItemId",
+        foreignKey = @ForeignKey(name = "Task_legendaryPrimaryItemId_fk"))
+    private LegendaryPrimaryItem legendaryPrimaryItem;
 
     /**
      * Instantiates a new Task.
@@ -67,24 +67,6 @@ public class Task {
     }
 
     /**
-     * Gets primary item id.
-     *
-     * @return the primary item id
-     */
-    public int getPrimaryItemId() {
-        return primaryItemId;
-    }
-
-    /**
-     * Sets primary item id.
-     *
-     * @param primaryItemId the primary item id
-     */
-    public void setPrimaryItemId(int primaryItemId) {
-        this.primaryItemId = primaryItemId;
-    }
-
-    /**
      * Gets quantity.
      *
      * @return the quantity
@@ -100,5 +82,33 @@ public class Task {
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public LegendaryPrimaryItem getLegendaryPrimaryItem() {
+        return legendaryPrimaryItem;
+    }
+
+    public void setLegendaryPrimaryItem(LegendaryPrimaryItem legendaryPrimaryItem) {
+        this.legendaryPrimaryItem = legendaryPrimaryItem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (id != task.id) return false;
+        if (quantity != task.quantity) return false;
+        return name != null ? name.equals(task.name) : task.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + quantity;
+        return result;
     }
 }

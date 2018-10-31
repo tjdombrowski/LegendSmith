@@ -19,7 +19,7 @@
     <!-- Items -->
     <div class="row">
         <div class="col-md-5">
-            <h3>Item Name</h3>
+            <h3>${legendaryData.primaryItems}</h3>
             <div>Tasks</div>
         </div>
         <div class="col-md-5">

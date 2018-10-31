@@ -27,6 +27,9 @@ class TaskTest {
 
     }
 
+    /**
+     * Tests whether retrieving all tasks is successful.
+     */
     @Test
     void getAllTasksSuccess() {
         List<Task> allTasks = taskDao.getAll();
@@ -35,57 +38,55 @@ class TaskTest {
     }
 
     /**
-            * Tests whether getting a legendary by its id is successful.
-            */
+       Tests whether getting a task by its id is successful.
+     */
     @Test
     void getTaskByIdSuccess() {
         Task task = new Task(3, "Bloodstone Shard", "Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.", 1);
 
-        Task retrievedTask = (Task)taskDao.getById(7);
+        Task retrievedTask = (Task)taskDao.getById(3);
 
         assertEquals(task, retrievedTask);
     }
 
     /**
-     * Tests whether inserting a legendary is successful.
+     * Tests whether inserting a task is successful.
      */
     @Test
     void insertTaskSuccess() {
-        Legendary newLegendary = new Legendary("Xiuquatl", "Scepter");
-        int id = taskDao.insert(newLegendary);
+        Task task = new Task(5, "name", "description", 2);
+        int id = taskDao.insert(task);
 
-        Legendary returnedLegendary = (Legendary)taskDao.getById(id);
+        Task returnedTask = (Task)taskDao.getById(id);
 
-        assertEquals(newLegendary, returnedLegendary);
+        assertEquals(task, returnedTask);
     }
 
     /**
-     * Tests whether updating a legendary is successful.
+     * Tests whether updating a task is successful.
      */
     @Test
     void updateTaskSuccess() {
-        Legendary newLegendary = new Legendary("Claw of the Khan-Ur", "Dagger");
-        newLegendary.setId(4);
+        Task newTask = new Task(4, "updated name", "updated description", 100);
 
-        taskDao.saveOrUpdate(newLegendary);
+        taskDao.saveOrUpdate(newTask);
 
-        Legendary returnedLegendary = (Legendary)taskDao.getById(4);
+        Task retrievedTask = (Task)taskDao.getById(4);
 
-        assertEquals(newLegendary, returnedLegendary);
+        assertEquals(newTask, retrievedTask);
     }
 
     /**
-     * Tests whether deleting a legendary is successful.
+     * Tests whether deleting a task is successful.
      */
     @Test
     void deleteTaskSuccess() {
-        Legendary returnedLegendary = (Legendary)taskDao.getById(5);
-        assertNotNull(returnedLegendary);
+        Task returnedTask = (Task)taskDao.getById(1);
+        assertNotNull(returnedTask);
 
-        taskDao.delete(returnedLegendary);
+        taskDao.delete(returnedTask);
 
-        assertNull(taskDao.getById(5));
+        assertNull(taskDao.getById(1));
     }
-
 
 }

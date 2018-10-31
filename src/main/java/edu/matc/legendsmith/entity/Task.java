@@ -18,6 +18,8 @@ public class Task {
 
     private String name;
 
+    private String description;
+
     private int quantity;
 
     @ManyToOne
@@ -29,6 +31,22 @@ public class Task {
      * Instantiates a new Task.
      */
     public Task() {}
+
+
+    /**
+     * Instantiates a new Task.
+     *
+     * @param id          the id
+     * @param name        the name
+     * @param description the description
+     * @param quantity    the quantity
+     */
+    public Task(int id, String name, String description, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+    }
 
     /**
      * Gets id.
@@ -84,10 +102,38 @@ public class Task {
         this.quantity = quantity;
     }
 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Gets legendary primary item.
+     *
+     * @return the legendary primary item
+     */
     public LegendaryPrimaryItem getLegendaryPrimaryItem() {
         return legendaryPrimaryItem;
     }
 
+    /**
+     * Sets legendary primary item.
+     *
+     * @param legendaryPrimaryItem the legendary primary item
+     */
     public void setLegendaryPrimaryItem(LegendaryPrimaryItem legendaryPrimaryItem) {
         this.legendaryPrimaryItem = legendaryPrimaryItem;
     }
@@ -101,13 +147,15 @@ public class Task {
 
         if (id != task.id) return false;
         if (quantity != task.quantity) return false;
-        return name != null ? name.equals(task.name) : task.name == null;
+        if (name != null ? !name.equals(task.name) : task.name != null) return false;
+        return description != null ? description.equals(task.description) : task.description == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + quantity;
         return result;
     }

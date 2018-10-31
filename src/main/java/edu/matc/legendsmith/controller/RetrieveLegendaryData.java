@@ -1,5 +1,8 @@
 package edu.matc.legendsmith.controller;
 
+import edu.matc.legendsmith.entity.*;
+import edu.matc.legendsmith.persistence.GenericDao;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +28,14 @@ public class RetrieveLegendaryData extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        GenericDao legendaryDao = new GenericDao(Legendary.class);
+        GenericDao primaryItemDao = new GenericDao(PrimaryItem.class);
+        GenericDao taskDao = new GenericDao(Task.class);
 
+        int legendaryId = 0;
+        legendaryId = Integer.parseInt(req.getParameter("id"));
+
+        req.setAttribute("legendaryData", legendaryDao.getById(legendaryId));
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");
         dispatcher.forward(req, resp);

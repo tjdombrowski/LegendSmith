@@ -36,9 +36,9 @@
                 <table class="table">
                     <c:forEach var="legendary" items="${legendaries}">
                         <tr>
-                            <!-- TODO picture (not name) should link to the page -->
+                            <!-- TODO picture should link to the page -->
                             <!-- TODO Add some form of checkbox for tracking -->
-                            <td><a href="/legendary">${legendary.name}</a></td>
+                            <td><a href="/legendsmith/legendary?id=${legendary.id}">${legendary.name}</a></td>
                         </tr>
                     </c:forEach>
                 </table>

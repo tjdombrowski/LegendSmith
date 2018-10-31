@@ -36,7 +36,7 @@ public class SearchLegendary extends HttpServlet {
         //TODO I'm going to want to make sure this retrieves everything the user is tracking by default
         req.setAttribute("legendaries", dao.getByName(searchTerm));
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/");
         dispatcher.forward(req, resp);
     }
 }

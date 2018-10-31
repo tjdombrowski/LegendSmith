@@ -14,16 +14,26 @@
     </form-login-config>
   </login-config>
 
-  <!-- Protect the user search page. -->
+  <!-- Protect all pages except about search page. -->
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>about</web-resource-name>
-      <url-pattern>/about.jsp</url-pattern>
+      <web-resource-name>dashboard</web-resource-name>
+      <url-pattern>/index.jsp</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>user</role-name>
     </auth-constraint>
   </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>weapon</web-resource-name>
+      <url-pattern>/weapon.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+  </security-constraint>
+
 
   <security-role>
     <role-name>user</role-name>

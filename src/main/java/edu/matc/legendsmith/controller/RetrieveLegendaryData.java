@@ -1,5 +1,6 @@
 package edu.matc.legendsmith.controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,5 +26,8 @@ public class RetrieveLegendaryData extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");
+        dispatcher.forward(req, resp);
     }
 }

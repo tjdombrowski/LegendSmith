@@ -40,23 +40,7 @@ public class RetrieveLegendaryData extends HttpServlet {
         legendaryId = Integer.parseInt(req.getParameter("id"));
 
         Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
-        List<LegendaryPrimaryItem> primaryItems = legendary.getPrimaryItems();
-
-        int count = 0;
-
-        for (LegendaryPrimaryItem legendaryPrimaryItem : primaryItems) {
-            count++;
-
-            String primaryItemName = "primaryItem" + count;
-            req.setAttribute(primaryItemName, legendaryPrimaryItem.getPrimaryItem());
-
-            logger.debug("The name of the primaryItem object to be accessed in weapon.jsp: " + primaryItemName);
-            logger.debug("In controller RetrieveLegendaryData, the value of legendaryPrimaryItem.getPrimaryItem.getName(): "
-                    + legendaryPrimaryItem.getPrimaryItem().getName());
-        }
-
         req.setAttribute("legendaryData", legendary);
-
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");
         dispatcher.forward(req, resp);

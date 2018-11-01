@@ -18,24 +18,18 @@
 
     <!-- Items -->
     <div class="row">
-        <div class="col-md-5">
-            <h3>${primaryItem1.name}</h3>
-            <div>
-
+        <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
+            <div class="col-md-5">
+                <h3>${legendaryPrimaryItem.getPrimaryItem().name}</h3>
+                <div>
+                    <ul>
+                        <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}">
+                            <li>${task.name}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-md-5">
-            <h3>${primaryItem2.name}</h3>
-            <div>Tasks</div>
-        </div>
-        <div class="col-md-5">
-            <h3>${primaryItem3.name}</h3>
-            <div>Tasks</div>
-        </div>
-        <div class="col-md-5">
-            <h3>${primaryItem4.name}</h3>
-            <div>Tasks</div>
-        </div>
+        </c:forEach>
     </div>
 
 

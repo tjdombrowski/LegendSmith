@@ -143,12 +143,21 @@ class LegendaryDaoTest {
 
     }
 
+    /**
+     *  Tests whether retrieving tasks from a Legendary is a success.
+     */
     @Test
     void getLegendaryPrimaryItemTaskSuccess() {
         List<Task> tasks = ((Legendary)dao.getById(2)).getPrimaryItems().get(2).getTasks();
 
         assertEquals(4, tasks.size());
 
+        Task giftOfMaguuma = new Task(1, "Gift of Maguuma",
+                "Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.",
+                1);
+        Task retrievedTask = tasks.get(0);
+
+        assertEquals(giftOfMaguuma, retrievedTask);
 
     }
 

@@ -3,6 +3,9 @@ package edu.matc.legendsmith.controller;
 import edu.matc.legendsmith.entity.Legendary;
 import edu.matc.legendsmith.persistence.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

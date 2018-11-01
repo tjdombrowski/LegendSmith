@@ -171,7 +171,7 @@ INSERT into UserRole (id, userId, role, username) VALUES (
   1, 1, 'user', 'valence'
 );
 INSERT into UserRole (id, userId, role, username) VALUES (
-  2, 2, 'admin', 'silkie'
+  2, 2, 'user', 'silkie'
 );
 INSERT into UserRole (id, userId, role, username) VALUES (
   3, 3, 'user', 'vinzio'
@@ -226,6 +226,10 @@ INSERT into Legendary (name, type) values(
 
 INSERT into Legendary (name, type) values(
   'The Binding of Ipos', 'Focus'
+);
+
+INSERT into Legendary (name, type) values(
+  'Incinerator', 'Dagger'
 );
 
 -- insert data for Game

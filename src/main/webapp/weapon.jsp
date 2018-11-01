@@ -19,19 +19,21 @@
     <!-- Items -->
     <div class="row">
         <div class="col-md-5">
-            <h3>${legendaryData.primaryItems}</h3>
+            <h3>${primaryItem1.name}</h3>
+            <div>
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h3>${primaryItem2.name}</h3>
             <div>Tasks</div>
         </div>
         <div class="col-md-5">
-            <h3>Item Name</h3>
+            <h3>${primaryItem3.name}</h3>
             <div>Tasks</div>
         </div>
         <div class="col-md-5">
-            <h3>Item Name</h3>
-            <div>Tasks</div>
-        </div>
-        <div class="col-md-5">
-            <h3>Item Name</h3>
+            <h3>${primaryItem4.name}</h3>
             <div>Tasks</div>
         </div>
     </div>

@@ -5,6 +5,7 @@
 
   <display-name>Legendsmith</display-name>
 
+
   <!-- Tell the server to use form-based authentication. -->
   <login-config>
     <auth-method>FORM</auth-method>

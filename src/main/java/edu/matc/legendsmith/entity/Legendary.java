@@ -26,7 +26,7 @@ public class Legendary {
     /*@OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserLegendary> userLegendaries = new ArrayList<>();*/
 
-    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
 

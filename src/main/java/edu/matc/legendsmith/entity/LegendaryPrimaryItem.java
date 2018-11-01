@@ -24,17 +24,18 @@ public class LegendaryPrimaryItem {
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "legendaryId",
         foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_legendaryId_fk"))
     private Legendary legendary;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "primaryItemId",
         foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_primaryItemId_fk"))
     private PrimaryItem primaryItem;
 
-    @OneToMany(mappedBy = "legendaryPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "legendaryPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Task> tasks = new ArrayList<>();
 
     /**
@@ -96,20 +97,11 @@ public class LegendaryPrimaryItem {
         this.primaryItem = primaryItem;
     }
 
-    /**
-     * Gets tasks.
-     *
-     * @return the tasks
-     */
+
     public List<Task> getTasks() {
         return tasks;
     }
 
-    /**
-     * Sets tasks.
-     *
-     * @param tasks the tasks
-     */
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }

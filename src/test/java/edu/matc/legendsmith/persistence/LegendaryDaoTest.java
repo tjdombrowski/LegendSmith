@@ -2,6 +2,7 @@ package edu.matc.legendsmith.persistence;
 
 import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.test.util.Database;
+import org.hibernate.Hibernate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -139,6 +140,15 @@ class LegendaryDaoTest {
         giftOfTheBlade = (LegendaryPrimaryItem)legendaryPrimaryItemDao.getById(2);
 
         assertNull(giftOfTheBlade);
+
+    }
+
+    @Test
+    void getLegendaryPrimaryItemTaskSuccess() {
+        List<Task> tasks = ((Legendary)dao.getById(2)).getPrimaryItems().get(2).getTasks();
+
+        assertEquals(4, tasks.size());
+
 
     }
 

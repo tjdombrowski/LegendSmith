@@ -2,6 +2,7 @@ package edu.matc.legendsmith.persistence;
 
 import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.test.util.Database;
+import org.hibernate.Hibernate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ class TaskTest {
     GenericDao taskDao;
     GenericDao legendaryPrimaryItemDao;
 
+
     /**
      * Sets up the tests by resetting the database and instantiating the necessary dao.
      */
@@ -21,6 +23,8 @@ class TaskTest {
     void setUp() {
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
+
+
 
         taskDao = new GenericDao(Task.class);
         legendaryPrimaryItemDao =  new GenericDao(LegendaryPrimaryItem.class);

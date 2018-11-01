@@ -22,7 +22,8 @@ public class Task {
 
     private int quantity;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",
         foreignKey = @ForeignKey(name = "Task_legendaryPrimaryItemId_fk"))
     private LegendaryPrimaryItem legendaryPrimaryItem;
@@ -120,23 +121,15 @@ public class Task {
         this.description = description;
     }
 
-    /**
-     * Gets legendary primary item.
-     *
-     * @return the legendary primary item
-     */
+
     public LegendaryPrimaryItem getLegendaryPrimaryItem() {
         return legendaryPrimaryItem;
     }
 
-    /**
-     * Sets legendary primary item.
-     *
-     * @param legendaryPrimaryItem the legendary primary item
-     */
     public void setLegendaryPrimaryItem(LegendaryPrimaryItem legendaryPrimaryItem) {
         this.legendaryPrimaryItem = legendaryPrimaryItem;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -33,13 +33,20 @@
             </div>
             <!-- Legendaries being worked on OR any being searched by the user are displayed here-->
             <div class="col-sm-5">
-                <table class="table">
-                    <c:forEach var="legendary" items="${legendaries}">
+                <table id="dataTable" class="display">
+                    <thead>
                         <tr>
-                            <!-- TODO picture should link to the page -->
-                            <td><a href="/legendsmith/legendary?id=${legendary.id}">${legendary.name}</a></td>
+                            <th>Name</th>
                         </tr>
-                    </c:forEach>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="legendary" items="${legendaries}">
+                            <tr>
+                                <!-- TODO picture should link to the page -->
+                                <td><a href="/legendsmith/legendary?id=${legendary.id}">${legendary.name}</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -47,5 +54,10 @@
     </div>
 </body>
 
+<script>
+    $(document).ready( function () {
+        $('#dataTable').DataTable();
+    } );
+</script>
 
 </html>

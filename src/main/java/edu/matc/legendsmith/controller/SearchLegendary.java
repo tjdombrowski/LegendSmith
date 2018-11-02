@@ -36,8 +36,11 @@ public class SearchLegendary extends HttpServlet {
         String searchTerm = "";
         searchTerm = req.getParameter("name");
 
-        //TODO I'm going to want to make sure this retrieves everything the user is tracking by default
-        req.setAttribute("legendaries", dao.getByName(searchTerm));
+        if (searchTerm.isEmpty()) {
+            req.setAttribute("legendaries", dao.getAll());
+        } else {
+            req.setAttribute("legendaries", dao.getByName(searchTerm));
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/");
         dispatcher.forward(req, resp);

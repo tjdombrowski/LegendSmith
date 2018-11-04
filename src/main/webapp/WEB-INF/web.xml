@@ -5,6 +5,20 @@
 
   <display-name>Legendsmith</display-name>
 
+  <servlet>
+    <servlet-name>SearchLegendary</servlet-name>
+    <servlet-class>edu.matc.legendsmith.controller.SearchLegendary</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SearchLegendary</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>SearchLegendary</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 
   <!-- Tell the server to use form-based authentication. -->
   <login-config>
@@ -16,15 +30,6 @@
   </login-config>
 
   <!-- Protect all pages except about search page. -->
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>dashboard</web-resource-name>
-      <url-pattern>/index.jsp</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>user</role-name>
-    </auth-constraint>
-  </security-constraint>
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>weapon</web-resource-name>

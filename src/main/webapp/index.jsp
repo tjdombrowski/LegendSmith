@@ -19,7 +19,7 @@
             </div>
             <!-- Search field for legendaries -->
             <div class="col-md-5">
-                <form action="searchLegendary" type="post">
+                <form action="/dashboard" type="post">
                     <input type="text" name="name">
                     <input type="submit" value="Search" name="search">
                 </form>

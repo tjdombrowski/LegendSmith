@@ -18,7 +18,8 @@ import java.io.IOException;
  * The type Search legendary.
  */
 @WebServlet(
-        urlPatterns = {"/searchLegendary"}
+        name = "SearchLegendary",
+        urlPatterns = {"/dashboard"}
 )
 
 public class SearchLegendary extends HttpServlet {

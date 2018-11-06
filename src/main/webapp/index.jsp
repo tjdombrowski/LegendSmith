@@ -19,7 +19,7 @@
             </div>
             <!-- Search field for legendaries -->
             <div class="col-md-5">
-                <form action="/dashboard" type="post">
+                <form action="/legendsmith/dashboard" type="post">
                     <input type="text" name="name">
                     <input type="submit" value="Search" name="search">
                 </form>

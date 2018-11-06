@@ -1,6 +1,9 @@
 package edu.matc.legendsmith.persistence;
 
-import edu.matc.legendsmith.entity.Legendary;
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
+import edu.matc.legendsmith.entity.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,13 +19,21 @@ public class LegendaryReturn {
     // The Java method will process HTTP GET requests
     @GET
     // The Java method will produce content identified by the MIME Media type "text/html"
-    @Produces("text/html")
-    public Response getMessage() {
-        GenericDao dao = new GenericDao(Legendary.class);
+    @Produces("application/json")
+    public Response getMessage() throws Exception {
+        GenericDao dao = new GenericDao(User.class);
 
-        List<Legendary> legendaryList = dao.getAll();
+        List<User> objectList = dao.getAll();
 
-        String html = "<table>";
+        ObjectMapper mapper = new ObjectMapper();
+
+        AnnotationIntrospector introspector
+                = new JaxbAnnotationIntrospector();
+        mapper.setAnnotationIntrospector(introspector);
+
+        String result = mapper.writeValueAsString(objectList);
+
+        /*String html = "<table>";
 
         for (Legendary legendary : legendaryList
              ) {
@@ -33,7 +44,9 @@ public class LegendaryReturn {
 
         html += "</table>";
 
-        return Response.status(200).entity(html).build();
+        return Response.status(200).entity(html).build();*/
+
+        return Response.status(200).entity(result).build();
     }
 
 }

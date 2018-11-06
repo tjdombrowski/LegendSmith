@@ -40,38 +40,19 @@ public class PrimaryItem {
     }
 
 
-    /**
-     * Gets legendaries.
-     *
-     * @return the legendaries
-     */
+
     public List<LegendaryPrimaryItem> getLegendaries() {
         return legendaries;
     }
 
-    /**
-     * Sets legendaries.
-     *
-     * @param legendaries the legendaries
-     */
     public void setLegendaries(List<LegendaryPrimaryItem> legendaries) {
         this.legendaries = legendaries;
     }
 
-    /**
-     * Add legendary.
-     *
-     * @param legendary the legendary
-     */
     public void addLegendary(LegendaryPrimaryItem legendary) {
         legendaries.add(legendary);
     }
 
-    /**
-     * Remove legendary.
-     *
-     * @param legendary the legendary
-     */
     public void removeLegendary(LegendaryPrimaryItem legendary) {
         legendaries.remove(legendary);
     }

@@ -24,8 +24,9 @@
         <mapping class="edu.matc.legendsmith.entity.User"/>
         <mapping class="edu.matc.legendsmith.entity.Game"/>
         <mapping class="edu.matc.legendsmith.entity.Task"/>
-        <mapping class="edu.matc.legendsmith.entity.PrimaryItem"/>
         <mapping class="edu.matc.legendsmith.entity.LegendaryPrimaryItem"/>
+        <mapping class="edu.matc.legendsmith.entity.PrimaryItem"/>
+
 
 
     </session-factory>

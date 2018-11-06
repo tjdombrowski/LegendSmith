@@ -3,6 +3,7 @@ package edu.matc.legendsmith.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
 
 /**
@@ -10,6 +11,7 @@ import java.util.*;
  */
 @Entity(name = "Legendary")
 @Table(name = "Legendary")
+@XmlRootElement
 public class Legendary {
 
     @Id
@@ -62,40 +64,23 @@ public class Legendary {
     }
 
 
-    /**
-     * Gets primary items.
-     *
-     * @return the primary items
-     */
+
     public List<LegendaryPrimaryItem> getPrimaryItems() {
         return primaryItems;
     }
 
-    /**
-     * Sets primary items.
-     *
-     * @param primaryItems the primary items
-     */
+
     public void setPrimaryItems(List<LegendaryPrimaryItem> primaryItems) {
         this.primaryItems = primaryItems;
     }
 
-    /**
-     * Add primary item.
-     *
-     * @param primaryItem the primary item
-     */
+
     public void addPrimaryItem(LegendaryPrimaryItem primaryItem) {
 
         primaryItems.add(primaryItem);
         primaryItem.setLegendary(this);
     }
 
-    /**
-     * Remove primary item.
-     *
-     * @param primaryItem the primary item
-     */
     public void removePrimaryItem(LegendaryPrimaryItem primaryItem) {
 
         primaryItems.remove(primaryItem);

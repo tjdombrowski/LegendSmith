@@ -7,6 +7,7 @@
           <element id="module-output" name="legendsmith" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.0.5" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-client:2.23.2" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-common:2.23.2" />

@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="jquieryui/jquery-ui.css" rel="stylesheet">
     <link href="jquieryui/jquery-ui.structure.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="jqueryui/external/jquery/jquery.js"></script>
+    <script src="jqueryui/external/jquery/jquery-3.3.1.js"></script>
     <script src="jqueryui/jquery-ui.js"></script>
     <title>Legendsmith</title>
 </head>
@@ -23,7 +24,7 @@
 
     <!-- Accordion  -->
     <div class="row">
-        <div id="accordion">
+        <div class="accordion">
             <h3>Black Mambo</h3>
             <div>
                 So what'll it be, now mister Mole? Whispers Sloth in curls of smoke. Take a back seat. Or play pharaoh.
@@ -62,29 +63,57 @@
         </div>
     </div>
 
-    <!-- Progress Bar -->
-
     <!-- Tabs -->
-
-    <!-- Toggle Class (Change box size) -->
-
-    <!-- Dialogue -->
+    <div id="funtabs">
+        <ul>
+            <li><a href="#toes">Toes</a></li>
+            <li><a href="#johnnybelinda">Johnny Belinda</a></li>
+            <li><a href="#kettering">Kettering</a></li>
+        </ul>
+        <div id="toes">
+            Put your hand down, boy. Welcome to my zoo. Put your head inside my big black wild, while I can still help you.
+            See the snake-baboon? Funky, chic, and smooth. Honey, can you spy the divine ape-swine, 'cause he can see you.
+            I'm a man, I'm a twisted fool. My hands are twisted too. Five fingers, two black hooves. I'm a man, don't spin me a lie.
+            Got toes and I can smile. I'm crooked but upright. And all I want, is just a little love. I said in purrs under the palms.
+            And all I ever want, is breaking me apart. I said to the thing that I once was. I'm a man, I'm a twisted fool.
+            My hands are twisted too. Five fingers, two black hooves. I'm a man, don't spin me a lie. Got toes and I can smile. I'm crooked, but upright.
+            To the left now boy. Underneath the moon. By the thick, tan sand and the tall, thin grass. One more thing for you.
+            See the distant flume? In the sleepy dunes. Makes my nerves clench close and my bones go cold, when I see that room.
+            And all I ever want, is just a little love. I said in purrs under the palms. And I all ever, want is breaking me apart.
+            I'm a man, I'm a twisted fool. My hands are twisted too. Five fingers, two black hooves. I'm a man, don't spin
+            me a lie. Got toes and I can smile. I'm crooked, but upright.
+        </div>
+        <div id="johnnybelinda">
+            I came home in the morning, just a little bit ago. You lie asleep in our bed, all twisted in your clothes.
+            And the rain came down, on our rooftop with a rhythm like this. Let the hair stand up on my shoulders, when you
+            open your mouth. You said, "Aah...". You said "Aah..". So I wrote you a letter, etched into my forearm with the pen
+            that you gave me. 'Cause if there's one thing I musn't fear, is that this is permanent, this is permanent.
+            I wish that I was strong enough. I wish that I could give it up. I wish that I could change enough to be yours.
+        </div>
+        <div id="kettering">
+            I wish that I had known in that first minute we met, the unpayable debt I owed you. Because you'd been abused by the bone
+            that refused you and you hired me to make up for that. Walking in that room when you had tubes in your arms those singing
+            morphine alarms. They had you sleeping and eating, and I didn't believe them when they called you a hurricane thundercloud.
+            When I was checking vitals I suggested a smile, you didn't talk for a while, you were freezing.
+            You said you hated my tone it made you feel so alone, so you told me I had to be leaving. But something kept me standing
+            by that hospital bed. I should have quit but instead I took care of you. You made me sleep all uneven and I didn't
+            believe them when they told me that there was no saving you.
+        </div>
+    </div>
 
     <!-- Tooltip -->
 
     <!-- Autocomplete -->
 
-    <!-- Draggable -->
-
     <!-- Sortable -->
-
-    <div class="row">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-3">
-        </div>
+    <div>
+        <ul id="sortable">
+            <li>Cats</li>
+            <li>Dogs</li>
+            <li>Rabbits</li>
+            <li>Fish</li>
+            <li>Snakes</li>
+        </ul>
     </div>
 
 </div>
@@ -92,9 +121,20 @@
 <!-- JQuery UI Script -->
 <script>
     $( function() {
-        $( "#accordion" ).accordion({
+        $( ".accordion" ).accordion({
             collapsible: true
         });
+    } );
+
+    $( function() {
+        $( "#funtabs" ).tabs({
+            collapsible: true
+        });
+    } );
+
+    $( function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
     } );
 </script>
 

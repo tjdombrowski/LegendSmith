@@ -23,6 +23,7 @@
     <h2>JQuery Demos</h2>
 
     <!-- Accordion  -->
+    <h2>Accordion</h2>
     <div class="row">
         <div class="accordion">
             <h3>Black Mambo</h3>
@@ -30,7 +31,7 @@
                 So what'll it be, now mister Mole? Whispers Sloth in curls of smoke. Take a back seat. Or play pharaoh.
                 Dance with me or shake your bones. Slow down, it's a science. He's been waiting to bring you down. Snake eyed, with
                 a sly smile. He can hold you and shake you, child. Leopards laze each on plush pillows. Slender capes of red
-                and gold. Paperback dreams in their deep doze. Twitch their toes to Black Mambo. Slow down, it's a science.
+                and gold. Paperback dreams in their deep doze. Twitch their toes to black mambo. Slow down, it's a science.
                 He's been waiting to bring you down. Snake eyed, with a sly smile. He can hold you and shake you, child.
                 Wanna play cheat, now says the Sloth. A domino flush to his nose. Tickle that cheek and take your throw.
                 Pump your veins with gushing gold. Slow down, it's a science. He's been waiting to bring you down.
@@ -64,6 +65,7 @@
     </div>
 
     <!-- Tabs -->
+    <h2>Tabs</h2>
     <div id="funtabs">
         <ul>
             <li><a href="#toes">Toes</a></li>
@@ -102,10 +104,21 @@
     </div>
 
     <!-- Tooltip -->
+    <h2>Tooltip</h2>
+    <div>
+        <label for="tooltip">Tooltip</label>
+        <input type="text" id="tooltip" title="Look at this tooltip!" />
+    </div>
 
     <!-- Autocomplete -->
+    <h2>Autocomplete</h2>
+    <div class="ui-widget">
+        <label for="tags">Search</label>
+        <input type="text" id="tags" />
+    </div>
 
     <!-- Sortable -->
+    <h2>Sortable</h2>
     <div>
         <ul id="sortable">
             <li>Cats</li>
@@ -124,15 +137,41 @@
         $( ".accordion" ).accordion({
             collapsible: true
         });
-    } );
 
-    $( function() {
         $( "#funtabs" ).tabs({
             collapsible: true
         });
-    } );
 
-    $( function() {
+        $( document ).tooltip();
+
+        var availableTags = [
+            "lion",
+            "wolf",
+            "elephant",
+            "pudu",
+            "fish",
+            "scorpion",
+            "panda",
+            "hyena",
+            "owl",
+            "raven",
+            "leopard",
+            "jaguar",
+            "fox",
+            "dolphin",
+            "cobra",
+            "crocodile",
+            "salmon",
+            "horse",
+            "cheetah",
+            "falcon",
+            "kiwi",
+            "rabbit"
+        ];
+        $( "#tags" ).autocomplete({
+            source: availableTags
+        });
+
         $( "#sortable" ).sortable();
         $( "#sortable" ).disableSelection();
     } );

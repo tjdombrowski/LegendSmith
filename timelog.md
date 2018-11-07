@@ -108,3 +108,18 @@ Started work on implementing tomcat's authentication to my project.
 
 Oct 22.     2 hours
 Finished adding authentication to my project, but I still need to add the other error pages. 
+
+Oct 24.     2 hours
+Fixed the issue with hibernate I was having. 
+
+Oct 25.     2.5 hours
+Worked on mapping the relationship between user and legendary, but ended up running into issues. I scrapped it for the mean time and started work on the relationship between Task and LegendaryPrimaryItem. 
+
+Oct 26.   1 hour
+Finished mapping and testing out Task and LegendaryPrimaryItem. 
+
+Oct 27.   2.5 hours
+Completed the SOAP activities. 
+
+Oct 29.   1.5 hours
+Launched my project to AWS, including the authentication. 

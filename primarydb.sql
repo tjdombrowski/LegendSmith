@@ -163,8 +163,13 @@ INSERT INTO User (username, password) VALUES (
 );
 
 INSERT INTO User (username, password) VALUES (
-    'anjya', 'salty'
+    'ajnya', 'lungtwisted'
 );
+
+INSERT INTO User (username, password) VALUES (
+  'sophrosyne', 'shieldandsword'
+);
+
 
 -- insert data for UserRole
 INSERT into UserRole (id, userId, role, username) VALUES (
@@ -180,8 +185,12 @@ INSERT into UserRole (id, userId, role, username) VALUES (
   4, 4, 'user', 'thylaeza'
 );
 INSERT into UserRole (id, userId, role, username) VALUES (
-  5, 5, 'user', 'anjya'
+  5, 5, 'user', 'ajnya'
 );
+INSERT into UserRole (id, userId, role, username) VALUES (
+  7, 6, 'user', 'sophrosyne'
+);
+
 
 -- insert data for Legendary
 INSERT into Legendary (name, type) values(

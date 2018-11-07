@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 
-@Path("/legendaries")
+@Path("/users")
 public class LegendaryReturn {
 
     // The Java method will process HTTP GET requests

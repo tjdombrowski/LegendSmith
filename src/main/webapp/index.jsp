@@ -14,19 +14,6 @@
 
 
         <div class="row">
-            <!-- Place legendary info here, or a message to start one -->
-            <div class="col-md-5">
-            </div>
-            <!-- Search field for legendaries -->
-            <div class="col-md-5">
-                <form action="/legendsmith/dashboard" type="post">
-                    <input type="text" name="name">
-                    <input type="submit" value="Search" name="search">
-                </form>
-            </div>
-        </div>
-
-        <div class="row">
             <!-- An overview of tasks is displayed here. -->
             <div class="col-sm-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores, autem consequuntur dolore ea illum incidunt magni minima minus nemo nesciunt nihil obcaecati porro reiciendis reprehenderit sed veritatis voluptas voluptatem?

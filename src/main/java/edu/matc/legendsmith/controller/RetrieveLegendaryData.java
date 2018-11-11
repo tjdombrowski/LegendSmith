@@ -34,13 +34,28 @@ public class RetrieveLegendaryData extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GenericDao legendaryDao = new GenericDao(Legendary.class);
+        //User data
+        String username = req.getUserPrincipal().getName();
 
-        int legendaryId = 0;
-        legendaryId = Integer.parseInt(req.getParameter("id"));
+        if (req.getUserPrincipal() == null || username.isEmpty()) {
 
-        Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
-        req.setAttribute("legendaryData", legendary);
+        } else {
+            GenericDao userDao = new GenericDao(User.class);
+
+            List<User> users = userDao.getByName(username, "username");
+
+            // TODO find a better way to do this
+            req.setAttribute("user", users.get(0));
+
+            //Legendary data
+            GenericDao legendaryDao = new GenericDao(Legendary.class);
+
+            int legendaryId = 0;
+            legendaryId = Integer.parseInt(req.getParameter("id"));
+
+            Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
+            req.setAttribute("legendaryData", legendary);
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");
         dispatcher.forward(req, resp);

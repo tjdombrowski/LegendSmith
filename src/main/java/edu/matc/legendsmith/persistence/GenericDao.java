@@ -67,14 +67,14 @@ public class GenericDao<T> {
      * @param searchTerm the search term from the user
      * @return list
      */
-    public List<T> getByName(String searchTerm) {
+    public List<T> getByName(String searchTerm, String columnName) {
         Session session = getSession();
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
 
-        Expression<String> propertyPath = root.get("name"); //beginning of 'where'
+        Expression<String> propertyPath = root.get(columnName); //beginning of 'where'
         query.where(builder.like(propertyPath, "%" + searchTerm + "%"));
 
         List<T> list = session.createQuery(query).getResultList();

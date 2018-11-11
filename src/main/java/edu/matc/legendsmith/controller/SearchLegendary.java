@@ -40,7 +40,7 @@ public class SearchLegendary extends HttpServlet {
         if (searchTerm.isEmpty()) {
             req.setAttribute("legendaries", dao.getAll());
         } else {
-            req.setAttribute("legendaries", dao.getByName(searchTerm));
+            req.setAttribute("legendaries", dao.getByName(searchTerm, "name"));
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/");

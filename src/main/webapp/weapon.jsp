@@ -9,7 +9,7 @@
 
     <!-- Legendary -->
     <div class="row">
-        <div class="col-md-1">Picture</div>
+        <div class="col-md-1">${user.username}</div>
         <div class="row">
             <div class="col-md-12"><h3>${legendaryData.name}</h3></div>
             <div class="col-md-12">Progress Bar</div>

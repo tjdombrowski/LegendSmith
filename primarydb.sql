@@ -358,7 +358,7 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of Insights', '<Mystic Forge Recipe>', 3
+  'Gift of Insights', 'Mystic Forge Recipe', 3
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (
@@ -366,7 +366,7 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 );
 
 insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Crystalline Ingot', '<recipe>', 3, 250
+  'Crystalline Ingot', 'recipe', 3, 250
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (

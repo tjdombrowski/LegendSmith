@@ -46,7 +46,7 @@ class LegendaryDaoTest {
      */
     @Test
     void getLegendariesByNameSuccess() {
-        List<Legendary> legendaries = dao.getByName("the");
+        List<Legendary> legendaries = dao.getByName("the", "name");
 
         assertEquals(legendaries.size(), 3);
     }

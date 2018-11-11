@@ -11,7 +11,6 @@ import java.util.*;
  */
 @Entity(name = "Legendary")
 @Table(name = "Legendary")
-@XmlRootElement
 public class Legendary {
 
     @Id
@@ -20,9 +19,7 @@ public class Legendary {
     private int id;
 
     private String name;
-
     private String pictureReference;
-
     private String type;
 
     @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

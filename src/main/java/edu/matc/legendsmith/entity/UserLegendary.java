@@ -14,7 +14,7 @@ public class UserLegendary {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    private int progress;
+    private Integer progress;
     private int tracking;
     private int priority;
 
@@ -38,11 +38,11 @@ public class UserLegendary {
         this.id = id;
     }
 
-    public int getProgress() {
+    public Integer getProgress() {
         return progress;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(Integer progress) {
         this.progress = progress;
     }
 

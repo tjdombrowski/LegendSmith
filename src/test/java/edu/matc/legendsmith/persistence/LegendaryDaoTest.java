@@ -158,7 +158,6 @@ class LegendaryDaoTest {
         Task retrievedTask = tasks.get(0);
 
         assertEquals(giftOfMaguuma, retrievedTask);
-
     }
 
 }

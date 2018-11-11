@@ -2,6 +2,7 @@ package edu.matc.legendsmith.persistence;
 
 import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.test.util.Database;
+import org.hibernate.annotations.GenericGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserDaoTest {
 
     GenericDao dao;
+    GenericDao legendaryDao;
 
     /**
      * Sets up the tests by resetting the database and instantiating the necessary dao.
@@ -27,6 +29,7 @@ public class UserDaoTest {
         database.runSQL("cleandb.sql");
 
         dao = new GenericDao(User.class);
+        legendaryDao = new GenericDao(Legendary.class);
     }
 
     /**
@@ -73,6 +76,23 @@ public class UserDaoTest {
         dao.saveOrUpdate(newUser);
 
         assertEquals(newUser, (User)dao.getById(4));
+    }
+
+    /**
+     * Tests whether retrieving the legendary of an user is successful.
+     */
+    @Test
+    public void getUserLegendarySuccess() {
+        User user = (User)dao.getById(2);
+
+        List<UserLegendary> userLegendaries = user.getUserLegendaries();
+
+       assertEquals(2, userLegendaries.size());
+
+       Legendary userLegendary = userLegendaries.get(0).getLegendary();
+       Legendary legendary = (Legendary) legendaryDao.getById(2);
+
+       assertEquals(legendary, userLegendary);
 
     }
 

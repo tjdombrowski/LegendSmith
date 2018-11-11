@@ -1,3 +1,4 @@
+delete from UserLegendary;
 delete from Task;
 delete from LegendaryPrimaryItem;
 delete from PrimaryItem;
@@ -31,7 +32,7 @@ insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (1, 'Gif
 insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (2, 'Gift of Insights', 'Mystic Forge Recipe', 3);
 insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (3, 'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 3);
 insert into Task (id, name, description, legendaryPrimaryItemId, quantity) VALUES (4, 'Crystalline Ingot', '<recipe>', 3, 250);
-INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (1,2, 50);
-INSERT INTO UserLegendary (userId, legendaryId) VALUES (4,2);
-INSERT INTO UserLegendary (userId, legendaryId) VALUES (2,2);
-INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (2,11, 25);
+INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (1, 1,2);
+INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (2, 2,2);
+INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (3, 2,7);
+INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (4, 4,7);

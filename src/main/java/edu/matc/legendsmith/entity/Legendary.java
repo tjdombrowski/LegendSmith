@@ -25,12 +25,11 @@ public class Legendary {
 
     private String type;
 
-    /*@OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserLegendary> userLegendaries = new ArrayList<>();*/
-
     @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<LegendaryPrimaryItem> primaryItems = new ArrayList<>();
 
+    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<UserLegendary> userLegendaries = new ArrayList<>();
 
     /**
      * Instantiates a new Legendary.
@@ -160,7 +159,7 @@ public class Legendary {
         this.type = type;
     }
 
-    /* For connecting to the User entity
+    /* For connecting to the User entity */
 
     public List<UserLegendary> getUserLegendaries() {
         return userLegendaries;
@@ -176,7 +175,6 @@ public class Legendary {
         userLegendaries.remove(userLegendary);
         userLegendary.setLegendary(null);
     }
-    (*/
 
     @Override
     public String toString() {

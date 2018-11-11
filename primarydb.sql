@@ -99,12 +99,12 @@ CREATE TABLE Task
 
 CREATE TABLE UserLegendary
 (
+  id          INT primary key AUTO_INCREMENT,
   userId      INT             NOT NULL,
   legendaryId INT             NOT NULL,
   progress    INT             NULL,
   tracking    INT DEFAULT '0' NULL,
   priority    INT DEFAULT '0' NULL,
-  PRIMARY KEY (userId, legendaryId),
   CONSTRAINT UserLegendary_userId_fk
   FOREIGN KEY (userId) REFERENCES User (id)
   ON DELETE CASCADE,
@@ -120,7 +120,7 @@ CREATE TABLE UserLegendaryPrimaryItem
     PRIMARY KEY AUTO_INCREMENT,
   legendaryPrimaryItemId INT NULL,
   userId                 INT NULL,
-  progress               INT NULL,
+  progress               INT NULL default 0,
   CONSTRAINT UserLegendaryPrimaryItem_fk1
   FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
   ON DELETE CASCADE,
@@ -132,17 +132,33 @@ CREATE TABLE UserLegendaryPrimaryItem
 
 CREATE TABLE UserLegendaryPrimaryItemTask
 (
+  id int primary key AUTO_INCREMENT,
   userLegendaryPrimaryItemId INT             NOT NULL,
   taskId                     INT             NOT NULL,
   completion                 INT DEFAULT '0' NULL,
   dateCompleted              DATE            NULL,
-  PRIMARY KEY (taskId, userLegendaryPrimaryItemId),
   CONSTRAINT UserLegendPrimItem_fk1
   FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id)
   ON DELETE CASCADE,
   CONSTRAINT UserLegendPrimItem_fk2
   FOREIGN KEY (taskId) REFERENCES Task (id)
   ON DELETE CASCADE
+);
+-- insert data for UserLegendary
+INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (
+    1,2, 50
+);
+
+INSERT INTO UserLegendary (userId, legendaryId) VALUES (
+  4,2
+);
+
+INSERT INTO UserLegendary (userId, legendaryId) VALUES (
+  2,2
+);
+
+INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (
+  2,11, 25
 );
 
 -- insert data for User
@@ -393,3 +409,4 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
     'Vengeance', 'The second tier precursor of Save The Queen.', 1
 );
+

@@ -21,8 +21,8 @@ public class User {
     private String username;
     private String password;
 
-    /*@OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<UserLegendary> userLegendaries = new ArrayList<>();*/
+    @OneToMany(mappedBy = "legendary", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    List<UserLegendary> userLegendaries = new ArrayList<>();
 
     /**
      * Instantiates a new User.
@@ -107,6 +107,25 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public List<UserLegendary> getUserLegendaries() {
+        return userLegendaries;
+    }
+
+    public void setUserLegendaries(List<UserLegendary> userLegendaries) {
+        this.userLegendaries = userLegendaries;
+    }
+
+    public void addUserLegendary(UserLegendary userLegendary) {
+        userLegendaries.add(userLegendary);
+        userLegendary.setUser(this);
+    }
+
+    public void removeUserLegendary(UserLegendary userLegendary) {
+        userLegendaries.remove(userLegendary);
+        userLegendary.setUser(null);
     }
 
     @Override

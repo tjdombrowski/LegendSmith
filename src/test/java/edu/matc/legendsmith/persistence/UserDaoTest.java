@@ -96,6 +96,9 @@ public class UserDaoTest {
 
     }
 
+    /**
+     * Test whether retrieving the primary item of an user is successful.
+     */
     @Test
     public void getUserPrimaryItemsSuccess() {
         User user = (User)dao.getById(2);

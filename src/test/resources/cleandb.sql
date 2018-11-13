@@ -36,3 +36,9 @@ INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (1, 1,2);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (2, 2,2);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (3, 2,7);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (4, 4,7);
+INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (1, 1, 1);
+INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (2, 2, 1);
+INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (3, 2, 2);
+INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (4, 2, 3);
+INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (5, 2, 4);
+

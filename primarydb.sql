@@ -144,6 +144,25 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   FOREIGN KEY (taskId) REFERENCES Task (id)
   ON DELETE CASCADE
 );
+
+-- insert data for UserLegendaryPrimaryItems
+insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
+  1, 1, 50
+);
+
+insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
+  1, 2, 25
+);
+
+insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
+  1, 3, 0
+);
+
+insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
+  1, 4, 80
+);
+
+
 -- insert data for UserLegendary
 INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (
     1,2, 50

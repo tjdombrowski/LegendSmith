@@ -96,4 +96,21 @@ public class UserDaoTest {
 
     }
 
+    @Test
+    public void getUserPrimaryItemsSuccess() {
+        User user = (User)dao.getById(2);
+
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = user.getUserPrimaryItems();
+
+        assertEquals(4, userLegendaryPrimaryItems.size());
+
+        PrimaryItem userPrimaryItem = userLegendaryPrimaryItems.get(0).getLegendaryPrimaryItem().getPrimaryItem();
+
+        GenericDao primaryItemDao = new GenericDao(PrimaryItem.class);
+
+        PrimaryItem primaryItem = (PrimaryItem) primaryItemDao.getById(1);
+
+        assertEquals(primaryItem, userPrimaryItem);
+    }
+
 }

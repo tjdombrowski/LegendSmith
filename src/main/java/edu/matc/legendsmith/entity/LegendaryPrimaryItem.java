@@ -34,6 +34,8 @@ public class LegendaryPrimaryItem {
         foreignKey = @ForeignKey(name = "LegendaryPrimaryItem_primaryItemId_fk"))
     private PrimaryItem primaryItem;
 
+    @OneToMany(mappedBy = "legendaryPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = new ArrayList<>();
 
     @OneToMany(mappedBy = "legendaryPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Task> tasks = new ArrayList<>();
@@ -114,6 +116,29 @@ public class LegendaryPrimaryItem {
     public void removeTask(Task task) {
         tasks.remove(task);
         task.setLegendaryPrimaryItem(null);
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public List<UserLegendaryPrimaryItem> getUserLegendaryPrimaryItems() {
+        return userLegendaryPrimaryItems;
+    }
+
+    public void setUserLegendaryPrimaryItems(List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems) {
+        this.userLegendaryPrimaryItems = userLegendaryPrimaryItems;
+    }
+
+    public void addUserLegendaryPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        userLegendaryPrimaryItems.add(userLegendaryPrimaryItem);
+        userLegendaryPrimaryItem.setLegendaryPrimaryItem(this);
+    }
+
+    public void removeUserLegendaryPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        userLegendaryPrimaryItems.remove(userLegendaryPrimaryItem);
+        userLegendaryPrimaryItem.setLegendaryPrimaryItem(null);
     }
 
     @Override

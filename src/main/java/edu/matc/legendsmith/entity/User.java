@@ -24,6 +24,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<UserLegendary> userLegendaries = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    List<UserLegendaryPrimaryItem> userPrimaryItems = new ArrayList<>();
+
     /**
      * Instantiates a new User.
      */
@@ -127,6 +130,31 @@ public class User {
         userLegendaries.remove(userLegendary);
         userLegendary.setUser(null);
     }
+
+    /**
+     * Gets the user's primary items.
+     *
+     * @return userPrimaryItems the user legendary primary items
+     */
+    public List<UserLegendaryPrimaryItem> getUserPrimaryItems() {
+        return userPrimaryItems;
+    }
+
+    public void setUserPrimaryItems(List<UserLegendaryPrimaryItem> userPrimaryItems) {
+        this.userPrimaryItems = userPrimaryItems;
+    }
+
+    public void addUserPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        userPrimaryItems.add(userLegendaryPrimaryItem);
+        userLegendaryPrimaryItem.setUser(this);
+    }
+
+    public void removeUserPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        userPrimaryItems.remove(userLegendaryPrimaryItem);
+        userLegendaryPrimaryItem.setUser(null);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

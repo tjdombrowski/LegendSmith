@@ -60,8 +60,6 @@ public class GenericDao<T> {
     /**
      * Get an entity by it's name.
      *
-     * TODO make this part more dynamic. Not everything I'm pulling has a "name" column.
-     *
      * @param searchTerm the search term from the user
      * @return list
      */
@@ -83,14 +81,14 @@ public class GenericDao<T> {
     }
 
     /**
-     * Finds entities by multiple properties.
+     * Finds entities by multiple properties, EXPECTING TO RETURN ONE RESULT ONLY.
+     *
      * Inspired by https://stackoverflow.com/questions/11138118/really-dynamic-jpa-criteriabuilder
      * @param propertyMap property and value pairs
-     * @return entities with properties equal to those passed in the map
-     *
+     * @return an entity with properties equal to those passed in the map
      *
      */
-    public List<T> findByPropertyEqual(Map<String, Object> propertyMap) {
+    public T findByPropertyEqual(Map<String, Object> propertyMap) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
@@ -101,8 +99,14 @@ public class GenericDao<T> {
         }
         query.select(root).where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
 
-        return session.createQuery(query).getResultList();
+        T entity = session.createQuery(query).getSingleResult();
+
+        session.close();
+
+        return entity;
     }
+
+
 
     /**
      * Inserts a new entity into the database.

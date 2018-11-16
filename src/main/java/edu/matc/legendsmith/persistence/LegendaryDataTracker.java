@@ -10,15 +10,15 @@ import java.util.Map;
 public class LegendaryDataTracker {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    public void updateUserTaskStatus(int userId, int taskId) {
+    public void updateUserTaskStatus(int userPrimaryItemId, int taskId) {
 
         GenericDao taskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
 
         //Retrieve the instance of an user's task and set its completion to 0 or 1 for incomplete or complete
         Map<String, Object> propertyMap = new HashMap<>();
 
-        propertyMap.put("userId", userId);
-        propertyMap.put("taskId", taskId);
+        propertyMap.put("userPrimaryItem", userPrimaryItemId);
+        propertyMap.put("task", taskId);
 
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.findByPropertyEqual(propertyMap);
 

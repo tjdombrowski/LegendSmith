@@ -28,6 +28,7 @@
         <mapping class="edu.matc.legendsmith.entity.PrimaryItem"/>
         <mapping class="edu.matc.legendsmith.entity.UserLegendary"/>
         <mapping class="edu.matc.legendsmith.entity.UserLegendaryPrimaryItem"/>
+        <mapping class="edu.matc.legendsmith.entity.UserLegendaryPrimaryItemTask"/>
 
 
 

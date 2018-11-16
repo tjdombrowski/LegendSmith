@@ -31,7 +31,7 @@ insert into UserRole VALUES (4, 4, 'user', 'kasperlock');
 insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (1, 'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 3);
 insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (2, 'Gift of Insights', 'Mystic Forge Recipe', 3);
 insert into Task (id, name, description, legendaryPrimaryItemId) VALUES (3, 'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 3);
-insert into Task (id, name, description, legendaryPrimaryItemId, quantity) VALUES (4, 'Crystalline Ingot', '<recipe>', 3, 250);
+insert into Task (id, name, description, legendaryPrimaryItemId, quantity) VALUES (4, 'Crystalline Ingot', 'recipe', 3, 250);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (1, 1,2);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (2, 2,2);
 INSERT INTO UserLegendary (id, userId, legendaryId) VALUES (3, 2,7);
@@ -41,4 +41,10 @@ INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (3, 2, 2);
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (4, 2, 3);
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (5, 2, 4);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (1, 1, 1);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (2, 2, 1);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (3, 2, 2);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (4, 2, 3);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (5, 2, 4);
+
 

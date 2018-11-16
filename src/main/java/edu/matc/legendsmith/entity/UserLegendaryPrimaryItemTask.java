@@ -15,7 +15,7 @@ public class UserLegendaryPrimaryItemTask {
     private int id;
 
     private int completion;
-    private Date date;
+    private Date dateCompleted;
 
     @ManyToOne
     @JoinColumn(name = "userLegendaryPrimaryItemId",
@@ -44,12 +44,12 @@ public class UserLegendaryPrimaryItemTask {
         this.completion = completion;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateCompleted() {
+        return dateCompleted;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateCompleted(Date dateCompleted) {
+        this.dateCompleted = dateCompleted;
     }
 
     @Override
@@ -61,14 +61,14 @@ public class UserLegendaryPrimaryItemTask {
 
         if (id != that.id) return false;
         if (completion != that.completion) return false;
-        return date != null ? date.equals(that.date) : that.date == null;
+        return dateCompleted != null ? dateCompleted.equals(that.dateCompleted) : that.dateCompleted == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + completion;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (dateCompleted != null ? dateCompleted.hashCode() : 0);
         return result;
     }
 }

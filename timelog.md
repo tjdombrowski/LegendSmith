@@ -123,3 +123,18 @@ Completed the SOAP activities.
 
 Oct 29.   1.5 hours
 Launched my project to AWS, including the authentication. 
+
+Nov 1.  2.5 hours
+Tested out the data retrieval of Legendary info and JQuery implementation on the same page. 
+
+Nov 2. 1.5 hours
+Worked on the RESTful activities. 
+
+Nov 3. 1.5 hours
+Completed the REST exercise. 
+
+Nov 4 2.5 hours
+Tested out JQuery some more and did some more exploration of it, while structuring some examples into my project. 
+
+Nov 5. 1 hour
+Went over my JQuery presentation and materials. 

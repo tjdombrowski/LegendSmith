@@ -3,9 +3,6 @@ package edu.matc.legendsmith.controller;
 import edu.matc.legendsmith.entity.Legendary;
 import edu.matc.legendsmith.persistence.*;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +37,7 @@ public class SearchLegendary extends HttpServlet {
         if (searchTerm.isEmpty()) {
             req.setAttribute("legendaries", dao.getAll());
         } else {
-            req.setAttribute("legendaries", dao.getByName(searchTerm, "name"));
+            req.setAttribute("legendaries", dao.getByProperty(searchTerm, "name"));
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/");

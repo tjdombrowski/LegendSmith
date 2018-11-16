@@ -42,7 +42,7 @@ public class RetrieveLegendaryData extends HttpServlet {
         } else {
             GenericDao userDao = new GenericDao(User.class);
 
-            List<User> users = userDao.getByName(username, "username");
+            List<User> users = userDao.getByProperty(username, "username");
 
             // TODO find a better way to do this
             req.setAttribute("user", users.get(0));

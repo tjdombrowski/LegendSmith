@@ -23,7 +23,7 @@
                 <h3>${legendaryPrimaryItem.getPrimaryItem().name}</h3>
                 <div class="accordion">
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}">
-                            <h5>${task.name}</h5>
+                            <h5>${task.name}<button class="btn-sm" action="/taskMarkOff">Done</button></h5>
                             <div>${task.description}</div>
                         </c:forEach>
                 </div>

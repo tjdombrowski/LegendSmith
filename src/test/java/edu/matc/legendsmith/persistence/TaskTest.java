@@ -92,5 +92,4 @@ class TaskTest {
 
         assertNull(taskDao.getById(1));
     }
-
 }

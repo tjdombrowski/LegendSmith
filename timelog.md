@@ -127,14 +127,17 @@ Launched my project to AWS, including the authentication.
 Nov 1.  2.5 hours
 Tested out the data retrieval of Legendary info and JQuery implementation on the same page. 
 
-Nov 2. 1.5 hours
+Nov 2. 2.5 hours
 Worked on the RESTful activities. 
 
 Nov 3. 1.5 hours
 Completed the REST exercise. 
 
-Nov 4 2.5 hours
+Nov 5 2.5 hours
 Tested out JQuery some more and did some more exploration of it, while structuring some examples into my project. 
 
-Nov 5. 1 hour
+Nov 6. 1 hour
 Went over my JQuery presentation and materials. 
+
+Nov 8.  3.5 hours
+Setup my branch for the team project and created a simple page for the documentation. I also did some work on my individual project with connecting some more of the relationships and testing them out.

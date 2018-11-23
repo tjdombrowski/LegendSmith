@@ -54,18 +54,21 @@ public class RetrieveLegendaryData extends HttpServlet {
             User user = users.get(0);
             int userId = user.getId();
 
-            // TODO find a better way to do this
-            req.setAttribute("user", user);
+            //Retrieve Legendary data - used for displaying
+            GenericDao legendaryDao = new GenericDao(Legendary.class);
+            Legendary legendary = (Legendary)legendaryDao.getById(legendaryId);
+
+            req.getQueryString("legendaryData", legendary;
 
             //Retrieve User Legendary data
             GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
             Map<String, Integer> userLegendaryFkMap = new HashMap<>();
-            userLegendaryFkMap.put("legendaryId", legendaryId);
-            userLegendaryFkMap.put("userId", userId);
+            userLegendaryFkMap.put("legendary", legendaryId);
+            userLegendaryFkMap.put("user", userId);
 
             UserLegendary userLegendary = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
 
-            req.setAttribute("legendaryData", userLegendary);
+            req.setAttribute("userLegendaryData", userLegendary);
 
             //Retrieve User Primary Item data
             List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();

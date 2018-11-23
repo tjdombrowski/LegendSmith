@@ -18,7 +18,17 @@ public class UserDataTest {
         legendaryDataTracker = new LegendaryDataTracker();
     }
 
+    @Test
+    void getUserLegendaryPrimaryItemTasSuccess() {
+        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
+        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemDao.getById(1);
+        UserLegendaryPrimaryItemTask userLegendaryPrimaryItemTask = userLegendaryPrimaryItem.getUserTasks().get(0);
 
+        GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
+        UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(1);
+
+        assertEquals(userTask, userLegendaryPrimaryItemTask);
+    }
 
     @Test
     void updateUserTaskStatusSuccess() {

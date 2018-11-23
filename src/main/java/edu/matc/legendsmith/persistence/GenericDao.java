@@ -82,7 +82,8 @@ public class GenericDao<T> {
     }
 
     /**
-     * Finds entities by multiple properties, EXPECTING TO RETURN ONE RESULT ONLY.
+     * Finds entities by multiple properties, EXPECTING TO RETURN ONE RESULT ONLY. If no results is returned,
+     * the value returned is null.
      *
      * Inspired by https://stackoverflow.com/questions/11138118/really-dynamic-jpa-criteriabuilder
      * @param propertyMap property and value pairs

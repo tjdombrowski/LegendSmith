@@ -22,22 +22,26 @@ public class LegendaryDataTracker {
 
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.findByPropertyEqual(propertyMap);
 
-        int completion = userTask.getCompletion();
+        if (userTask == null) {
+            logger.error("Failed to update task data: No userTask was retrieved. userPrimaryItemId: " + userPrimaryItemId);
+        } else {
+            int completion = userTask.getCompletion();
 
-        switch(completion) {
-            case 1:
-                userTask.setCompletion(0);
-                break;
-            case 0:
-                userTask.setCompletion(1);
-                break;
-            default:
-                logger.error("Task completion status out of bounds. Value is: " + completion);
-                break;
+            switch(completion) {
+                case 1:
+                    userTask.setCompletion(0);
+                    break;
+                case 0:
+                    userTask.setCompletion(1);
+                    break;
+                default:
+                    logger.error("Task completion status out of bounds. Value is: " + completion);
+                    break;
+            }
 
+            taskDao.saveOrUpdate(userTask);
         }
 
-        taskDao.saveOrUpdate(userTask);
     }
 
 

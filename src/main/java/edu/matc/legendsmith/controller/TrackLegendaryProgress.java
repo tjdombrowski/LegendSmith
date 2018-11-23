@@ -41,8 +41,15 @@ public class TrackLegendaryProgress extends HttpServlet {
             // TODO find a better way to do this
         req.setAttribute("user", users.get(0));
 
-            //Legendary data
+
+
+        //Legendary data
         GenericDao legendaryDao = new GenericDao(Legendary.class);
+        int legendaryId = 0;
+        legendaryId = Integer.parseInt(req.getParameter("id"));
+
+        Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
+        req.setAttribute("legendaryData", legendary);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");
         dispatcher.forward(req, resp);

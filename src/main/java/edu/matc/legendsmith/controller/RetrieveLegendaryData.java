@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The type Search legendary.
@@ -28,6 +30,9 @@ public class RetrieveLegendaryData extends HttpServlet {
 
     /**
      * Used for retrieving all the relevant data of a legendary weapon to be displayed on the page.
+     * There are two pieces of data that are sent over: the user's legendary data (UserLegendary), which is used to
+     * retrieve legendary info and track progress with the legendary, and the user's primary item data (UserLegendaryPrimaryItem),
+     * which is used to retrieve primary item and task data, as well as the user's specific progress with those features.
      *
      * @param req the http servlet request
      * @param resp the http servlet response
@@ -37,24 +42,35 @@ public class RetrieveLegendaryData extends HttpServlet {
         //User data
         String username = req.getUserPrincipal().getName();
 
+        int legendaryId = 0;
+        legendaryId = Integer.parseInt(req.getParameter("id"));
+
         if (req.getUserPrincipal() == null || username.isEmpty()) {
 
         } else {
+            //Retrieve User
             GenericDao userDao = new GenericDao(User.class);
-
             List<User> users = userDao.getByProperty(username, "username");
+            User user = users.get(0);
+            int userId = user.getId();
 
             // TODO find a better way to do this
-            req.setAttribute("user", users.get(0));
+            req.setAttribute("user", user);
 
-            //Legendary data
-            GenericDao legendaryDao = new GenericDao(Legendary.class);
+            //Retrieve User Legendary data
+            GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+            Map<String, Integer> userLegendaryFkMap = new HashMap<>();
+            userLegendaryFkMap.put("legendaryId", legendaryId);
+            userLegendaryFkMap.put("userId", userId);
 
-            int legendaryId = 0;
-            legendaryId = Integer.parseInt(req.getParameter("id"));
+            UserLegendary userLegendary = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
 
-            Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
-            req.setAttribute("legendaryData", legendary);
+            req.setAttribute("legendaryData", userLegendary);
+
+            //Retrieve User Primary Item data
+            List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();
+
+            req.setAttribute("primaryItemData", userPrimaryItems);
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");

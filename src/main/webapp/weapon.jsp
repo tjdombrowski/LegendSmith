@@ -11,19 +11,19 @@
     <div class="row">
         <div class="col-md-1">${user.username}</div>
         <div class="row">
-            <div class="col-md-12"><h3>${legendaryData.name}</h3></div>
-            <div class="col-md-12">Progress Bar</div>
+            <div class="col-md-12"><h3>${legendaryData.legendary.name}</h3></div>
+            <div class="col-md-12">Progress: ${legendaryData.progress}%</div>
         </div>
     </div>
 
     <!-- Items -->
     <div class="row">
-        <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
+        <c:forEach var="userPrimaryItem" items="${primaryItemData}">
             <div class="col-md-5">
-                <h3>${legendaryPrimaryItem.getPrimaryItem().name}</h3>
+                <h3>${userPrimaryItem.primaryItem.name}</h3>
                 <div class="accordion">
-                        <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}">
-                            <h5>${task.name}<button class="btn btn-sm" action="/taskMarkOff">Done</button></h5>
+                        <c:forEach var="task" items="${userPrimaryItem.getTasks()}">
+                            <h5>${task.name}<button class="btn btn-sm">Done</button></h5>
                             <div>${task.description}</div>
                         </c:forEach>
                 </div>

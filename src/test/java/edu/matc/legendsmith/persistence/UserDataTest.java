@@ -18,6 +18,8 @@ public class UserDataTest {
         legendaryDataTracker = new LegendaryDataTracker();
     }
 
+
+
     @Test
     void updateUserTaskStatusSuccess() {
         legendaryDataTracker.updateUserTaskStatus(2, 1);

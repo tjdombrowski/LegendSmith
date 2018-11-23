@@ -77,4 +77,26 @@ public class UserLegendary {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserLegendary that = (UserLegendary) o;
+
+        if (id != that.id) return false;
+        if (tracking != that.tracking) return false;
+        if (priority != that.priority) return false;
+        return progress != null ? progress.equals(that.progress) : that.progress == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (progress != null ? progress.hashCode() : 0);
+        result = 31 * result + tracking;
+        result = 31 * result + priority;
+        return result;
+    }
 }

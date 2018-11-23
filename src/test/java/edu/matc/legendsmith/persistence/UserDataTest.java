@@ -5,6 +5,9 @@ import edu.matc.legendsmith.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserDataTest {
@@ -16,6 +19,19 @@ public class UserDataTest {
         database.runSQL("cleandb.sql");
 
         legendaryDataTracker = new LegendaryDataTracker();
+    }
+
+    @Test
+    void getUserDataWithMapSuccess() {
+        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        Map<String, Integer> userLegendaryFkMap = new HashMap<>();
+        userLegendaryFkMap.put("legendary", 2);
+        userLegendaryFkMap.put("user", 1);
+
+        UserLegendary userLegendary1 = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
+        UserLegendary userLegendary2 = (UserLegendary)userLegendaryDao.getById(1);
+
+        assertEquals(userLegendary1, userLegendary2);
     }
 
     @Test

@@ -22,9 +22,9 @@
             <div class="col-md-5">
                 <h3>${userPrimaryItem.primaryItem.name}</h3>
                 <div class="accordion">
-                        <c:forEach var="task" items="${userPrimaryItem.getTasks()}">
-                            <h5>${task.name}<button class="btn btn-sm">Done</button></h5>
-                            <div>${task.description}</div>
+                        <c:forEach var="task" items="${userPrimaryItem.getUserTasks()}">
+                            <h5>${task.task.name}<button class="btn btn-sm">Done</button></h5>
+                            <div>${task.task.description}</div>
                         </c:forEach>
                 </div>
             </div>

@@ -3,6 +3,7 @@ package edu.matc.legendsmith.controller;
 import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.persistence.GenericDao;
 
+import edu.matc.legendsmith.persistence.LegendaryDataTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,18 +36,15 @@ public class TrackLegendaryProgress extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //User data
-        String username = req.getUserPrincipal().getName();
-        GenericDao userDao = new GenericDao(User.class);
-        List<User> users = userDao.getByProperty(username, "username");
-            // TODO find a better way to do this
-        req.setAttribute("user", users.get(0));
-
-        //Legendary data
-        GenericDao legendaryDao = new GenericDao(Legendary.class);
-        int legendaryId = 0;
-        legendaryId = Integer.parseInt(req.getParameter("id"));
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        int primaryItemId = Integer.parseInt(req.getParameter("primaryItemId"));
 
 
+
+        //Update user task data
+        LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
+
+        legendaryDataTracker.updateUserTaskStatus(1,1);
 
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");

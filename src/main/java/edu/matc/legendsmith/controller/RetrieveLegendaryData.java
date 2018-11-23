@@ -54,6 +54,8 @@ public class RetrieveLegendaryData extends HttpServlet {
             User user = users.get(0);
             int userId = user.getId();
 
+            req.setAttribute("userData", user);
+
             //Retrieve Legendary data - used for displaying
             GenericDao legendaryDao = new GenericDao(Legendary.class);
             Legendary legendary = (Legendary)legendaryDao.getById(legendaryId);

@@ -15,12 +15,19 @@ public class LegendaryDataTracker {
         GenericDao taskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
 
         //Retrieve the instance of an user's task and set its completion to 0 or 1 for incomplete or complete
-        Map<String, Object> propertyMap = new HashMap<>();
+        /*Map<String, Object> propertyMap = new HashMap<>();
 
         propertyMap.put("userPrimaryItem", userPrimaryItemId);
         propertyMap.put("task", taskId);
 
-        UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.findByPropertyEqual(propertyMap);
+        UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.findByPropertyEqual(propertyMap);*/
+
+        UserLegendaryDataHandler userLegendaryDataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItemTask.class);
+
+        UserLegendaryPrimaryItemTask userTask;
+
+        userTask = (UserLegendaryPrimaryItemTask)userLegendaryDataHandler.returnEntityByForeignKeys("userPrimaryItem", userPrimaryItemId, "task", taskId);
+
 
         if (userTask == null) {
             logger.error("Failed to update task data: No userTask was retrieved. userPrimaryItemId: " + userPrimaryItemId);

@@ -11,7 +11,7 @@ public class UserLegendaryDataHandler<T> {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private Class<T> type;
 
-    UserLegendaryDataHandler(Class<T> type) {
+    public UserLegendaryDataHandler(Class<T> type) {
         this.type = type;
     }
 

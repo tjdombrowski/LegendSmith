@@ -1,9 +1,10 @@
 package edu.matc.legendsmith.controller;
 
 import edu.matc.legendsmith.entity.*;
-import edu.matc.legendsmith.persistence.GenericDao;
+import edu.matc.legendsmith.persistence.*;
 
 import edu.matc.legendsmith.persistence.LegendaryDataTracker;
+import edu.matc.legendsmith.persistence.UserLegendaryDataHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,14 +39,23 @@ public class TrackLegendaryProgress extends HttpServlet {
         //User data
         int userId = Integer.parseInt(req.getParameter("userId"));
         int primaryItemId = Integer.parseInt(req.getParameter("primaryItemId"));
+        int legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
+        int taskId = Integer.parseInt(req.getParameter("taskId"));
 
+        UserLegendaryDataHandler legPrimaryItemHandler = new UserLegendaryDataHandler(LegendaryPrimaryItem.class);
+        LegendaryPrimaryItem legendaryPrimaryItem = (LegendaryPrimaryItem)legPrimaryItemHandler.returnEntityByForeignKeys("legendary", legendaryId, "primaryItem", primaryItemId);
 
+        if (legendaryPrimaryItem != null) {
+            int legendaryPrimeItemId = legendaryPrimaryItem.getId();
 
-        //Update user task data
-        LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
+            UserLegendaryDataHandler userPrimaryItemHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItem.class);
+            UserLegendaryPrimaryItem userPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemHandler.returnEntityByForeignKeys("user", userId, "legendaryPrimaryItem", legendaryPrimeItemId);
 
-        legendaryDataTracker.updateUserTaskStatus(1,1);
+            //Update user task data
+            LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
 
+            legendaryDataTracker.updateUserTaskStatus(userPrimaryItem.getId(),taskId);
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");
         dispatcher.forward(req, resp);

@@ -30,8 +30,8 @@ public class RetrieveLegendaryData extends HttpServlet {
 
     /**
      * Used for retrieving all the relevant data of a legendary weapon to be displayed on the page.
-     * There are two pieces of data that are sent over: the user's legendary data (UserLegendary), which is used to
-     * retrieve legendary info and track progress with the legendary, and the user's primary item data (UserLegendaryPrimaryItem),
+     * There are three pieces of data that are sent over: the legendary info, used to display the page, and the user's legendary data (UserLegendary),
+     * which is used to retrieve legendary info and track progress with the legendary, and lastly, the user's primary item data (UserLegendaryPrimaryItem),
      * which is used to retrieve primary item and task data, as well as the user's specific progress with those features.
      *
      * @param req the http servlet request
@@ -58,7 +58,7 @@ public class RetrieveLegendaryData extends HttpServlet {
             GenericDao legendaryDao = new GenericDao(Legendary.class);
             Legendary legendary = (Legendary)legendaryDao.getById(legendaryId);
 
-            req.getQueryString("legendaryData", legendary;
+            req.setAttribute("legendaryData", legendary);
 
             //Retrieve User Legendary data
             GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
@@ -68,12 +68,16 @@ public class RetrieveLegendaryData extends HttpServlet {
 
             UserLegendary userLegendary = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
 
-            req.setAttribute("userLegendaryData", userLegendary);
+            //If there is no result, then the user has not started this legendary yet
+            if (userLegendary != null) {
+                req.setAttribute("userLegendaryData", userLegendary);
 
-            //Retrieve User Primary Item data
-            List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();
+                //Retrieve User Primary Item data
+                List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();
 
-            req.setAttribute("primaryItemData", userPrimaryItems);
+                req.setAttribute("primaryItemData", userPrimaryItems);
+            }
+
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/weapon.jsp");

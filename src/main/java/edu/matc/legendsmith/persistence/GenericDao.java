@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -99,7 +100,13 @@ public class GenericDao<T> {
         }
         query.select(root).where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
 
-        T entity = session.createQuery(query).getSingleResult();
+        T entity = null;
+
+        try {
+            entity = session.createQuery(query).getSingleResult();
+        } catch (NoResultException noResultEx) {
+            logger.error(noResultEx);
+        }
 
         session.close();
 

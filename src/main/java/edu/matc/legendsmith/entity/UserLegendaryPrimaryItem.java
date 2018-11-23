@@ -28,6 +28,10 @@ public class UserLegendaryPrimaryItem {
         foreignKey = @ForeignKey(name = "UserLegendaryPrimaryItem_userId_fk2"))
     private User user;
 
+    //TODO Change all arrays arranged like this to be instantiated in the constructor
+    @OneToMany(mappedBy = "userPrimaryItem", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<UserLegendaryPrimaryItemTask> userTasks = new ArrayList<>();
+
     public UserLegendaryPrimaryItem() {}
 
     public int getId() {
@@ -60,6 +64,24 @@ public class UserLegendaryPrimaryItem {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<UserLegendaryPrimaryItemTask> getUserTasks() {
+        return userTasks;
+    }
+
+    public void setUserTasks(List<UserLegendaryPrimaryItemTask> userTasks) {
+        this.userTasks = userTasks;
+    }
+
+    public void addUserTask(UserLegendaryPrimaryItemTask userTask) {
+        userTasks.add(userTask);
+        userTask.setUserPrimaryItem(this);
+    }
+
+    public void removeUserTask(UserLegendaryPrimaryItemTask userTask) {
+        userTasks.remove(userTask);
+        userTask.setUserPrimaryItem(null);
     }
 
     @Override

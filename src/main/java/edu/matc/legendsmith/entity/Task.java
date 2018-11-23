@@ -3,6 +3,8 @@ package edu.matc.legendsmith.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Task.
@@ -22,11 +24,13 @@ public class Task {
 
     private int quantity;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",
         foreignKey = @ForeignKey(name = "Task_legendaryPrimaryItemId_fk"))
     private LegendaryPrimaryItem legendaryPrimaryItem;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<UserLegendaryPrimaryItemTask> userTasks = new ArrayList<>();
 
     /**
      * Instantiates a new Task.
@@ -130,6 +134,23 @@ public class Task {
         this.legendaryPrimaryItem = legendaryPrimaryItem;
     }
 
+    public List<UserLegendaryPrimaryItemTask> getUserTasks() {
+        return userTasks;
+    }
+
+    public void setUserTasks(List<UserLegendaryPrimaryItemTask> userTasks) {
+        this.userTasks = userTasks;
+    }
+
+    public void addUserPrimaryItem(UserLegendaryPrimaryItemTask userTask) {
+        userTasks.add(userTask);
+        userTask.setTask(this);
+    }
+
+    public void removeUserPrimaryItem(UserLegendaryPrimaryItemTask userTask) {
+        userTasks.remove(userTask);
+        userTask.setTask(null);
+    }
 
     @Override
     public boolean equals(Object o) {

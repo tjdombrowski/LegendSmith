@@ -52,6 +52,22 @@ public class UserLegendaryPrimaryItemTask {
         this.dateCompleted = dateCompleted;
     }
 
+    public UserLegendaryPrimaryItem getUserPrimaryItem() {
+        return userPrimaryItem;
+    }
+
+    public void setUserPrimaryItem(UserLegendaryPrimaryItem userPrimaryItem) {
+        this.userPrimaryItem = userPrimaryItem;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

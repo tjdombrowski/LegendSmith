@@ -145,41 +145,6 @@ CREATE TABLE UserLegendaryPrimaryItemTask
   ON DELETE CASCADE
 );
 
--- insert data for UserLegendaryPrimaryItems
-insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
-  1, 1, 50
-);
-
-insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
-  1, 2, 25
-);
-
-insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
-  1, 3, 0
-);
-
-insert INTO UserLegendaryPrimaryItem (legendaryPrimaryItemId, userId, progress) VALUES (
-  1, 4, 80
-);
-
-
--- insert data for UserLegendary
-INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (
-    1,2, 50
-);
-
-INSERT INTO UserLegendary (userId, legendaryId) VALUES (
-  4,2
-);
-
-INSERT INTO UserLegendary (userId, legendaryId) VALUES (
-  2,2
-);
-
-INSERT INTO UserLegendary (userId, legendaryId, progress) VALUES (
-  2,11, 25
-);
-
 -- insert data for User
 INSERT INTO User (username, password) VALUES (
     'valence', 'dancingajnya'
@@ -428,4 +393,89 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
     'Vengeance', 'The second tier precursor of Save The Queen.', 1
 );
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Save the Queen', 'The precursor for The Shining Blade.', 1
+);
 
+-- for the Shining Blade, Gift of the Blade
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Gift of Metal', 'Created in the Mystic Forge. <div class="recipe">Recipe</recipe>', 3
+);
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 3
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+  'Shard of the Crown', 'Crafted by Weaponsmiths. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Queen</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 3, 100
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+  'Mystic Runestone', 'Purchased from Miyani for 1g.', 3, 100
+);
+
+
+-- for the Shining Blade, Mystic Tribute
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Gift of Condensed Magic', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 4, 2
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Gift of Condensed Might', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 4, 2
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Mystic Clover', 'Created in the mystic forge, earned through PvP reward tracks, or from log-in rewards.', 4, 77
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Mystic Coin', 'Earned from log-in rewards or purchasable on the trading post.', 4, 250
+);
+
+-- insert data for PrimaryItem
+-- for The Binding of Ipos (ids 5-6)
+insert into PrimaryItem (name) VALUES(
+  'Ars Goetia'
+);
+
+insert into PrimaryItem (name) VALUES(
+  'Gift of Ipos'
+);
+
+-- insert data for LegendaryPrimaryItem
+-- for the Binding of Ipos (ids 5,6,7,9)
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+  3,11
+);
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+  4,11
+);
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    6,11
+);
+insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    5,11
+);
+
+-- insert data for Task
+-- for the Binding of Ipos, Ars Goetia
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Mark of the Unnamed', 'The first tier precursor of The Binding of Ipos.', 9
+);
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'The True Name', 'The second tier precursor of The Binding of Ipos.', 9
+);
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Ars Goetia', 'The precursor for The Binding of Ipos.', 9
+);
+
+-- for the Binding of Ipos, Gift of Ipos
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Artss</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+  'Mystic Runestone', 'Purchased from Miyani for 1g.', 7, 100
+);
+insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+  'Gift of Energy', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
+);
+-- TODO MAKE SURE THE DATA FOR THE BINDING OF IPOS WITH MYSTIC TRIBUTE AND GIFT OF MAGUUMA IS LINKING PROPERLY
+
+-- insert data for Sunrise

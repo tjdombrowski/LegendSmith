@@ -468,7 +468,7 @@ insert into Task (name, description, legendaryPrimaryItemId) VALUES (
   'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Artss</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
+  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Arts</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
   'Mystic Runestone', 'Purchased from Miyani for 1g.', 7, 100
@@ -476,6 +476,52 @@ insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
   'Gift of Energy', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
 );
--- TODO MAKE SURE THE DATA FOR THE BINDING OF IPOS WITH MYSTIC TRIBUTE AND GIFT OF MAGUUMA IS LINKING PROPERLY
+
+-- for the Binding of Ipos, Mystic Tribute
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+'Gift of Condensed Magic', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Gift of Condensed Might', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Mystic Clover', 'Created in the mystic forge, earned through PvP reward tracks, or from log-in rewards.', 6, 77
+);
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Mystic Coin', 'Earned from log-in rewards or purchasable on the trading post.', 6, 250
+);
+
+-- for The Binding of Ipos, Gift of Maguuma Mastery
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of Insights', 'Mystic Forge Recipe', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+  'Crystalline Ingot', 'recipe', 5, 250
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of the Fleet', 'Obtained upon map completion of Verdant Brink.', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of Tarir', 'Obtained upon map completion of Auric Basin.', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 5
+);
+
+insert into Task (name, description, legendaryPrimaryItemId) values (
+  'Gift of the Jungle', 'Obtained upon map completion of Dragon\'s Stand.', 5
+);
 
 -- insert data for Sunrise

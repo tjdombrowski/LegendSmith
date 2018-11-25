@@ -59,7 +59,7 @@ public class GenericDao<T> {
     }
 
     /**
-     * Get an entity by it's name.
+     * Get an entity by a property as a string.
      *
      * @param searchTerm the search term from the user
      * @return list
@@ -73,6 +73,29 @@ public class GenericDao<T> {
 
         Expression<String> propertyPath = root.get(columnName); //beginning of 'where'
         query.where(builder.like(propertyPath, "%" + searchTerm + "%"));
+
+        List<T> list = session.createQuery(query).getResultList();
+
+        session.close();
+
+        return list;
+    }
+
+    /**
+     * Get an entity by it's name.
+     *
+     * @param searchTerm the search term from the user
+     * @return list
+     */
+    public List<T> getByIntegerProperty(int searchTerm, String columnName) {
+        Session session = getSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+
+        Expression<String> propertyPath = root.get(columnName); //beginning of 'where'
+        query.where(builder.equal(propertyPath, searchTerm));
 
         List<T> list = session.createQuery(query).getResultList();
 

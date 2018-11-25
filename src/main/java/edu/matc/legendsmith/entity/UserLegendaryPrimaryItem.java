@@ -34,6 +34,12 @@ public class UserLegendaryPrimaryItem {
 
     public UserLegendaryPrimaryItem() {}
 
+    public UserLegendaryPrimaryItem(User user, LegendaryPrimaryItem legendaryPrimaryItem, int progress) {
+        this.user = user;
+        this.legendaryPrimaryItem = legendaryPrimaryItem;
+        this.progress = progress;
+    }
+
     public int getId() {
         return id;
     }

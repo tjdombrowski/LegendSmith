@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LegendaryDataTracker {
@@ -47,41 +48,49 @@ public class LegendaryDataTracker {
 
     //TODO GET THIS WORKING AAAAAAA
     public void instantiateAllUserLegendaryData(int userId, int legendaryId) {
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao legendaryDao = new GenericDao(Legendary.class);
+
+        User user = (User) userDao.getById(userId);
+        Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
+
         //Add UserLegendary data
-        instantiateUserLegendary(userId, legendaryId);
+        instantiateUserLegendary(user, legendary);
 
         //Add UserLegendaryPrimaryItem data
-
+        instantiateUserLegendaryPrimaryItem(user, legendary.getId());
 
         //Add UserLegendaryPrimaryItemTask data
 
+
     }
 
-    private void instantiateUserLegendary(int userId, int legendaryId) {
+    private void instantiateUserLegendary(User user, Legendary legendary) {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
 
-        UserLegendaryDataHandler dataHandler = new UserLegendaryDataHandler(UserLegendary.class);
+        UserLegendary userLegendary = new UserLegendary(user, legendary, 0);
+        userLegendaryDao.insert(userLegendary);
 
-        if (dataHandler.checkIfEntryAlreadyExists("user", userId,"legendary", legendaryId)) {
-            //Do nothing if an entry already exists
-        } else {
-            GenericDao userDao = new GenericDao(User.class);
-            GenericDao legendaryDao = new GenericDao(Legendary.class);
 
-            User user = (User) userDao.getById(userId);
-            Legendary legendary = (Legendary) legendaryDao.getById(legendaryId);
+    }
 
-            UserLegendary userLegendary = new UserLegendary(user, legendary, 0);
-            userLegendaryDao.insert(userLegendary);
+    private void instantiateUserLegendaryPrimaryItem(User user, int legendaryId) {
+        GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
+        List<LegendaryPrimaryItem> primaryItems = legendaryPrimaryItemDao.getByIntegerProperty(legendaryId,"legendaryId");
+
+        for (LegendaryPrimaryItem primaryItem : primaryItems) {
+            int primaryItemId = primaryItem.getId();
+
+            GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
+
+            UserLegendaryPrimaryItem userLegendaryPrimaryItem = new UserLegendaryPrimaryItem(user, primaryItem, 0);
+
+            userPrimaryItemDao.insert(userLegendaryPrimaryItem);
+
         }
 
     }
 
-    private void instantiateUserLegendaryPrimaryItem() {
-        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
-
-
-    }
 
 
 

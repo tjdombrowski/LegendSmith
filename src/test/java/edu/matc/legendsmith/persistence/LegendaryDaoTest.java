@@ -41,14 +41,21 @@ class LegendaryDaoTest {
 
     /**
      * Gets legendaries by name success.
-     * TODO Change the code so it retrieves by property and change test accordingly
      */
     @Test
-    void getLegendariesByNameSuccess() {
+    void getLegendariesByPropertySuccess() {
         List<Legendary> legendaries = dao.getByProperty("the", "name");
 
         assertEquals(legendaries.size(), 3);
     }
+
+    @Test
+    void getLegendariesByIntegerProperty() {
+        List<Legendary> legendaries = dao.getByIntegerProperty(1, "id");
+
+        assertEquals(legendaries.size(), 1);
+    }
+
 
     /**
      * Tests whether getting a legendary by its id is successful.

@@ -27,6 +27,12 @@ public class UserLegendaryPrimaryItemTask {
         foreignKey = @ForeignKey(name = "UserLegendPrimItem_fk2"))
     private Task task;
 
+    public UserLegendaryPrimaryItemTask() {}
+
+    public UserLegendaryPrimaryItemTask(UserLegendaryPrimaryItem userPrimaryItem, Task task) {
+        this.userPrimaryItem = userPrimaryItem;
+        this.task = task;
+    }
 
     public int getId() {
         return id;

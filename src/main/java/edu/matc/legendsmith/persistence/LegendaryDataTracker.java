@@ -61,7 +61,7 @@ public class LegendaryDataTracker {
         instantiateUserLegendaryPrimaryItem(user, legendary.getId());
 
         //Add UserLegendaryPrimaryItemTask data
-
+        instantiateUserLegendaryPrimaryItemTask(user);
 
     }
 
@@ -70,7 +70,6 @@ public class LegendaryDataTracker {
 
         UserLegendary userLegendary = new UserLegendary(user, legendary, 0);
         userLegendaryDao.insert(userLegendary);
-
 
     }
 
@@ -91,6 +90,23 @@ public class LegendaryDataTracker {
 
     }
 
+    private void instantiateUserLegendaryPrimaryItemTask(User user) {
+        List<UserLegendaryPrimaryItem> primaryItems = user.getUserPrimaryItems();
+        GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
+
+        //Retrieve each primary item to extract tasks from
+        for (UserLegendaryPrimaryItem userPrimaryItem : primaryItems) {
+            //retrieve each task item for insertion
+            List<Task> tasks = userPrimaryItem.getLegendaryPrimaryItem().getTasks();
+
+            for (Task task : tasks) {
+                UserLegendaryPrimaryItemTask userTask = new UserLegendaryPrimaryItemTask(userPrimaryItem, task);
+
+                userTaskDao.insert(userTask);
+            }
+
+        }
+    }
 
 
 

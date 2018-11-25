@@ -8,9 +8,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Legendary data tracker.
+ */
 public class LegendaryDataTracker {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Update user task status, changing it to 0 for incomplete or 1 for complete, depending on the current status.
+     *
+     * @param userPrimaryItemId the user primary item id
+     * @param taskId            the task id
+     */
     public void updateUserTaskStatus(int userPrimaryItemId, int taskId) {
         GenericDao taskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
 
@@ -45,6 +54,9 @@ public class LegendaryDataTracker {
 
     }
 
+    /**
+     *
+     */
     private void updateProgress() {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
         int totalProgress = 0;
@@ -65,6 +77,12 @@ public class LegendaryDataTracker {
     }
 
 
+    /**
+     * Instantiate all user legendary data.
+     *
+     * @param userId      the user id
+     * @param legendaryId the legendary id
+     */
     public void instantiateAllUserLegendaryData(int userId, int legendaryId) {
         GenericDao userDao = new GenericDao(User.class);
         GenericDao legendaryDao = new GenericDao(Legendary.class);
@@ -83,6 +101,12 @@ public class LegendaryDataTracker {
 
     }
 
+    /**
+     * Instantiates the UserLegendary field.
+     *
+     * @param user
+     * @param legendary
+     */
     private void instantiateUserLegendary(User user, Legendary legendary) {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
 
@@ -91,6 +115,12 @@ public class LegendaryDataTracker {
 
     }
 
+    /**
+     * Instantiates the UserLegendaryPrimaryItem field.
+     *
+     * @param user
+     * @param legendaryId
+     */
     private void instantiateUserLegendaryPrimaryItem(User user, int legendaryId) {
         GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
         List<LegendaryPrimaryItem> primaryItems = legendaryPrimaryItemDao.getByIntegerProperty(legendaryId,"legendary");
@@ -108,6 +138,11 @@ public class LegendaryDataTracker {
 
     }
 
+    /**
+     * Instantiates the UserLegendaryPrimaryItemTask field.
+     *
+     * @param user
+     */
     private void instantiateUserLegendaryPrimaryItemTask(User user) {
         List<UserLegendaryPrimaryItem> primaryItems = user.getUserPrimaryItems();
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);

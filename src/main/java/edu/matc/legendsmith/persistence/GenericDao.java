@@ -82,7 +82,7 @@ public class GenericDao<T> {
     }
 
     /**
-     * Get an entity by it's name.
+     * Get an entity by an integer property. .
      *
      * @param searchTerm the search term from the user
      * @return list

@@ -10,7 +10,7 @@ import java.util.List;
 public class UserLegendary {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 

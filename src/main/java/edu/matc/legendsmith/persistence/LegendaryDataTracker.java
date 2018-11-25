@@ -75,7 +75,7 @@ public class LegendaryDataTracker {
 
     private void instantiateUserLegendaryPrimaryItem(User user, int legendaryId) {
         GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
-        List<LegendaryPrimaryItem> primaryItems = legendaryPrimaryItemDao.getByIntegerProperty(legendaryId,"legendaryId");
+        List<LegendaryPrimaryItem> primaryItems = legendaryPrimaryItemDao.getByIntegerProperty(legendaryId,"legendary");
 
         for (LegendaryPrimaryItem primaryItem : primaryItems) {
             int primaryItemId = primaryItem.getId();

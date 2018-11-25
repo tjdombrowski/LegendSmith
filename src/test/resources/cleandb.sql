@@ -1,3 +1,5 @@
+delete from UserLegendaryPrimaryItemTask;
+delete from UserLegendaryPrimaryItem;
 delete from UserLegendary;
 delete from Task;
 delete from LegendaryPrimaryItem;

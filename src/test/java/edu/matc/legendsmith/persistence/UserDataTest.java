@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,5 +61,42 @@ public class UserDataTest {
 
         //Assert when the value is already 1
         assertEquals(0, userLegendaryPrimaryItemTask.getCompletion());
+    }
+
+    /**
+     *  Tests whether instantiating user data in UserLegendary, UserLegendaryPrimaryItem, and UserLegendaryPrimaryItemTask is successful.
+     */
+    @Test
+    void instantiateUserSuccess() {
+        int userId = 4;
+        int legendaryId = 2;
+
+        legendaryDataTracker.instantiateAllUserLegendaryData(userId, legendaryId);
+
+        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        GenericDao legendaryDao = new GenericDao(Legendary.class);
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao primaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
+        GenericDao taskDao = new GenericDao(Task.class);
+
+        UserLegendaryDataHandler dataHandler = new UserLegendaryDataHandler(UserLegendary.class);
+        UserLegendary userLegendary = (UserLegendary)dataHandler.returnEntityByForeignKeys("user", userId, "legendary",legendaryId);
+
+        assertNotNull(userLegendary);
+        assertEquals(legendaryDao.getById(legendaryId), userLegendary.getLegendary());
+        assertEquals(userDao.getById(userId), userLegendary.getUser());
+
+        dataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItem.class);
+        UserLegendaryPrimaryItem userPrimaryItem = (UserLegendaryPrimaryItem)dataHandler.returnEntityByForeignKeys("user", userId, "legendaryPrimaryItem", 3);
+
+        assertNotNull(userPrimaryItem);
+        assertEquals(primaryItemDao.getById(3), userPrimaryItem.getLegendaryPrimaryItem());
+        assertEquals(userDao.getById(userId), userPrimaryItem.getUser());
+
+        dataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItemTask.class);
+        UserLegendaryPrimaryItemTask task = (UserLegendaryPrimaryItemTask)dataHandler.returnEntityByForeignKeys("task", 1, "userPrimaryItem", userPrimaryItem.getId());
+
+        assertNotNull(task);
+        assertEquals(taskDao.getById(1), task.getTask());
     }
 }

@@ -25,12 +25,12 @@
                         <tr>
                             <th>Name</th>
                         </tr>
-                    </thead>
+                    </thead>ss
                     <tbody>
                         <c:forEach var="legendary" items="${legendaries}">
                             <tr>
                                 <!-- TODO picture should link to the page -->
-                                <td><a href="/legendsmith/legendary?id=${legendary.id}">${legendary.name}</a></td>
+                                <td><a href="/legendsmith/legendary?legendaryId=${legendary.id}">${legendary.name}</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>

@@ -43,7 +43,7 @@ public class RetrieveLegendaryData extends HttpServlet {
         String username = req.getUserPrincipal().getName();
 
         int legendaryId = 0;
-        legendaryId = Integer.parseInt(req.getParameter("id"));
+        legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
 
         if (req.getUserPrincipal() == null || username.isEmpty()) {
 

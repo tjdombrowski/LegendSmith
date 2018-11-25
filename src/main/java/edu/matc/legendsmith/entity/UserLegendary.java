@@ -30,6 +30,12 @@ public class UserLegendary {
 
     public UserLegendary() {}
 
+    public UserLegendary(User user, Legendary legendary, int progress) {
+        this.user = user;
+        this.legendary = legendary;
+        this.progress = progress;
+    }
+
     public int getId() {
         return id;
     }

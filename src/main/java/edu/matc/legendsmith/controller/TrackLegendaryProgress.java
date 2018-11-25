@@ -51,10 +51,18 @@ public class TrackLegendaryProgress extends HttpServlet {
             UserLegendaryDataHandler userPrimaryItemHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItem.class);
             UserLegendaryPrimaryItem userPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemHandler.returnEntityByForeignKeys("user", userId, "legendaryPrimaryItem", legendaryPrimeItemId);
 
-            //Update user task data
             LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
 
+            //If there is no user primary item, assume that the user has not yet started this legendary and instantiate everything
+            if (userPrimaryItem == null) {
+                legendaryDataTracker.instantiateAllUserLegendaryData(userId, legendaryId);
+            }
+
+            //Update user task data
             legendaryDataTracker.updateUserTaskStatus(userPrimaryItem.getId(),taskId);
+
+        } else {
+            //
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");

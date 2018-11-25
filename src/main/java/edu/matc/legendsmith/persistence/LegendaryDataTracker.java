@@ -12,7 +12,6 @@ public class LegendaryDataTracker {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     public void updateUserTaskStatus(int userPrimaryItemId, int taskId) {
-
         GenericDao taskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
 
         UserLegendaryDataHandler userLegendaryDataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItemTask.class);
@@ -24,8 +23,6 @@ public class LegendaryDataTracker {
 
         if (userTask == null) {
             logger.error("Failed to update task data: No userTask was retrieved. userPrimaryItemId: " + userPrimaryItemId);
-            //Insert operation
-
         } else {
             int completion = userTask.getCompletion();
 

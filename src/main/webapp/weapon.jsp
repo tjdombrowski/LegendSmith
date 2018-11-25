@@ -23,9 +23,7 @@
                 <h3>${legendaryPrimaryItem.primaryItem.name}</h3>
                 <div class="accordion">
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}">
-                            <h5>${task.name}
-
-                            </h5>
+                            <h5>${task.name}</h5>
                             <div>${task.description}<br />
                                 <a href="/legendsmith/taskMarkOff?userId=${userData.id}&legendaryId=${legendaryData.id}&primaryItemId=${legendaryPrimaryItem.primaryItem.id}&taskId=${task.id}">
                                 <button class="btn btn-sm">Done</button>
@@ -36,7 +34,6 @@
             </div>
         </c:forEach>
     </div>
-
 
 
 

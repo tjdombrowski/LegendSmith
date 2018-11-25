@@ -39,11 +39,32 @@ public class LegendaryDataTracker {
             }
 
             taskDao.saveOrUpdate(userTask);
+
+
         }
 
     }
 
-    //TODO GET THIS WORKING AAAAAAA
+    private void updateProgress() {
+        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        int totalProgress = 0;
+
+        //Retrieve a total list of the tasks for a primary item
+
+        //Retrieve a total of all the tasks the user has completed for that item
+
+        //Divide and round up
+
+        //Set progress for the primaryItem
+
+        //Calculate the total progress based off the primary items x4 / 4, rounded up
+
+        //Set the total progress
+
+
+    }
+
+
     public void instantiateAllUserLegendaryData(int userId, int legendaryId) {
         GenericDao userDao = new GenericDao(User.class);
         GenericDao legendaryDao = new GenericDao(Legendary.class);

@@ -18,21 +18,28 @@
 
     <!-- Items -->
     <div class="row">
-        <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
-            <div class="col-md-5">
-                <h3>${legendaryPrimaryItem.primaryItem.name}</h3>
-                <div class="accordion">
-                        <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}">
+        <div id="itemTabs" class="col-md-12">
+            <!-- set the tab titles -->
+            <ul>
+            <c:set var="counter1" value="0" scope="page" />
+            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
+                <c:set var="counter1" value="${counter1 + 1}" scope="page" />
+                <li><a href="#tab${counter1}">${legendaryPrimaryItem.primaryItem.name}</a></li>
+            </c:forEach>
+            </ul>
+
+            <!-- set the tab contents -->
+            <c:set var="counter2" value="0" scope="page" />
+            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
+                <c:set var="counter2" value="${counter2 + 1}" scope="page" />
+                <div id="tab${counter2}">
+                    <div>
+                        <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}" >
                             <h5>${task.name}</h5>
-                            <div>${task.description}<br />
-                                <a href="/legendsmith/taskMarkOff?userId=${userData.id}&legendaryId=${legendaryData.id}&primaryItemId=${legendaryPrimaryItem.primaryItem.id}&taskId=${task.id}">
-                                <button class="btn btn-sm">Done</button>
-                                </a>
-                            </div>
                         </c:forEach>
+                    </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
     </div>
 
 
@@ -42,11 +49,41 @@
 
 <!-- JQuery UI Script -->
 <script>
+    /*
     $( function() {
         $( ".accordion" ).accordion({
             collapsible: true
         });
     } );
+
+    $( function() {
+        $( "#itemTabs" ).tabs();
+    } );
+
+    $(function() {
+        $("#1").click(function(){
+            $("#accordion1").toggle();
+        });
+    });
+
+    $(function() {
+        $("#2").click(function(){
+            $("#accordion2").toggle();
+        });
+    });
+
+    $(function() {
+        $("#3").click(function(){
+            $("#accordion3").toggle();
+        });
+    });
+
+    $(function() {
+        $("#4").click(function(){
+            $("#accordion4").toggle();
+        });
+    });
+    */
 </script>
 
 

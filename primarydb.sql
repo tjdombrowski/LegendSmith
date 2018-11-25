@@ -399,16 +399,16 @@ insert into Task (name, description, legendaryPrimaryItemId) VALUES (
 
 -- for the Shining Blade, Gift of the Blade
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Gift of Metal', 'Created in the Mystic Forge. <div class="recipe">Recipe</recipe>', 3
+  'Gift of Metal', 'Created in the Mystic Forge. <div class="recipe">Recipe</recipe>', 2
 );
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 3
+  'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 2
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Shard of the Crown', 'Crafted by Weaponsmiths. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Queen</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 3, 100
+  'Shard of the Crown', 'Crafted by Weaponsmiths. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Queen</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 2, 100
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Mystic Runestone', 'Purchased from Miyani for 1g.', 3, 100
+  'Mystic Runestone', 'Purchased from Miyani for 1g.', 2, 100
 );
 
 
@@ -437,7 +437,7 @@ insert into PrimaryItem (name) VALUES(
 );
 
 -- insert data for LegendaryPrimaryItem
--- for the Binding of Ipos (ids 5,6,7,9)
+-- for the Binding of Ipos (ids 5,6,7,8)
 insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
   3,11
 );
@@ -454,13 +454,13 @@ insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
 -- insert data for Task
 -- for the Binding of Ipos, Ars Goetia
 insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Mark of the Unnamed', 'The first tier precursor of The Binding of Ipos.', 9
+  'Mark of the Unnamed', 'The first tier precursor of The Binding of Ipos.', 8
 );
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'The True Name', 'The second tier precursor of The Binding of Ipos.', 9
+  'The True Name', 'The second tier precursor of The Binding of Ipos.', 8
 );
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Ars Goetia', 'The precursor for The Binding of Ipos.', 9
+  'Ars Goetia', 'The precursor for The Binding of Ipos.', 8
 );
 
 -- for the Binding of Ipos, Gift of Ipos

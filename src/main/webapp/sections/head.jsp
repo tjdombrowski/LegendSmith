@@ -4,13 +4,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- jquery ui -->
-    <link href="jquieryui/jquery-ui.css" rel="stylesheet">
-    <link href="jquieryui/jquery-ui.structure.css" rel="stylesheet">
-    <script src="jqueryui/external/jquery/jquery-3.3.1.js"></script>
-    <script src="jqueryui/jquery-ui.js"></script>
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <link href="jquery/jquery-ui.css" rel="stylesheet">
+    <link href="jquery/jquery-ui.structure.css" rel="stylesheet">
     <!-- data tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <!-- -->
+    <link href="jquery/jquery-ui.theme.css">
     <!-- personal style sheet -->
     <link rel="stylesheet" href="css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">

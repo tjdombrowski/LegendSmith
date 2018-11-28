@@ -399,7 +399,7 @@ insert into Task (name, description, legendaryPrimaryItemId) VALUES (
 
 -- for the Shining Blade, Gift of the Blade
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Gift of Metal', 'Created in the Mystic Forge. <div class="recipe">Recipe</recipe>', 2
+  'Gift of Metal', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 2
 );
 insert into Task (name, description, legendaryPrimaryItemId) VALUES (
   'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 2
@@ -497,7 +497,7 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of Insights', 'Mystic Forge Recipe', 5
+  'Gift of Insights', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 5
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (
@@ -505,7 +505,7 @@ insert into Task (name, description, legendaryPrimaryItemId) values (
 );
 
 insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Crystalline Ingot', 'recipe', 5, 250
+  'Crystalline Ingot', 'Crafted by weaponsmiths. <div class="recipe">Recipe</div>', 5, 250
 );
 
 insert into Task (name, description, legendaryPrimaryItemId) values (

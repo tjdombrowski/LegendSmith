@@ -6,12 +6,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="jquieryui/jquery-ui.css" rel="stylesheet">
-    <link href="jquieryui/jquery-ui.structure.css" rel="stylesheet">
+    <link href="jquery/jquery-ui.css" rel="stylesheet">
+    <link href="jquery/jquery-ui.structure.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="jqueryui/external/jquery/jquery-3.3.1.js"></script>
-    <script src="jqueryui/jquery-ui.js"></script>
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
     <title>Legendsmith</title>
 </head>
 

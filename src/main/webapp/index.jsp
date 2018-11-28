@@ -18,14 +18,14 @@
             <div class="col-sm-5">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores, autem consequuntur dolore ea illum incidunt magni minima minus nemo nesciunt nihil obcaecati porro reiciendis reprehenderit sed veritatis voluptas voluptatem?
             </div>
-            <!-- Legendaries being worked on OR any being searched by the user are displayed here-->
+
             <div class="col-sm-5">
                 <table id="dataTable" class="display">
                     <thead>
                         <tr>
                             <th>Name</th>
                         </tr>
-                    </thead>ss
+                    </thead>
                     <tbody>
                         <c:forEach var="legendary" items="${legendaries}">
                             <tr>

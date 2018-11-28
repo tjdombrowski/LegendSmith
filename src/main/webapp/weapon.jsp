@@ -33,13 +33,15 @@
             <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
                 <c:set var="counter2" value="${counter2 + 1}" scope="page" />
                 <div id="tab${counter2}">
-                    <div>
+                    <div class="accordion">
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}" >
                             <h5>${task.name}</h5>
+                            <div>${task.description}</div>
                         </c:forEach>
                     </div>
                 </div>
             </c:forEach>
+        </div>
     </div>
 
 
@@ -49,7 +51,7 @@
 
 <!-- JQuery UI Script -->
 <script>
-    /*
+
     $( function() {
         $( ".accordion" ).accordion({
             collapsible: true
@@ -60,30 +62,7 @@
         $( "#itemTabs" ).tabs();
     } );
 
-    $(function() {
-        $("#1").click(function(){
-            $("#accordion1").toggle();
-        });
-    });
 
-    $(function() {
-        $("#2").click(function(){
-            $("#accordion2").toggle();
-        });
-    });
-
-    $(function() {
-        $("#3").click(function(){
-            $("#accordion3").toggle();
-        });
-    });
-
-    $(function() {
-        $("#4").click(function(){
-            $("#accordion4").toggle();
-        });
-    });
-    */
 </script>
 
 

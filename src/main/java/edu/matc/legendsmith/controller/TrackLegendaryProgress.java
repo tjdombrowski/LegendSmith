@@ -37,32 +37,27 @@ public class TrackLegendaryProgress extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //User data
-        int userId = Integer.parseInt(req.getParameter("userTaskId"));
-        int primaryItemId = Integer.parseInt(req.getParameter("primaryItemId"));
-        int legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
-        int taskId = Integer.parseInt(req.getParameter("taskId"));
+        int userTaskId = Integer.parseInt(req.getParameter("userTaskId"));
 
-        UserLegendaryDataHandler legPrimaryItemHandler = new UserLegendaryDataHandler(LegendaryPrimaryItem.class);
-        LegendaryPrimaryItem legendaryPrimaryItem = (LegendaryPrimaryItem)legPrimaryItemHandler.returnEntityByForeignKeys("legendary", legendaryId, "primaryItem", primaryItemId);
+        LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
 
-        if (legendaryPrimaryItem != null) {
-            int legendaryPrimeItemId = legendaryPrimaryItem.getId();
-
-            UserLegendaryDataHandler userPrimaryItemHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItem.class);
-            UserLegendaryPrimaryItem userPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemHandler.returnEntityByForeignKeys("user", userId, "legendaryPrimaryItem", legendaryPrimeItemId);
-
-            LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
-
-            //If there is no user primary item, assume that the user has not yet started this legendary and instantiate everything
-            if (userPrimaryItem == null) {
-                legendaryDataTracker.instantiateAllUserLegendaryData(userId, legendaryId);
-            }
-
+        if (userTaskId != 0) {
             //Update user task data
-            legendaryDataTracker.updateUserTaskStatus(userPrimaryItem.getId(),taskId);
+            legendaryDataTracker.updateUserTaskStatus(userTaskId);
 
         } else {
-            //
+            //If there is no user task data, assume that the user has not yet started this legendary and instantiate everything
+
+            //Retrieve User
+            String username = req.getUserPrincipal().getName();
+            GenericDao userDao = new GenericDao(User.class);
+            List<User> users = userDao.getByProperty(username, "username");
+            User user = users.get(0);
+
+            int legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
+
+            //Instantiate everything using the user id and legendary id
+            legendaryDataTracker.instantiateAllUserLegendaryData(user.getId(), legendaryId);
         }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");

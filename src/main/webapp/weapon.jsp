@@ -31,11 +31,10 @@
             <!-- set the tab contents -->
             <c:set var="counter2" value="0" scope="page" />
             <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
-                <c:forEach var="userPrimaryItem" items="${user.getUserPrimaryItems()}">
-                    <c:if test="${userPrimaryItem.getLegendaryPrimaryItem.id == legendaryPrimaryItem.id}">
-                        <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem.id}" scope="page" />
+                <c:forEach var="userPrimaryItem" items="${userData.getUserPrimaryItems()}">
+                    <c:if test="${userPrimaryItem.legendaryPrimaryItem.id == legendaryPrimaryItem.id}">
+                        <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem}" scope="page" />
                     </c:if>
-                    <c:set var="userPrimaryItem" value="${user.getUserPrimaryItems().get(primaryItemStatus.index)}" scope="page" />
                 </c:forEach>
                 <c:set var="counter2" value="${counter2 + 1}" scope="page" />
                 <div id="tab${counter2}">
@@ -44,7 +43,7 @@
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}" varStatus="taskStatus">
                             <h5>${task.name}</h5>
                             <div>${task.description}
-                                <c:set var="userTaskId" value="${userPrimaryItem.getUserTasks.get(taskStatus.index).id}" />
+                                <c:set var="userTaskId" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index).id}" />
                                 ${userTaskId} and ${task.id}
                                 <br>
                                 <a href="/legendsmith/taskMarkOff?userId=${userData.id}&legendaryId=${legendaryData.id}&primaryItemId=${legendaryPrimaryItem.primaryItem.id}&taskId=${task.id}">

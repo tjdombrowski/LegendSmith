@@ -37,7 +37,7 @@ public class TrackLegendaryProgress extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //User data
-        int userId = Integer.parseInt(req.getParameter("userId"));
+        int userId = Integer.parseInt(req.getParameter("userTaskId"));
         int primaryItemId = Integer.parseInt(req.getParameter("primaryItemId"));
         int legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
         int taskId = Integer.parseInt(req.getParameter("taskId"));

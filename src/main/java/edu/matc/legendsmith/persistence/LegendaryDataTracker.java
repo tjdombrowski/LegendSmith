@@ -17,21 +17,16 @@ public class LegendaryDataTracker {
     /**
      * Update user task status, changing it to 0 for incomplete or 1 for complete, depending on the current status.
      *
-     * @param userPrimaryItemId the user primary item id
-     * @param taskId            the task id
+     * @param userTaskId the user's task's id
      */
-    public void updateUserTaskStatus(int userPrimaryItemId, int taskId) {
+    public void updateUserTaskStatus(int userTaskId) {
         GenericDao taskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
 
-        UserLegendaryDataHandler userLegendaryDataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItemTask.class);
-
-        UserLegendaryPrimaryItemTask userTask;
-
-        userTask = (UserLegendaryPrimaryItemTask)userLegendaryDataHandler.returnEntityByForeignKeys("userPrimaryItem", userPrimaryItemId, "task", taskId);
+        UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.getById(userTaskId);
 
 
         if (userTask == null) {
-            logger.error("Failed to update task data: No userTask was retrieved. userPrimaryItemId: " + userPrimaryItemId);
+            logger.error("Failed to update task data: No userTask was retrieved. Given id: " + userTaskId);
         } else {
             int completion = userTask.getCompletion();
 

@@ -43,10 +43,9 @@
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}" varStatus="taskStatus">
                             <h5>${task.name}</h5>
                             <div>${task.description}
-                                <c:set var="userTaskId" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index).id}" />
-                                ${userTaskId} and ${task.id}
+                                <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
                                 <br>
-                                <a href="/legendsmith/taskMarkOff?userId=${userData.id}&legendaryId=${legendaryData.id}&primaryItemId=${legendaryPrimaryItem.primaryItem.id}&taskId=${task.id}">
+                                <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}">
                                     <button class="btn btn-sm btn-dark">Done</button>
                                 </a>
                             </div>

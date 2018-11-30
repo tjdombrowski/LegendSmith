@@ -32,6 +32,9 @@ public class Task {
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<UserLegendaryPrimaryItemTask> userTasks = new ArrayList<>();
 
+
+    private List<TaskItem> taskItems = new ArrayList<>();
+
     /**
      * Instantiates a new Task.
      */

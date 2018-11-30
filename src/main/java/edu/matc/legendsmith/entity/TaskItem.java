@@ -14,8 +14,16 @@ public class TaskItem {
 
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "taskId",
+        foreignKey = @ForeignKey(name = "TaskItem_taskId_fk")
+    )
     private Task task;
 
+    @ManyToOne
+    @JoinColumn(name = "gw2ItemId",
+        foreignKey = @ForeignKey(name = "TaskItem_gw2ItemId_fk")
+    )
     private Item item;
 
     public TaskItem() {}

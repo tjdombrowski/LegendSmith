@@ -13,6 +13,7 @@ public class Item {
 
     private String name;
 
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TaskItem> taskItems = new ArrayList<>();
 
     public Item() {}

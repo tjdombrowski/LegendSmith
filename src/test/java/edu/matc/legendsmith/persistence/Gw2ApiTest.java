@@ -36,7 +36,7 @@ class Gw2ApiTest {
         -Amalgamated Gemstones              68063
         -T5 ingredients (bones for ?)
             -large bones                    24341
-            -incandescent dust ngs                    24356
+            -incandescent dust              24356
             -large claws                    24350
             -intricate totems               24299
             -potent venom sacs              24282

@@ -92,4 +92,12 @@ class TaskTest {
 
         assertNull(taskDao.getById(1));
     }
+
+    /**
+     * Tests whether retrieving the task's items is a sucess.
+     */
+    @Test
+    void retrieveTaskItemsSuccess() {
+        Task task = (Task)taskDao.getById(4);
+    }
 }

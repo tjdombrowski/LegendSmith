@@ -71,22 +71,8 @@ public class RetrieveLegendaryData extends HttpServlet {
             UserLegendary userLegendary = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
 
             //If there is no result, then the user has not started this legendary yet
-            if (userLegendary == null) {
+            if (userLegendary != null) {
                 req.setAttribute("userLegendaryData", userLegendary);
-
-                //Retrieve User Primary Item data for this legendary
-                List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();
-
-                List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems;
-
-                for (UserLegendaryPrimaryItem item : userPrimaryItems
-                     ) {
-                    if (item.getLegendaryPrimaryItem().getId() == 0) {
-
-                    }
-                }
-
-                req.setAttribute("primaryItemData", userPrimaryItems);
             }
 
         }

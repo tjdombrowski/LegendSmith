@@ -32,7 +32,7 @@ public class Task {
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<UserLegendaryPrimaryItemTask> userTasks = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TaskItem> taskItems = new ArrayList<>();
 
     /**
@@ -129,30 +129,78 @@ public class Task {
     }
 
 
+    /**
+     * Gets legendary primary item.
+     *
+     * @return the legendary primary item
+     */
     public LegendaryPrimaryItem getLegendaryPrimaryItem() {
         return legendaryPrimaryItem;
     }
 
+    /**
+     * Sets legendary primary item.
+     *
+     * @param legendaryPrimaryItem the legendary primary item
+     */
     public void setLegendaryPrimaryItem(LegendaryPrimaryItem legendaryPrimaryItem) {
         this.legendaryPrimaryItem = legendaryPrimaryItem;
     }
 
+    /**
+     * Gets user tasks.
+     *
+     * @return the user tasks
+     */
     public List<UserLegendaryPrimaryItemTask> getUserTasks() {
         return userTasks;
     }
 
+    /**
+     * Sets user tasks.
+     *
+     * @param userTasks the user tasks
+     */
     public void setUserTasks(List<UserLegendaryPrimaryItemTask> userTasks) {
         this.userTasks = userTasks;
     }
 
+    /**
+     * Add user primary item.
+     *
+     * @param userTask the user task
+     */
     public void addUserPrimaryItem(UserLegendaryPrimaryItemTask userTask) {
         userTasks.add(userTask);
         userTask.setTask(this);
     }
 
+    /**
+     * Remove user primary item.
+     *
+     * @param userTask the user task
+     */
     public void removeUserPrimaryItem(UserLegendaryPrimaryItemTask userTask) {
         userTasks.remove(userTask);
         userTask.setTask(null);
+    }
+
+    public List<TaskItem> getTaskItems() {
+        return taskItems;
+    }
+
+    public void setTaskItems(List<TaskItem> taskItems) {
+        this.taskItems = taskItems;
+    }
+
+    public void addTaskItem(TaskItem taskItem) {
+        taskItems.add(taskItem);
+        taskItem.setTask(this);
+    }
+
+    public void removeTaskItem(TaskItem taskItem) {
+        taskItems.remove(taskItem);
+        taskItem.setTask(null);
     }
 
     @Override

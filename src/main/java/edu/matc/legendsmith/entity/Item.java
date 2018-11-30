@@ -41,6 +41,16 @@ public class Item {
         this.taskItems = taskItems;
     }
 
+    public void addTaskItem(TaskItem taskItem) {
+        taskItems.add(taskItem);
+        taskItem.setItem(this);
+    }
+
+    public void removeTaskItem(TaskItem taskItem) {
+        taskItems.remove(taskItem);
+        taskItem.setItem(null);
+    }
+
     @Override
     public String toString() {
         return "Item{" +

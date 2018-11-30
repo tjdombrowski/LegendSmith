@@ -36,18 +36,13 @@ public class TrackLegendaryProgress extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //User data
-        int userTaskId = Integer.parseInt(req.getParameter("userTaskId"));
-
         LegendaryDataTracker legendaryDataTracker = new LegendaryDataTracker();
 
-        if (userTaskId != 0) {
-            //Update user task data
-            legendaryDataTracker.updateUserTaskStatus(userTaskId);
+        int userTaskId = 0;
+        int taskId = Integer.parseInt(req.getParameter("taskId"));
 
-        } else {
+        if (req.getParameter("userTaskId").isEmpty()) {
             //If there is no user task data, assume that the user has not yet started this legendary and instantiate everything
-
             //Retrieve User
             String username = req.getUserPrincipal().getName();
             GenericDao userDao = new GenericDao(User.class);
@@ -58,7 +53,31 @@ public class TrackLegendaryProgress extends HttpServlet {
 
             //Instantiate everything using the user id and legendary id
             legendaryDataTracker.instantiateAllUserLegendaryData(user.getId(), legendaryId);
+
+            //Retrieve and set the taskId
+            List<UserLegendaryPrimaryItem> userPrimaryItems = user.getUserPrimaryItems();
+            GenericDao taskDao = new GenericDao(Task.class);
+            Task task = (Task)taskDao.getById(taskId);
+            int userItemId = 0;
+
+            //Finds the UserLegendaryPrimaryItemTask
+            for (UserLegendaryPrimaryItem userPrimaryItem : userPrimaryItems) {
+                if (userPrimaryItem.getLegendaryPrimaryItem().getId() == task.getLegendaryPrimaryItem().getId()) {
+                    userItemId = userPrimaryItem.getId();
+                }
+            }
+
+            UserLegendaryDataHandler dataHandler = new UserLegendaryDataHandler(UserLegendaryPrimaryItemTask.class);
+            UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask) dataHandler.returnEntityByForeignKeys("task", taskId, "userPrimaryItem", userItemId);
+
+            userTaskId = userTask.getId();
+
+        } else {
+            //Set the taskId from the parameter
+            userTaskId = Integer.parseInt(req.getParameter("userTaskId"));
         }
+        //Update user task data
+        legendaryDataTracker.updateUserTaskStatus(userTaskId);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");
         dispatcher.forward(req, resp);

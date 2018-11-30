@@ -49,14 +49,14 @@ public class UserDataTest {
 
     @Test
     void updateUserTaskStatusSuccess() {
-        legendaryDataTracker.updateUserTaskStatus(2, 1);
+        legendaryDataTracker.updateUserTaskStatus(2);
         GenericDao dao = new GenericDao(UserLegendaryPrimaryItemTask.class);
         UserLegendaryPrimaryItemTask userLegendaryPrimaryItemTask = (UserLegendaryPrimaryItemTask)dao.getById(2);
 
         //Assert when the value is already 0
         assertEquals(1, userLegendaryPrimaryItemTask.getCompletion());
 
-        legendaryDataTracker.updateUserTaskStatus(2, 1);
+        legendaryDataTracker.updateUserTaskStatus(2);
         userLegendaryPrimaryItemTask = (UserLegendaryPrimaryItemTask)dao.getById(2);
 
         //Assert when the value is already 1

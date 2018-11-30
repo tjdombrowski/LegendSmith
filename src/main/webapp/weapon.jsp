@@ -45,7 +45,7 @@
                             <div>${task.description}
                                 <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
                                 <br>
-                                <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}">
+                                <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">
                                     <button class="btn btn-sm btn-dark">Done</button>
                                 </a>
                             </div>

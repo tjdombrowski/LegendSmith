@@ -24,7 +24,6 @@ public class LegendaryDataTracker {
 
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)taskDao.getById(userTaskId);
 
-
         if (userTask == null) {
             logger.error("Failed to update task data: No userTask was retrieved. Given id: " + userTaskId);
         } else {

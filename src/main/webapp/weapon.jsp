@@ -46,7 +46,17 @@
                                 <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
                                 <br>
                                 <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">
-                                    <button class="btn btn-sm btn-dark">Done</button>
+                                    <c:choose>
+                                        <c:when test="${userTask == null || userTask.completion == 0}">
+                                            <button class="btn btn-sm btn-dark">Done</button>
+                                        </c:when>
+                                        <c:when test="${userTask.completion == 1}">
+                                            <button class="btn btn-sm btn-dark">Reset</button>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button class="btn btn-sm btn-dark">Done</button>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </a>
                             </div>
                         </c:forEach>

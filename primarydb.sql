@@ -2,6 +2,8 @@ drop table UserRole;
 drop table UserLegendaryPrimaryItemTask;
 drop table UserLegendaryPrimaryItem;
 drop table UserLegendary;
+drop table ItemTask;
+drop table Item;
 drop table Task;
 drop table LegendaryPrimaryItem;
 drop table User;
@@ -43,7 +45,7 @@ CREATE TABLE User
 (
   id       INT         NOT NULL
   AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(20) NULL,
+  username VARCHAR(20) NULL unique,
   password VARCHAR(20) NULL
 );
 
@@ -94,6 +96,21 @@ CREATE TABLE Task
   CONSTRAINT Task_prerequisite_fk
   FOREIGN KEY (prerequisite) REFERENCES Task (id)
   ON DELETE CASCADE
+);
+
+CREATE TABLE Item
+(
+  gw2ItemId int PRIMARY KEY,
+  name VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE TaskItem (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  gw2ItemId int,
+  taskId int,
+  quantity int default 1,
+  CONSTRAINT TaskItem_gw2ItemId_fk FOREIGN KEY (gw2ItemId) REFERENCES Item (gw2ItemId) ON DELETE CASCADE,
+  CONSTRAINT TaskItem_taskId_fk FOREIGN KEY (taskId) REFERENCES Task (id) ON DELETE CASCADE
 );
 
 
@@ -170,6 +187,10 @@ INSERT INTO User (username, password) VALUES (
   'sophrosyne', 'shieldandsword'
 );
 
+INSERT INTO User (username, password) VALUES (
+  'lex', 'cocoahooves'
+);
+
 
 -- insert data for UserRole
 INSERT into UserRole (id, userId, role, username) VALUES (
@@ -188,7 +209,10 @@ INSERT into UserRole (id, userId, role, username) VALUES (
   5, 5, 'user', 'ajnya'
 );
 INSERT into UserRole (id, userId, role, username) VALUES (
-  7, 6, 'user', 'sophrosyne'
+  6, 6, 'user', 'sophrosyne'
+);
+INSERT into UserRole (id, userId, role, username) VALUES (
+  7, 7, 'user', 'lex'
 );
 
 
@@ -405,7 +429,7 @@ insert into Task (name, description, legendaryPrimaryItemId) VALUES (
   'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 2
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Shard of the Crown', 'Crafted by Weaponsmiths. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Queen</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 2, 100
+  'Shard of the Crown', 'Crafted by Weaponsmiths. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Queen</li><li>1 Mystic Curio</li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 2, 100
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
   'Mystic Runestone', 'Purchased from Miyani for 1g.', 2, 100
@@ -426,6 +450,48 @@ insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
   'Mystic Coin', 'Earned from log-in rewards or purchasable on the trading post.', 4, 250
 );
 
+-- Item data
+insert into Item (name, gw2ItemId) VALUES (
+  'Mithril Ingot', 19684
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Elder Wood Plank', 19709
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Platinum Ingot', 19686
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Orichalcum Ingot', 19685
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Iron Ingot', 19683
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Darksteel Ingot', 19681
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Deldrimor Steel Ingot', 46738
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Amalgamated Gemstone', 68063
+);
+insert into Item (name, gw2ItemId) VALUES (
+  'Mystic Coin', 19976
+);
+
+-- ItemTask data for The Shining Blade
+insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+  19976,30, 1
+);
+insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+  19976,19, 1
+);
+insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+  68063, 4, 1
+);
+
+
+-- --------------------------------------------------------------------------------------------------------------------
 -- insert data for PrimaryItem
 -- for The Binding of Ipos (ids 5-6)
 insert into PrimaryItem (name) VALUES(

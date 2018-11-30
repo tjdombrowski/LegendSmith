@@ -18,23 +18,35 @@ class Gw2ApiTest {
     @Test
     public void testRetrieveGw2ItemResponse() throws Exception {
         /*
-        I will want data on the following:
-        -Elder Wood Planks
-        -Mithril Ingots
-        -Amalgamated Gemstones
+        TODO: I will want data on the following:
+        -Elder Wood Planks                  19709
+        -Mithril Ingots                     19684
+        -Orichalcum Ingots                  19685
+        -Platinum Ingots                    19686
+        -Darksteel Ingots                   19681
+        -Iron Ingots                        19683
+        -Deldrimor Steel Ingots             46738
+        -Mystic Coins                       19976
+        -Amalgamated Gemstones              68063
         -T5 ingredients (bones for ?)
+            -large bones                    24341
+            -incandescent dust              24276
+            -vial of potent blood           24294
+            -large fangs                    24356
+            -large claws                    24350
+            -intricate totems               24299
+            -potent venom sacs              24282
+            -large scales                   24288
         -T6 ingredients
         -T4 mats
         -t3 mats
-        -Orichalcum Ingots
-        -Platinum Ingots
-        -Mystic Coins
+
 
 
         Client client = ClientBuilder.newClient();
 
         WebTarget target =
-                client.target("https://api.guildwars2.com/v2/minis/424");
+                client.target("https://api.guildwars2.com/v2/commerce/prices/ID");
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
 
         ObjectMapper mapper = new ObjectMapper();

@@ -65,6 +65,9 @@ class Gw2ApiTest {
 
     }
 
+    /**
+     * Tests whether a sell order price is properly retrieved with Gw2ApiUser.
+     */
     @Test
     public void testSellOrderResponseMethod() {
         Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
@@ -75,6 +78,10 @@ class Gw2ApiTest {
         assertNotEquals(0, price);
     }
 
+    /**
+     * Tests whether retrieving the API's sell order price and converting it into gold, silver, and copper as an ItemPrice
+     * works correctly.
+     */
     @Test
     public void testItemPriceConversionFromSellPrice() {
         Gw2ApiUser gw2ApiUser = new Gw2ApiUser();

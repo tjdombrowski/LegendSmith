@@ -25,10 +25,8 @@
         <div id="itemTabs" class="col-md-12">
             <!-- set the tab titles -->
             <ul>
-            <c:set var="counter1" value="0" scope="page" />
-            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}">
-                <c:set var="counter1" value="${counter1 + 1}" scope="page" />
-                <li><a href="#tab${counter1}">${legendaryPrimaryItem.primaryItem.name}</a></li>
+            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
+                <li><a href="#tab${primaryItemStatus}">${legendaryPrimaryItem.primaryItem.name}</a></li>
             </c:forEach>
             </ul>
 
@@ -43,13 +41,26 @@
                 <c:set var="counter2" value="${counter2 + 1}" scope="page" />
                 <div id="tab${counter2}">
                     <h2>${userPrimaryItem.getPrimaryItem.name}</h2>
-                    <div class="accordion">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Quantity</td>
+                                <td>Description</td>
+                                <td>Estimated Cost</td>
+                                <td><!-- Consider putting a complete all button here --></td>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <c:forEach var="task" items="${legendaryPrimaryItem.getTasks()}" varStatus="taskStatus">
-                            <h5>${task.name}</h5>
-                            <div>${task.description}
-                                <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
-                                <br>
-                                <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">
+                            <tr>
+                                <td>${task.name}</td>
+                                <td>${task.quantity}</td>
+                                <td>${task.description}</td>
+                                <td>Cost!!!OH NOOO</td>
+                                <td>
+                                    <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
+                                    <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">
                                     <c:choose>
                                         <c:when test="${userTask == null || userTask.completion == 0}">
                                             <button class="btn btn-sm btn-dark">Done</button>
@@ -62,9 +73,13 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </a>
-                            </div>
-                        </c:forEach>
-                    </div>
+                                </td>
+                            </tr>
+                            </c:forEach>
+                        </tbody>
+
+
+                    </table>
                 </div>
             </c:forEach>
         </div>

@@ -1,12 +1,23 @@
 package edu.matc.legendsmith.entity;
 
+/**
+ * The type Item price.
+ */
 public class ItemPrice {
     private int goldPrice;
     private int silverPrice;
     private int copperPrice;
 
+    /**
+     * Item price.
+     */
     public void ItemPrice() {}
 
+    /**
+     * Item price.
+     *
+     * @param price the price
+     */
     public void ItemPrice(int price) {
         setDenominationValues(price);
     }
@@ -27,28 +38,56 @@ public class ItemPrice {
         copperPrice = price;
     }
 
-
-
+    /**
+     * Gets gold price.
+     *
+     * @return the gold price
+     */
     public int getGoldPrice() {
         return goldPrice;
     }
 
+    /**
+     * Sets gold price.
+     *
+     * @param goldPrice the gold price
+     */
     public void setGoldPrice(int goldPrice) {
         this.goldPrice = goldPrice;
     }
 
+    /**
+     * Gets silver price.
+     *
+     * @return the silver price
+     */
     public int getSilverPrice() {
         return silverPrice;
     }
 
+    /**
+     * Sets silver price.
+     *
+     * @param silverPrice the silver price
+     */
     public void setSilverPrice(int silverPrice) {
         this.silverPrice = silverPrice;
     }
 
+    /**
+     * Gets copper price.
+     *
+     * @return the copper price
+     */
     public int getCopperPrice() {
         return copperPrice;
     }
 
+    /**
+     * Sets copper price.
+     *
+     * @param copperPrice the copper price
+     */
     public void setCopperPrice(int copperPrice) {
         this.copperPrice = copperPrice;
     }

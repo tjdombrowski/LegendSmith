@@ -53,15 +53,6 @@ public class Item {
     }
 
     @Override
-    public String toString() {
-        return "Item{" +
-                "gw2ItemId=" + gw2ItemId +
-                ", name='" + name + '\'' +
-                ", taskItems=" + taskItems +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

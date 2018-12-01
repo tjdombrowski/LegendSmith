@@ -14,13 +14,13 @@ public class TaskItem {
 
     private int quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "taskId",
         foreignKey = @ForeignKey(name = "TaskItem_taskId_fk")
     )
     private Task task;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gw2ItemId",
         foreignKey = @ForeignKey(name = "TaskItem_gw2ItemId_fk")
     )
@@ -58,16 +58,6 @@ public class TaskItem {
 
     public void setItem(Item item) {
         this.item = item;
-    }
-
-    @Override
-    public String toString() {
-        return "TaskItem{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", task=" + task +
-                ", item=" + item +
-                '}';
     }
 
     @Override

@@ -94,10 +94,22 @@ class TaskTest {
     }
 
     /**
-     * Tests whether retrieving the task's items is a sucess.
+     * Tests whether retrieving the task's items is a success.
      */
     @Test
     void retrieveTaskItemsSuccess() {
         Task task = (Task)taskDao.getById(4);
+
+        List<TaskItem> taskItems = task.getTaskItems();
+
+        assertEquals(1, taskItems.size());
+
+        Item item = new Item();
+        item.setGw2ItemId(68063);
+        item.setName("Amalgamated Gemstone");
+
+        assertEquals(item.getGw2ItemId(), taskItems.get(0).getItem().getGw2ItemId());
+        assertEquals(item.getName(), taskItems.get(0).getItem().getName());
+
     }
 }

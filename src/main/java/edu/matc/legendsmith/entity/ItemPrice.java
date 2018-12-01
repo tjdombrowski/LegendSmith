@@ -17,7 +17,7 @@ public class ItemPrice {
      *
      * @param price the price in total coins
      */
-    private void setDenominationValues(int price) {
+    public void setDenominationValues(int price) {
         goldPrice = price / 10000; //the result in gold, silver, and copper should be truncated, not rounded
         price = price - (goldPrice * 10000); //Subtract the gold value of the coins from the remaining price (same with silver)
 
@@ -51,5 +51,14 @@ public class ItemPrice {
 
     public void setCopperPrice(int copperPrice) {
         this.copperPrice = copperPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemPrice{" +
+                "goldPrice=" + goldPrice +
+                ", silverPrice=" + silverPrice +
+                ", copperPrice=" + copperPrice +
+                '}';
     }
 }

@@ -70,9 +70,28 @@ class Gw2ApiTest {
         Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
         int price = 0;
 
-        price = gw2ApiUser.getSellOrderPrice(68063);
+        price = gw2ApiUser.getSellOrderPrice(19709);
 
         assertNotEquals(0, price);
     }
 
+    @Test
+    public void testItemPriceConversionFromSellPrice() {
+        Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
+        int price = 0;
+
+        price = gw2ApiUser.getSellOrderPrice(68063);
+
+        assertNotEquals(0, price);
+
+        ItemPrice itemPrice = new ItemPrice();
+        itemPrice.setDenominationValues(price);
+
+        assertTrue(itemPrice.getGoldPrice() >= 0 && itemPrice.getGoldPrice() <= 100);
+        assertTrue(itemPrice.getSilverPrice() >= 0 && itemPrice.getSilverPrice() <= 100);
+        assertTrue(itemPrice.getCopperPrice() >= 0 && itemPrice.getCopperPrice() <= 100);
+
+        System.out.println(itemPrice);
+
+    }
 }

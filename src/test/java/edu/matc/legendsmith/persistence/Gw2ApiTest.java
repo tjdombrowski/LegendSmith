@@ -42,6 +42,9 @@ class Gw2ApiTest {
             -potent venom sacs              24282
             -large scales                   24288
         -T6 ingredients
+            -ancient bones
+            -crystalline dust
+            -
         -T4 mats
         -t3 mats
         */
@@ -60,6 +63,16 @@ class Gw2ApiTest {
         assertNotNull(results.getBuys()); // The response for the buy and sell orders are going to change, so I'm just checking whether or not I'm getting data back
         assertNotNull(results.getSells());
 
+    }
+
+    @Test
+    public void testSellOrderResponseMethod() {
+        Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
+        int price = 0;
+
+        price = gw2ApiUser.getSellOrderPrice(68063);
+
+        assertNotEquals(0, price);
     }
 
 }

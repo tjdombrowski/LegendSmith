@@ -31,7 +31,7 @@ public class RetrieveLegendaryData extends HttpServlet {
     /**
      * Used for retrieving all the relevant data of a legendary weapon to be displayed on the page.
      * There are three pieces of data that are sent over: the legendary info, used to display the page, and the user's legendary data (UserLegendary),
-     * which is used to retrieve legendary info and track progress with the legendary, and lastly, the user's primary item data (UserLegendaryPrimaryItem),
+     * which is used to retrieve legendary info and track progress with the legendary, and lastly, the user's legendary data (UserLegendary),
      * which is used to retrieve primary item and task data, as well as the user's specific progress with those features.
      *
      * @param req the http servlet request

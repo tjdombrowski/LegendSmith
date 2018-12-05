@@ -26,21 +26,18 @@
             <!-- set the tab titles -->
             <ul>
             <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
-                <li><a href="#tab${primaryItemStatus}">${legendaryPrimaryItem.primaryItem.name}</a></li>
+                <li><a href="#tab${primaryItemStatus.index}">${legendaryPrimaryItem.primaryItem.name}</a></li>
             </c:forEach>
             </ul>
 
             <!-- set the tab contents -->
-            <c:set var="counter2" value="0" scope="page" />
             <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
                 <c:forEach var="userPrimaryItem" items="${userData.getUserPrimaryItems()}">
                     <c:if test="${userPrimaryItem.legendaryPrimaryItem.id == legendaryPrimaryItem.id}">
                         <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem}" scope="page" />
                     </c:if>
                 </c:forEach>
-                <c:set var="counter2" value="${counter2 + 1}" scope="page" />
-                <div id="tab${counter2}">
-                    <h2>${userPrimaryItem.getPrimaryItem.name}</h2>
+                <div id="tab${primaryItemStatus.index}">
                     <table class="table table-dark">
                         <thead>
                             <tr>
@@ -57,7 +54,7 @@
                                 <td>${task.name}</td>
                                 <td>${task.quantity}</td>
                                 <td>${task.description}</td>
-                                <td>Cost!!!OH NOOO</td>
+                                <td>Cost</td>
                                 <td>
                                     <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
                                     <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class is used to track changes to the user's legendary data.
+ *
  * The type Legendary data tracker.
  */
 public class LegendaryDataTracker {

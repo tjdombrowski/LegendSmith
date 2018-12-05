@@ -24,6 +24,8 @@ public class Task {
 
     private int quantity;
 
+    private ItemPrice taskCost;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",
         foreignKey = @ForeignKey(name = "Task_legendaryPrimaryItemId_fk"))
@@ -128,6 +130,23 @@ public class Task {
         this.description = description;
     }
 
+    /**
+     * Gets task cost.
+     *
+     * @return the task cost
+     */
+    public ItemPrice getTaskCost() {
+        return taskCost;
+    }
+
+    /**
+     * Sets task cost.
+     *
+     * @param taskCost the task cost
+     */
+    public void setTaskCost(ItemPrice taskCost) {
+        this.taskCost = taskCost;
+    }
 
     /**
      * Gets legendary primary item.
@@ -185,19 +204,39 @@ public class Task {
         userTask.setTask(null);
     }
 
+    /**
+     * Gets task items.
+     *
+     * @return the task items
+     */
     public List<TaskItem> getTaskItems() {
         return taskItems;
     }
 
+    /**
+     * Sets task items.
+     *
+     * @param taskItems the task items
+     */
     public void setTaskItems(List<TaskItem> taskItems) {
         this.taskItems = taskItems;
     }
 
+    /**
+     * Add task item.
+     *
+     * @param taskItem the task item
+     */
     public void addTaskItem(TaskItem taskItem) {
         taskItems.add(taskItem);
         taskItem.setTask(this);
     }
 
+    /**
+     * Remove task item.
+     *
+     * @param taskItem the task item
+     */
     public void removeTaskItem(TaskItem taskItem) {
         taskItems.remove(taskItem);
         taskItem.setTask(null);

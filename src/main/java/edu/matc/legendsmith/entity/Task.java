@@ -1,5 +1,6 @@
 package edu.matc.legendsmith.entity;
 
+import edu.matc.legendsmith.persistence.Gw2ApiUser;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -60,12 +61,26 @@ public class Task {
 
     private void generateTaskCost() {
         // Retrieve each item and item quantity for this task
-        // Call API and retrieve the cost of the individual item
-        // Multiply the cost by the item quantity
-        // Multiply the total by the task quantity
-        // Instantiate the result as an ItemPrice
-        // Set the Task's ItemPrice to the new ItemPrice
+        //Do nothing if there are no items to be priced with this Task
+        if (taskItems.size() > 0) {
+            int totalTaskCost = 0;
+            Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
+
+            for (TaskItem taskItem : taskItems) {
+                // Call API and retrieve the cost of the individual item
+                int sellOrderPrice = gw2ApiUser.getSellOrderPrice(taskItem.getItem().getGw2ItemId());
+
+                // Multiply the cost by the item quantity
+                totalTaskCost += sellOrderPrice * taskItem.getQuantity();
+            }
+            // Multiply the total by the task quantity
+            totalTaskCost = totalTaskCost * quantity;
+
+            // Instantiate the result as an ItemPrice
+            taskCost = new ItemPrice(totalTaskCost);
+        }
     }
+
 
     /**
      * Gets id.

@@ -58,6 +58,15 @@ public class Task {
         this.quantity = quantity;
     }
 
+    private void generateTaskCost() {
+        // Retrieve each item and item quantity for this task
+        // Call API and retrieve the cost of the individual item
+        // Multiply the cost by the item quantity
+        // Multiply the total by the task quantity
+        // Instantiate the result as an ItemPrice
+        // Set the Task's ItemPrice to the new ItemPrice
+    }
+
     /**
      * Gets id.
      *
@@ -141,6 +150,7 @@ public class Task {
 
     /**
      * Sets task cost.
+     *
      *
      * @param taskCost the task cost
      */

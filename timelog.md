@@ -141,3 +141,60 @@ Went over my JQuery presentation and materials.
 
 Nov 8.  3.5 hours
 Setup my branch for the team project and created a simple page for the documentation. I also did some work on my individual project with connecting some more of the relationships and testing them out.
+
+Nov 9. 1.5 hours
+Explored some github features with branching and worked on displaying some of my data on the jsps. 
+
+Nov 11. 2 hours
+Pulled updates from the team onto my branch after working out some conflicts. I tried to figure out what's wrong with the CSS on my page and worked with the formatting of my page. 
+
+Nov 12. 2 hours
+Worked on adding some functionality for updating the user's task status in my project.
+
+Nov 14. 1.5 hours
+Redid my branch and my jsp page and fixed the CSS issue. I added some placeholder stuff and tested out the url. 
+
+Nov 15. 1.5 hours
+Having conflict issues with pulling things from github.
+
+Nov 16. 2.5 hours
+Worked on sample responses and creating a class for using our service to get the responses and display them. 
+
+Nov 17. 2.5 hours
+Worked with the CSS some more and adjusted some of the page contents and the code for receiving error messages. I also added in the sample code for using the service. 
+
+Nov 19  2 hours
+Completed the exercise for the week. 
+
+Nov 21  2 hours
+Added finishing touches to my page for the team project and got it pushed to the main branch. Took me a while with some github conflict issues. 
+
+Nov 22  3.5 hours
+Corrected how the jsps were displaying using the accordion widget and added the ability to update tasks through the jsp as well some additional testing. The results also display a button. 
+
+Nov 24  1.5 hours
+Ran into an issue with the way the results were being displayed. 
+
+Nov 25  2.5
+Fixed an issue with the results being displayed and changed it so that the button's text is generated differently depending on task completion status. 
+
+Nov 26  2 hours
+Changed some functionality in how data was being accessed and added code for instantiating an user's progress with a Legendary.
+
+Nov 29  2 hours
+Worked with Jquery's progress bar, but it's displaying weirdly. I'm also having some issues with things displaying on the page inconsistently. 
+
+Nov 30. 1.5 hours
+Worked with setting up the gw2 api on my project and testing out the basic functionality of it. 
+
+Dec 1. 2 hours
+Added TaskItem and Item tables to the database and did some additional testing with the Gw2 api. 
+
+Dec 2. 1 hour
+Finished annotating and adding methods for TaskItem and Item. 
+
+Dec 3. 3 hours
+Redid how the jsps were displaying the data and stopped using the accordion widget on jquery. Worked through a bug on the way the items were being displayed and added code for calculating and storing item price data in a new entity, which some tests for it. 
+
+Dec 4. 2.5 hours
+Completed week 13's exercise. 

@@ -54,7 +54,11 @@
                                 <td>${task.name}</td>
                                 <td>${task.quantity}</td>
                                 <td>${task.description}</td>
-                                <td>${task.taskCost.goldPrice} Gold, ${task.taskCost.silverPrice} Silver, ${task.taskCost.copperPrice} Copper</td>
+                                <td>
+                                    <c:if test="${task.taskCost != null}">
+                                        ${task.taskCost.goldPrice} Gold, ${task.taskCost.silverPrice} Silver, ${task.taskCost.copperPrice} Copper
+                                    </c:if>
+                                </td>
                                 <td>
                                     <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
                                     <a href="/legendsmith/taskMarkOff?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">

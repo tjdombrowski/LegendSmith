@@ -18,6 +18,7 @@ public class Gw2ApiUser {
 
     /**
      * Calls the Guild Wars 2 API and retrieves the lowest sell order (sell orders are the listed items) in coins.
+     * This may return a 0 if something goes wrong with the response, which will cause all task costs generated to show as a 0.
      *
      * @param gw2ItemId
      * @return sellOrderPrice the sell order price
@@ -42,6 +43,7 @@ public class Gw2ApiUser {
             logger.error(ex);
         }
 
+        logger.debug(sellOrderPrice);
         return sellOrderPrice;
     }
 

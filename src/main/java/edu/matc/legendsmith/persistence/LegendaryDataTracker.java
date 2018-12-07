@@ -53,15 +53,17 @@ public class LegendaryDataTracker {
     /**
      *
      */
-    private void updateTotalProgress(User user) {
+    private void updateTotalProgress(User user, Legendary legendary) {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+
         int totalProgress = 0;
 
         //Get a count of the total number of tasks for this Legendary and completed tasks
-            //The count is accessed from UserLegendaryPrimaryItems, where legendaryPrimaryItemId = LegendaryPrimaryItem.id (Make this an list)
+        //The count is accessed from UserLegendaryPrimaryItems, where legendaryPrimaryItemId = LegendaryPrimaryItem.id (Make this an list)
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = findUserPrimaryItemsForThisLegendary(user, legendary);
 
+        //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task separately
 
-            //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task seperately.
 
 
         //Divide and round up
@@ -71,7 +73,6 @@ public class LegendaryDataTracker {
         //Calculate the total progress based off the primary items x4 / 4, rounded up
 
         //Set the total progress
-
 
     }
 
@@ -99,6 +100,29 @@ public class LegendaryDataTracker {
         return userPrimaryItemsForThisLegendary;
     }
 
+    private int calculateTotalNumberOfTasks(Legendary legendary) {
+        int totalNumberOfTasks = 0;
+
+        for (LegendaryPrimaryItem primaryItem : legendary.getPrimaryItems()) {
+            for (Task task : primaryItem.getTasks()) {
+                totalNumberOfTasks = totalNumberOfTasks + 1;
+            }
+        }
+
+        return totalNumberOfTasks;
+    }
+
+    private int calculateCompletedNumberOfTasks(List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems) {
+        int completedNumberOfTasks = 0;
+
+        for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
+            for (UserLegendaryPrimaryItemTask userTask : userLegendaryPrimaryItem.getUserTasks()) {
+                completedNumberOfTasks = completedNumberOfTasks +1;
+            }
+        }
+
+        return completedNumberOfTasks;
+    }
 
     /**
      * Instantiate all user legendary data.

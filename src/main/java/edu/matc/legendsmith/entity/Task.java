@@ -1,6 +1,8 @@
 package edu.matc.legendsmith.entity;
 
 import edu.matc.legendsmith.persistence.Gw2ApiUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,6 +16,9 @@ import java.util.List;
 @Table(name = "Task")
 public class Task {
 
+    @Transient
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
@@ -24,6 +29,12 @@ public class Task {
     private String description;
 
     private int quantity;
+
+    /**
+     * The Task cost.
+     */
+    @Transient
+    ItemPrice taskCost;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",
@@ -37,9 +48,11 @@ public class Task {
     private List<TaskItem> taskItems = new ArrayList<>();
 
     /**
-     * Instantiates a new Task.
+     * Instantiates a new Task and sets the task cost.
      */
-    public Task() {}
+    public Task() {
+        generateTaskCost();
+    }
 
     /**
      * Instantiates a new Task.
@@ -50,10 +63,41 @@ public class Task {
      * @param quantity    the quantity
      */
     public Task(int id, String name, String description, int quantity) {
+        this();
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
+    }
+
+    /**
+     * Used to set the total task cost as an ItemPrice object associated with the task. To accomplish this, the method
+     * runs through each TaskItem associated with the Task and calculates the total price then multiplies it by the task
+     * quantity for the final total. If there are no items, then there is no task cost and taskCost is left null.
+     */
+    private void generateTaskCost() {
+        //Do nothing if there are no items to be priced with this Task
+        if (taskItems.size() > 0) {
+            int totalTaskCost = 0;
+            Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
+
+            for (TaskItem taskItem : taskItems) {
+                // Call API and retrieve the cost of the individual item
+                int sellOrderPrice = gw2ApiUser.getSellOrderPrice(taskItem.getItem().getGw2ItemId());
+
+                // Multiply the cost by the item quantity
+                totalTaskCost += sellOrderPrice * taskItem.getQuantity();
+            }
+            // Multiply the total by the task quantity
+            totalTaskCost = totalTaskCost * quantity;
+
+            // Create the task cost
+            taskCost = new ItemPrice();
+            taskCost.setDenominationValues(totalTaskCost);
+        }
+
+        logger.debug("taskCost result: " + taskCost);
+
     }
 
     /**
@@ -129,6 +173,29 @@ public class Task {
     }
 
 
+    /**
+     * Gets task cost.
+     *
+     * @return the task cost
+     */
+    public ItemPrice getTaskCost() {
+        return taskCost;
+    }
+
+    /**
+     * Sets task cost.
+     *
+     * @param taskCost the task cost
+     */
+    public void setTaskCost(ItemPrice taskCost) {
+        this.taskCost = taskCost;
+    }
+
+    /**
+     * Gets legendary primary item.
+     *
+     * @return the legendary primary item
+     */
     public LegendaryPrimaryItem getLegendaryPrimaryItem() {
         return legendaryPrimaryItem;
     }

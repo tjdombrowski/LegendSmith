@@ -46,14 +46,14 @@ class LegendaryDaoTest {
     void getLegendariesByPropertySuccess() {
         List<Legendary> legendaries = dao.getByProperty("the", "name");
 
-        assertEquals(legendaries.size(), 3);
+        assertEquals(3, legendaries.size());
     }
 
     @Test
     void getLegendariesByIntegerProperty() {
         List<Legendary> legendaries = dao.getByIntegerProperty(1, "id");
 
-        assertEquals(legendaries.size(), 1);
+        assertEquals(1, legendaries.size());
     }
 
 

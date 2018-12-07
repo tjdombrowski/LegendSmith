@@ -31,6 +31,8 @@ public class ApplicationStartup extends HttpServlet {
 
         List<Legendary> legendaries = legendaryDao.getAll();
 
+        logger.info("Legendaries: " + legendaries);
+
         context.setAttribute("legendaries", legendaries);
         //Do all the stuff you want to do when the application starts here.
         //Servlet context can be used to store application-wide variable like

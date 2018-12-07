@@ -1,166 +1,166 @@
-drop table UserRole;
-drop table UserLegendaryPrimaryItemTask;
-drop table UserLegendaryPrimaryItem;
-drop table UserLegendary;
-drop table ItemTask;
-drop table Item;
-drop table Task;
-drop table LegendaryPrimaryItem;
-drop table User;
-drop table GameLegendary;
-drop table Game;
-drop table PrimaryItem;
-drop table Legendary;
+  drop table UserRole;
+  drop table UserLegendaryPrimaryItemTask;
+  drop table UserLegendaryPrimaryItem;
+  drop table UserLegendary;
+  drop table ItemTask;
+  drop table Item;
+  drop table Task;
+  drop table LegendaryPrimaryItem;
+  drop table User;
+  drop table GameLegendary;
+  drop table Game;
+  drop table PrimaryItem;
+  drop table Legendary;
 
--- create tables
-CREATE TABLE Legendary
-(
-  id               INT         NOT NULL
-  AUTO_INCREMENT PRIMARY KEY,
-  name             VARCHAR(20) NULL,
-  pictureReference VARCHAR(40) NULL,
-  type             VARCHAR(20) NULL,
-  game             VARCHAR(30) NULL
-);
+  -- create tables
+  CREATE TABLE Legendary
+  (
+    id               INT         NOT NULL
+    AUTO_INCREMENT PRIMARY KEY,
+    name             VARCHAR(20) NULL,
+    pictureReference VARCHAR(40) NULL,
+    type             VARCHAR(20) NULL,
+    game             VARCHAR(30) NULL
+  );
 
-CREATE TABLE Game
-(
-  name varchar(6) primary key
-);
+  CREATE TABLE Game
+  (
+    name varchar(6) primary key
+  );
 
-CREATE TABLE GameLegendary
-(
-  legendaryId int,
-  gameName varchar(6),
-  primary key (legendaryId, gameName),
-  CONSTRAINT GameLegendary_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary(id)
-  ON DELETE CASCADE,
-  CONSTRAINT GameLegendary_gameName_fk
-  FOREIGN KEY (gameName) REFERENCES Game(name)
-  ON DELETE CASCADE
-);
+  CREATE TABLE GameLegendary
+  (
+    legendaryId int,
+    gameName varchar(6),
+    primary key (legendaryId, gameName),
+    CONSTRAINT GameLegendary_legendaryId_fk
+    FOREIGN KEY (legendaryId) REFERENCES Legendary(id)
+    ON DELETE CASCADE,
+    CONSTRAINT GameLegendary_gameName_fk
+    FOREIGN KEY (gameName) REFERENCES Game(name)
+    ON DELETE CASCADE
+  );
 
-CREATE TABLE User
-(
-  id       INT         NOT NULL
-  AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(20) NULL unique,
-  password VARCHAR(20) NULL
-);
+  CREATE TABLE User
+  (
+    id       INT         NOT NULL
+    AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NULL unique,
+    password VARCHAR(20) NULL
+  );
 
-CREATE TABLE UserRole
-(
-  id int primary key AUTO_INCREMENT,
-  userId int,
-  role VARCHAR(15),
-  username VARCHAR(20),
-  CONSTRAINT UserRole_fk
-  FOREIGN KEY (userId) REFERENCES User(id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE UserRole
+  (
+    id int primary key AUTO_INCREMENT,
+    userId int,
+    role VARCHAR(15),
+    username VARCHAR(20),
+    CONSTRAINT UserRole_fk
+    FOREIGN KEY (userId) REFERENCES User(id)
+    ON DELETE CASCADE
+  );
 
-CREATE TABLE PrimaryItem
-(
-  id               INT         NOT NULL
-  AUTO_INCREMENT PRIMARY KEY,
-  name             VARCHAR(30) NULL,
-  pictureReference VARCHAR(40) NULL
-);
+  CREATE TABLE PrimaryItem
+  (
+    id               INT         NOT NULL
+    AUTO_INCREMENT PRIMARY KEY,
+    name             VARCHAR(30) NULL,
+    pictureReference VARCHAR(40) NULL
+  );
 
-CREATE TABLE LegendaryPrimaryItem
-(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  legendaryId   INT NULL,
-  primaryItemId INT NULL,
-  CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
-  ON DELETE CASCADE,
-  CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
-  FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE LegendaryPrimaryItem
+  (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    legendaryId   INT NULL,
+    primaryItemId INT NULL,
+    CONSTRAINT LegendaryPrimaryItem_legendaryId_fk
+    FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
+    ON DELETE CASCADE,
+    CONSTRAINT LegendaryPrimaryItem_primaryItemId_fk
+    FOREIGN KEY (primaryItemId) REFERENCES PrimaryItem (id)
+    ON DELETE CASCADE
+  );
 
-CREATE TABLE Task
-(
-  id            INT         NOT NULL
-  AUTO_INCREMENT PRIMARY KEY,
-  name          VARCHAR(30) NULL,
-  description   VARCHAR(500) NULL,
-  quantity      INT DEFAULT 1,
-  prerequisite INT NULL,
-  legendaryPrimaryItemId INT         NULL,
-  CONSTRAINT Task_legendaryPrimaryItemId_fk
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
-  ON DELETE CASCADE,
-  CONSTRAINT Task_prerequisite_fk
-  FOREIGN KEY (prerequisite) REFERENCES Task (id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE Task
+  (
+    id            INT         NOT NULL
+    AUTO_INCREMENT PRIMARY KEY,
+    name          VARCHAR(30) NULL,
+    description   VARCHAR(500) NULL,
+    quantity      INT DEFAULT 1,
+    prerequisite INT NULL,
+    legendaryPrimaryItemId INT         NULL,
+    CONSTRAINT Task_legendaryPrimaryItemId_fk
+    FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
+    ON DELETE CASCADE,
+    CONSTRAINT Task_prerequisite_fk
+    FOREIGN KEY (prerequisite) REFERENCES Task (id)
+    ON DELETE CASCADE
+  );
 
-CREATE TABLE Item
-(
-  gw2ItemId int PRIMARY KEY,
-  name VARCHAR(25) NOT NULL
-);
+  CREATE TABLE Item
+  (
+    gw2ItemId int PRIMARY KEY,
+    name VARCHAR(25) NOT NULL
+  );
 
-CREATE TABLE TaskItem (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  gw2ItemId int,
-  taskId int,
-  quantity int default 1,
-  CONSTRAINT TaskItem_gw2ItemId_fk FOREIGN KEY (gw2ItemId) REFERENCES Item (gw2ItemId) ON DELETE CASCADE,
-  CONSTRAINT TaskItem_taskId_fk FOREIGN KEY (taskId) REFERENCES Task (id) ON DELETE CASCADE
-);
-
-
-CREATE TABLE UserLegendary
-(
-  id          INT primary key AUTO_INCREMENT,
-  userId      INT             NOT NULL,
-  legendaryId INT             NOT NULL,
-  progress    INT             NULL,
-  tracking    INT DEFAULT '0' NULL,
-  priority    INT DEFAULT '0' NULL,
-  CONSTRAINT UserLegendary_userId_fk
-  FOREIGN KEY (userId) REFERENCES User (id)
-  ON DELETE CASCADE,
-  CONSTRAINT UserLegendary_legendaryId_fk
-  FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE TaskItem (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    gw2ItemId int,
+    taskId int,
+    quantity int default 1,
+    CONSTRAINT TaskItem_gw2ItemId_fk FOREIGN KEY (gw2ItemId) REFERENCES Item (gw2ItemId) ON DELETE CASCADE,
+    CONSTRAINT TaskItem_taskId_fk FOREIGN KEY (taskId) REFERENCES Task (id) ON DELETE CASCADE
+  );
 
 
-CREATE TABLE UserLegendaryPrimaryItem
-(
-  id                     INT NOT NULL
-    PRIMARY KEY AUTO_INCREMENT,
-  legendaryPrimaryItemId INT NULL,
-  userId                 INT NULL,
-  progress               INT NULL default 0,
-  CONSTRAINT UserLegendaryPrimaryItem_fk1
-  FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
-  ON DELETE CASCADE,
-  CONSTRAINT UserLegendaryPrimaryItem_userId_fk2
-  FOREIGN KEY (userId) REFERENCES User (id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE UserLegendary
+  (
+    id          INT primary key AUTO_INCREMENT,
+    userId      INT             NOT NULL,
+    legendaryId INT             NOT NULL,
+    progress    INT             NULL,
+    tracking    INT DEFAULT '0' NULL,
+    priority    INT DEFAULT '0' NULL,
+    CONSTRAINT UserLegendary_userId_fk
+    FOREIGN KEY (userId) REFERENCES User (id)
+    ON DELETE CASCADE,
+    CONSTRAINT UserLegendary_legendaryId_fk
+    FOREIGN KEY (legendaryId) REFERENCES Legendary (id)
+    ON DELETE CASCADE
+  );
 
 
-CREATE TABLE UserLegendaryPrimaryItemTask
-(
-  id int primary key AUTO_INCREMENT,
-  userLegendaryPrimaryItemId INT             NOT NULL,
-  taskId                     INT             NOT NULL,
-  completion                 INT DEFAULT '0' NULL,
-  dateCompleted              DATE            NULL,
-  CONSTRAINT UserLegendPrimItem_fk1
-  FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id)
-  ON DELETE CASCADE,
-  CONSTRAINT UserLegendPrimItem_fk2
-  FOREIGN KEY (taskId) REFERENCES Task (id)
-  ON DELETE CASCADE
-);
+  CREATE TABLE UserLegendaryPrimaryItem
+  (
+    id                     INT NOT NULL
+      PRIMARY KEY AUTO_INCREMENT,
+    legendaryPrimaryItemId INT NULL,
+    userId                 INT NULL,
+    progress               INT NULL default 0,
+    CONSTRAINT UserLegendaryPrimaryItem_fk1
+    FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
+    ON DELETE CASCADE,
+    CONSTRAINT UserLegendaryPrimaryItem_userId_fk2
+    FOREIGN KEY (userId) REFERENCES User (id)
+    ON DELETE CASCADE
+  );
+
+
+  CREATE TABLE UserLegendaryPrimaryItemTask
+  (
+    id int primary key AUTO_INCREMENT,
+    userLegendaryPrimaryItemId INT             NOT NULL,
+    taskId                     INT             NOT NULL,
+    completion                 INT DEFAULT '0' NULL,
+    dateCompleted              DATE            NULL,
+    CONSTRAINT UserLegendPrimItem_fk1
+    FOREIGN KEY (userLegendaryPrimaryItemId) REFERENCES UserLegendaryPrimaryItem (id)
+    ON DELETE CASCADE,
+    CONSTRAINT UserLegendPrimItem_fk2
+    FOREIGN KEY (taskId) REFERENCES Task (id)
+    ON DELETE CASCADE
+  );
 
 -- insert data for User
 INSERT INTO User (username, password) VALUES (
@@ -534,7 +534,7 @@ insert into Task (name, description, legendaryPrimaryItemId) VALUES (
   'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Arts</li><li>1 Mystic Curio/li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
+  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Arts</li><li>1 Mystic Curio</li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
 );
 insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
   'Mystic Runestone', 'Purchased from Miyani for 1g.', 7, 100

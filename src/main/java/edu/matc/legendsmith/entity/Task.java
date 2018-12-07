@@ -25,8 +25,6 @@ public class Task {
 
     private int quantity;
 
-    private ItemPrice taskCost;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",
         foreignKey = @ForeignKey(name = "Task_legendaryPrimaryItemId_fk"))
@@ -43,7 +41,6 @@ public class Task {
      */
     public Task() {}
 
-
     /**
      * Instantiates a new Task.
      *
@@ -58,29 +55,6 @@ public class Task {
         this.description = description;
         this.quantity = quantity;
     }
-
-    private void generateTaskCost() {
-        // Retrieve each item and item quantity for this task
-        //Do nothing if there are no items to be priced with this Task
-        if (taskItems.size() > 0) {
-            int totalTaskCost = 0;
-            Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
-
-            for (TaskItem taskItem : taskItems) {
-                // Call API and retrieve the cost of the individual item
-                int sellOrderPrice = gw2ApiUser.getSellOrderPrice(taskItem.getItem().getGw2ItemId());
-
-                // Multiply the cost by the item quantity
-                totalTaskCost += sellOrderPrice * taskItem.getQuantity();
-            }
-            // Multiply the total by the task quantity
-            totalTaskCost = totalTaskCost * quantity;
-
-            // Instantiate the result as an ItemPrice
-            taskCost = new ItemPrice(totalTaskCost);
-        }
-    }
-
 
     /**
      * Gets id.
@@ -154,30 +128,7 @@ public class Task {
         this.description = description;
     }
 
-    /**
-     * Gets task cost.
-     *
-     * @return the task cost
-     */
-    public ItemPrice getTaskCost() {
-        return taskCost;
-    }
 
-    /**
-     * Sets task cost.
-     *
-     *
-     * @param taskCost the task cost
-     */
-    public void setTaskCost(ItemPrice taskCost) {
-        this.taskCost = taskCost;
-    }
-
-    /**
-     * Gets legendary primary item.
-     *
-     * @return the legendary primary item
-     */
     public LegendaryPrimaryItem getLegendaryPrimaryItem() {
         return legendaryPrimaryItem;
     }

@@ -59,6 +59,14 @@ public class RetrieveLegendaryData extends HttpServlet {
             //Retrieve Legendary data - used for displaying to the page
             GenericDao legendaryDao = new GenericDao(Legendary.class);
             Legendary legendary = (Legendary)legendaryDao.getById(legendaryId);
+
+            //Set task costs
+            for (LegendaryPrimaryItem legendaryPrimaryItem : legendary.getPrimaryItems()) {
+                for (Task task : legendaryPrimaryItem.getTasks()) {
+                    task.generateTaskCost();
+                }
+            }
+
             req.setAttribute("legendaryData", legendary);
 
             //Retrieve User Legendary data

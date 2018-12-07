@@ -46,10 +46,12 @@ public class Task {
     private List<TaskItem> taskItems = new ArrayList<>();
 
     /**
-     * Instantiates a new Task and sets the task cost.
+     * Instantiates a new Task.
+     *
+     * TODO Figure out how to have the taskCost generated automatically in the entity
      */
     public Task() {
-        generateTaskCost();
+        //generateTaskCost();
     }
 
     /**
@@ -61,7 +63,7 @@ public class Task {
      * @param quantity    the quantity
      */
     public Task(int id, String name, String description, int quantity) {
-        this();
+        //this();
         this.id = id;
         this.name = name;
         this.description = description;

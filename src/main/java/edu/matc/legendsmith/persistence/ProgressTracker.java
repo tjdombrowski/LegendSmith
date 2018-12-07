@@ -16,8 +16,6 @@ public class ProgressTracker {
      *
      */
     private void updateTotalProgress(User user, Legendary legendary) {
-        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
-
         int totalProgress = 0;
 
         //Get a count of the total number of tasks for this Legendary and completed tasks
@@ -25,10 +23,10 @@ public class ProgressTracker {
         List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = findUserPrimaryItemsForThisLegendary(user, legendary);
 
         //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task separately
-
-
+        calculateNumberOfTasks(userLegendaryPrimaryItems);
 
         //Divide and round up
+        totalProgress = Math.round(completedTasks / totalTasks);
 
         //Set progress for the primaryItem
 
@@ -62,14 +60,32 @@ public class ProgressTracker {
         return userPrimaryItemsForThisLegendary;
     }
 
+    /**
+     * Generates the total and completed task values for calculating the progress percentage.
+     *
+     * @param userLegendaryPrimaryItems the UserLegendaryPrimaryItem list (of items that correspond to a given Legendary)
+     */
     private void calculateNumberOfTasks(List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems) {
         for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
+            int tasksForThisPrimaryItem = userLegendaryPrimaryItem.getUserTasks().size();
+            int completedTasksForThisPrimaryItem = 0;
+
             for (UserLegendaryPrimaryItemTask userTask : userLegendaryPrimaryItem.getUserTasks()) {
                 totalTasks = totalTasks + 1;
                 if (userTask.getCompletion() == 1) {
                     completedTasks = completedTasks + 1;
+                    completedTasksForThisPrimaryItem += 1;
                 }
             }
+
+            setPrimaryItemProgress(completedTasksForThisPrimaryItem, tasksForThisPrimaryItem, userLegendaryPrimaryItem.getId());
         }
+    }
+
+    private void setPrimaryItemProgress(int completedPrimaryItemTasks, int totalPrimaryItemTasks, int userPrimaryItemId) {
+        int primaryItemProgress = 0;
+
+        primaryItemProgress = Math.round(completedPrimaryItemTasks / totalPrimaryItemTasks);
+
     }
 }

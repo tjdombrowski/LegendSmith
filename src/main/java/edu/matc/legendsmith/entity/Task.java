@@ -30,9 +30,7 @@ public class Task {
 
     private int quantity;
 
-    /**
-     * The Task cost.
-     */
+    //The task cost represents the total cost of the task in gold, silver, and copper
     @Transient
     ItemPrice taskCost;
 
@@ -75,7 +73,7 @@ public class Task {
      * runs through each TaskItem associated with the Task and calculates the total price then multiplies it by the task
      * quantity for the final total. If there are no items, then there is no task cost and taskCost is left null.
      */
-    private void generateTaskCost() {
+    public void generateTaskCost() {
         //Do nothing if there are no items to be priced with this Task
         if (taskItems.size() > 0) {
             int totalTaskCost = 0;

@@ -31,9 +31,8 @@ public class RetrieveLegendaryData extends HttpServlet {
 
     /**
      * Used for retrieving all the relevant data of a legendary weapon to be displayed on the page.
-     * There are three pieces of data that are sent over: the legendary info, used to display the page, and the user's legendary data (UserLegendary),
-     * which is used to retrieve legendary info and track progress with the legendary, and lastly, the user's legendary data (UserLegendary),
-     * which is used to retrieve user's legendary and task data, as well as the user's specific progress with those features.
+     * There are three pieces of data that are sent over: the legendary info, used to display the page, the user's legendary data (UserLegendary),
+     * which is used to track progress with the legendary, and lastly, the user's data.
      *
      * @param req the http servlet request
      * @param resp the http servlet response
@@ -60,7 +59,7 @@ public class RetrieveLegendaryData extends HttpServlet {
             //Retrieve Legendary data - used for displaying to the page
             GenericDao legendaryDao = new GenericDao(Legendary.class);
             Legendary legendary = (Legendary)legendaryDao.getById(legendaryId);
-                        req.setAttribute("legendaryData", legendary);
+            req.setAttribute("legendaryData", legendary);
 
             //Retrieve User Legendary data
             GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);

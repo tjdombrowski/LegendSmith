@@ -112,4 +112,21 @@ class TaskTest {
         assertEquals(item.getName(), taskItems.get(0).getItem().getName());
 
     }
+
+    /**
+     * Tests whether calculating and storing the the Task's cost is successful.
+     */
+    @Test
+    void getTaskCostSuccess() {
+        Task task = (Task)taskDao.getById(4);
+
+        task.generateTaskCost();
+
+        ItemPrice taskCost = task.getTaskCost();
+
+        assertNotNull(taskCost);
+        assertTrue(taskCost.getGoldPrice() >= 200 && taskCost.getGoldPrice() <= 600);
+        assertTrue(taskCost.getSilverPrice() >= 0 && taskCost.getSilverPrice() <= 99);
+        assertTrue(taskCost.getCopperPrice() >= 0 && taskCost.getCopperPrice() <= 99);
+    }
 }

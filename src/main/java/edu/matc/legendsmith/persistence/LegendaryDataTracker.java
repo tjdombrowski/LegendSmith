@@ -51,80 +51,6 @@ public class LegendaryDataTracker {
     }
 
     /**
-     *
-     */
-    private void updateTotalProgress(User user, Legendary legendary) {
-        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
-
-        int totalProgress = 0;
-
-        //Get a count of the total number of tasks for this Legendary and completed tasks
-        //The count is accessed from UserLegendaryPrimaryItems, where legendaryPrimaryItemId = LegendaryPrimaryItem.id (Make this an list)
-        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = findUserPrimaryItemsForThisLegendary(user, legendary);
-
-        //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task separately
-
-
-
-        //Divide and round up
-
-        //Set progress for the primaryItem
-
-        //Calculate the total progress based off the primary items x4 / 4, rounded up
-
-        //Set the total progress
-
-    }
-
-    /**
-     * This method finds all UserLegendaryPrimaryItems associated with a given Legendary.
-     *
-     * @param user
-     * @param legendary
-     * @return userPrimaryItemsForThisLegendary
-     */
-    private List<UserLegendaryPrimaryItem> findUserPrimaryItemsForThisLegendary(User user, Legendary legendary) {
-        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = user.getUserPrimaryItems();
-        List<UserLegendaryPrimaryItem> userPrimaryItemsForThisLegendary = new ArrayList<>();
-
-        for (LegendaryPrimaryItem legendaryPrimaryItem : legendary.getPrimaryItems()) {
-            for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
-                if (userLegendaryPrimaryItem.getLegendaryPrimaryItem().getId() == legendaryPrimaryItem.getId()) {
-                    userPrimaryItemsForThisLegendary.add(userLegendaryPrimaryItem);
-                } //else do nothing
-            }
-        }
-
-        logger.debug("UserLegendaryPrimaryItem List generated in findUserPrimaryItemsForThisLegendary: " + userLegendaryPrimaryItems);
-
-        return userPrimaryItemsForThisLegendary;
-    }
-
-    private int calculateTotalNumberOfTasks(Legendary legendary) {
-        int totalNumberOfTasks = 0;
-
-        for (LegendaryPrimaryItem primaryItem : legendary.getPrimaryItems()) {
-            for (Task task : primaryItem.getTasks()) {
-                totalNumberOfTasks = totalNumberOfTasks + 1;
-            }
-        }
-
-        return totalNumberOfTasks;
-    }
-
-    private int calculateCompletedNumberOfTasks(List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems) {
-        int completedNumberOfTasks = 0;
-
-        for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
-            for (UserLegendaryPrimaryItemTask userTask : userLegendaryPrimaryItem.getUserTasks()) {
-                completedNumberOfTasks = completedNumberOfTasks +1;
-            }
-        }
-
-        return completedNumberOfTasks;
-    }
-
-    /**
      * Instantiate all user legendary data.
      *
      * @param userId      the user id
@@ -151,8 +77,8 @@ public class LegendaryDataTracker {
     /**
      * Instantiates the UserLegendary field.
      *
-     * @param user
-     * @param legendary
+     * @param user the user
+     * @param legendary the legendary
      */
     private void instantiateUserLegendary(User user, Legendary legendary) {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
@@ -165,8 +91,8 @@ public class LegendaryDataTracker {
     /**
      * Instantiates the UserLegendaryPrimaryItem field.
      *
-     * @param user
-     * @param legendaryId
+     * @param user the user
+     * @param legendaryId the legendary id
      */
     private void instantiateUserLegendaryPrimaryItem(User user, int legendaryId) {
         GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
@@ -188,7 +114,7 @@ public class LegendaryDataTracker {
     /**
      * Instantiates the UserLegendaryPrimaryItemTask field.
      *
-     * @param user
+     * @param user the user
      */
     private void instantiateUserLegendaryPrimaryItemTask(User user) {
         List<UserLegendaryPrimaryItem> primaryItems = user.getUserPrimaryItems();

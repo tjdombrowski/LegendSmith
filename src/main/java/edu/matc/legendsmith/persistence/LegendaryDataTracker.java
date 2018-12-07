@@ -4,6 +4,7 @@ import edu.matc.legendsmith.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,6 @@ public class LegendaryDataTracker {
 
             taskDao.saveOrUpdate(userTask);
 
-
         }
 
     }
@@ -53,13 +53,16 @@ public class LegendaryDataTracker {
     /**
      *
      */
-    private void updateProgress() {
+    private void updateTotalProgress(User user) {
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
         int totalProgress = 0;
 
-        //Retrieve a total list of the tasks for a primary item
+        //Get a count of the total number of tasks for this Legendary and completed tasks
+            //The count is accessed from UserLegendaryPrimaryItems, where legendaryPrimaryItemId = LegendaryPrimaryItem.id (Make this an list)
 
-        //Retrieve a total of all the tasks the user has completed for that item
+
+            //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task seperately.
+
 
         //Divide and round up
 
@@ -70,6 +73,30 @@ public class LegendaryDataTracker {
         //Set the total progress
 
 
+    }
+
+    /**
+     * This method finds all UserLegendaryPrimaryItems associated with a given Legendary.
+     *
+     * @param user
+     * @param legendary
+     * @return userPrimaryItemsForThisLegendary
+     */
+    private List<UserLegendaryPrimaryItem> findUserPrimaryItemsForThisLegendary(User user, Legendary legendary) {
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = user.getUserPrimaryItems();
+        List<UserLegendaryPrimaryItem> userPrimaryItemsForThisLegendary = new ArrayList<>();
+
+        for (LegendaryPrimaryItem legendaryPrimaryItem : legendary.getPrimaryItems()) {
+            for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
+                if (userLegendaryPrimaryItem.getLegendaryPrimaryItem().getId() == legendaryPrimaryItem.getId()) {
+                    userPrimaryItemsForThisLegendary.add(userLegendaryPrimaryItem);
+                } //else do nothing
+            }
+        }
+
+        logger.debug("UserLegendaryPrimaryItem List generated in findUserPrimaryItemsForThisLegendary: " + userLegendaryPrimaryItems);
+
+        return userPrimaryItemsForThisLegendary;
     }
 
 

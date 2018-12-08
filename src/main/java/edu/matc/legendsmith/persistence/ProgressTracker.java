@@ -16,31 +16,48 @@ public class ProgressTracker {
      * Updates the user's progress
      *
      */
-    private void updatePrimaryItemProgress(int userTaskId) {
+    private void updateAllProgress(int userTaskId) {
         //Find the user's primary item with task id
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(userTaskId);
 
         UserLegendaryPrimaryItem userPrimaryItem = userTask.getUserPrimaryItem();
 
-        //Update progress
-        updateProgress(userPrimaryItem);
+        //Update the user's progress with the primary item
+        updatePrimaryItemProgress(userPrimaryItem);
+
+        //Update the total progress of the user on the Legendary
+
 
     }
 
-    private void updateProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+    /**
+     * Updates an user's progress with a primary item, given the user's UserLegendaryPrimaryItem.
+     * The progress is updated by retrieving the current progress (which is initiated at 0), and finding the number of
+     * tasks associated with the primary item to find the increment percentage for each task step, since each task is
+     * set one by one. (TODO Allow user to check multiple steps at once)
+     *
+     * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
+     */
+    private void updatePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
         double currentProgress = userLegendaryPrimaryItem.getProgress();
         int numberOfTasks = getNumberOfTasks(userLegendaryPrimaryItem);
         double progressIncrement = 1.0 / (double)numberOfTasks;
-        double updatedProgress = 0;
+        double updatedProgress = currentProgress + progressIncrement;
 
         userLegendaryPrimaryItem.setProgress(updatedProgress);
 
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
     }
 
+    /**
+     * Gets the number of tasks associated with a primary item based of the UserLegendaryPrimaryItem object.
+     *
+     * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
+     * @return numberOfTasks the number of tasks
+     */
     private int getNumberOfTasks(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         int numberOfTasks = 0;
 

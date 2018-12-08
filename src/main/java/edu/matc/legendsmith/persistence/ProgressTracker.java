@@ -13,28 +13,45 @@ public class ProgressTracker {
     private int completedTasks = 0;
 
     /**
+     * Updates the user's progress
      *
      */
-    private void updateTotalProgress(User user, Legendary legendary) {
-        int totalProgress = 0;
+    private void updatePrimaryItemProgress(int userTaskId) {
+        //Find the user's primary item with task id
+        GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
+        UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(userTaskId);
 
-        //Get a count of the total number of tasks for this Legendary and completed tasks
-        //The count is accessed from UserLegendaryPrimaryItems, where legendaryPrimaryItemId = LegendaryPrimaryItem.id (Make this an list)
-        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = findUserPrimaryItemsForThisLegendary(user, legendary);
+        UserLegendaryPrimaryItem userPrimaryItem = userTask.getUserPrimaryItem();
 
-        //Then loop through each UserLegendaryPrimaryItem, counting each task AND counting each completed task separately
-        calculateNumberOfTasks(userLegendaryPrimaryItems);
-
-        //Divide and round up
-        totalProgress = Math.round(completedTasks / totalTasks);
-
-        //Set progress for the primaryItem
-
-        //Calculate the total progress based off the primary items x4 / 4, rounded up
-
-        //Set the total progress
+        //Update progress
+        updateProgress(userPrimaryItem);
 
     }
+
+    private void updateProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
+
+        double currentProgress = userLegendaryPrimaryItem.getProgress();
+        int numberOfTasks = getNumberOfTasks(userLegendaryPrimaryItem);
+        double progressIncrement = 1.0 / (double)numberOfTasks;
+        double updatedProgress = 0;
+
+        userLegendaryPrimaryItem.setProgress(updatedProgress);
+
+        userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
+    }
+
+    private int getNumberOfTasks(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        int numberOfTasks = 0;
+
+        numberOfTasks = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getTasks().size();
+
+        return numberOfTasks;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * This method finds all UserLegendaryPrimaryItems associated with a given Legendary.
@@ -62,6 +79,7 @@ public class ProgressTracker {
 
     /**
      * Generates the total and completed task values for calculating the progress percentage.
+     * TODO Break this method up a bit?
      *
      * @param userLegendaryPrimaryItems the UserLegendaryPrimaryItem list (of items that correspond to a given Legendary)
      */

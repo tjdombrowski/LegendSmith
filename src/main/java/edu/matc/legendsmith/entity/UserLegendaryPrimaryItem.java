@@ -3,7 +3,6 @@ package edu.matc.legendsmith.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class UserLegendaryPrimaryItem {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    private int progress;
+    private double progress;
 
     @ManyToOne
     @JoinColumn(name = "legendaryPrimaryItemId",
@@ -48,11 +47,11 @@ public class UserLegendaryPrimaryItem {
         this.id = id;
     }
 
-    public int getProgress() {
+    public double getProgress() {
         return progress;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(double progress) {
         this.progress = progress;
     }
 
@@ -98,13 +97,16 @@ public class UserLegendaryPrimaryItem {
         UserLegendaryPrimaryItem that = (UserLegendaryPrimaryItem) o;
 
         if (id != that.id) return false;
-        return progress == that.progress;
+        return Double.compare(that.progress, progress) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + progress;
+        int result;
+        long temp;
+        result = id;
+        temp = Double.doubleToLongBits(progress);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 }

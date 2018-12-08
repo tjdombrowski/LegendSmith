@@ -14,7 +14,7 @@ public class UserLegendary {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    private Integer progress;
+    private double progress;
     private int tracking;
     private int priority;
 
@@ -44,11 +44,11 @@ public class UserLegendary {
         this.id = id;
     }
 
-    public Integer getProgress() {
+    public double getProgress() {
         return progress;
     }
 
-    public void setProgress(Integer progress) {
+    public void setProgress(double progress) {
         this.progress = progress;
     }
 
@@ -92,15 +92,18 @@ public class UserLegendary {
         UserLegendary that = (UserLegendary) o;
 
         if (id != that.id) return false;
+        if (Double.compare(that.progress, progress) != 0) return false;
         if (tracking != that.tracking) return false;
-        if (priority != that.priority) return false;
-        return progress != null ? progress.equals(that.progress) : that.progress == null;
+        return priority == that.priority;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (progress != null ? progress.hashCode() : 0);
+        int result;
+        long temp;
+        result = id;
+        temp = Double.doubleToLongBits(progress);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + tracking;
         result = 31 * result + priority;
         return result;

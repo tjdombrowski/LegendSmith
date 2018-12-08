@@ -47,9 +47,22 @@ public class ProgressTracker {
         double progressIncrement = 1.0 / (double)numberOfTasks;
         double updatedProgress = currentProgress + progressIncrement;
 
+        updatedProgress = roundUpdatedValue(updatedProgress);
+
         userLegendaryPrimaryItem.setProgress(updatedProgress);
 
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
+    }
+
+    private double roundUpdatedValue(double updatedProgress) {
+
+        if (updatedProgress > 100.0) {
+            updatedProgress = 100.0;
+        } else {
+            //TODO find a method to round the progress to 2 decimal points
+        }
+
+        return updatedProgress;
     }
 
     /**

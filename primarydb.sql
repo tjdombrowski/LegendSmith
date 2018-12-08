@@ -119,9 +119,9 @@
     id          INT primary key AUTO_INCREMENT,
     userId      INT             NOT NULL,
     legendaryId INT             NOT NULL,
-    progress    INT             NULL,
-    tracking    INT DEFAULT '0' NULL,
-    priority    INT DEFAULT '0' NULL,
+    progress    double            NOT NULL,
+    tracking    INT DEFAULT '0' NOT NULL,
+    priority    INT DEFAULT '0' NOT NULL,
     CONSTRAINT UserLegendary_userId_fk
     FOREIGN KEY (userId) REFERENCES User (id)
     ON DELETE CASCADE,
@@ -137,7 +137,7 @@
       PRIMARY KEY AUTO_INCREMENT,
     legendaryPrimaryItemId INT NULL,
     userId                 INT NULL,
-    progress               INT NULL default 0,
+    progress               double NOT NULL default 0,
     CONSTRAINT UserLegendaryPrimaryItem_fk1
     FOREIGN KEY (legendaryPrimaryItemId) REFERENCES LegendaryPrimaryItem (id)
     ON DELETE CASCADE,

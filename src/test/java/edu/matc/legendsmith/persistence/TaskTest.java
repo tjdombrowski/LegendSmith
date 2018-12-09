@@ -2,7 +2,6 @@ package edu.matc.legendsmith.persistence;
 
 import edu.matc.legendsmith.entity.*;
 import edu.matc.legendsmith.test.util.Database;
-import org.hibernate.Hibernate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

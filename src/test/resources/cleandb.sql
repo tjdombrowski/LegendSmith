@@ -47,10 +47,9 @@ INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (3, 2, 2);
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (4, 2, 3);
 INSERT INTO UserLegendaryPrimaryItem (id, userId, legendaryPrimaryItemId) VALUES (5, 2, 4);
-INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (1, 1, 1);
-INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (2, 2, 1);
-INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (3, 2, 2);
-INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (4, 2, 3);
-INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (5, 2, 4);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (1, 4, 1);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (2, 4, 1);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (3, 4, 2);
+INSERT INTO UserLegendaryPrimaryItemTask (id, userLegendaryPrimaryItemId, taskId) VALUES (4, 4, 3);
 
 

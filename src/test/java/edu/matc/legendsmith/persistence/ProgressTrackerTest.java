@@ -23,6 +23,17 @@ public class ProgressTrackerTest {
         progressTracker = new ProgressTracker();
     }
 
+    @Test
+    void updateWithPrimaryItemProgressBelow100Success() {
+        progressTracker.updateAllProgress(4);
 
+        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
+
+        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
+
+        double progress = userLegendaryPrimaryItem.getProgress();
+
+        assertEquals(0.25, progress);
+    }
 
 }

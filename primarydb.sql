@@ -2,7 +2,7 @@
   drop table UserLegendaryPrimaryItemTask;
   drop table UserLegendaryPrimaryItem;
   drop table UserLegendary;
-  drop table ItemTask;
+  drop table TaskItem;
   drop table Item;
   drop table Task;
   drop table LegendaryPrimaryItem;
@@ -119,7 +119,7 @@
     id          INT primary key AUTO_INCREMENT,
     userId      INT             NOT NULL,
     legendaryId INT             NOT NULL,
-    progress    double            NOT NULL,
+    progress    double  DEFAULT 0  NOT NULL,
     tracking    INT DEFAULT '0' NOT NULL,
     priority    INT DEFAULT '0' NOT NULL,
     CONSTRAINT UserLegendary_userId_fk

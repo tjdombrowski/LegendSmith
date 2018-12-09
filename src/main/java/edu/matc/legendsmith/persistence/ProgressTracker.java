@@ -13,7 +13,7 @@ public class ProgressTracker {
      * Updates the user's progress
      *
      */
-    private void updateAllProgress(int userTaskId) {
+    public void updateAllProgress(int userTaskId) {
         //Find the user's primary item with task id
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(userTaskId);
@@ -47,6 +47,8 @@ public class ProgressTracker {
 
         userLegendaryPrimaryItem.setProgress(updatedProgress);
 
+        logger.debug("Rounded value of updatedProgress after calculations: " + updatedProgress);
+
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
     }
 
@@ -57,12 +59,13 @@ public class ProgressTracker {
      * @return updatedProgress the updated progress of the user
      */
     private double roundUpdatedValue(double updatedProgress) {
-
         if (updatedProgress > 100.0) {
             updatedProgress = 100.0;
         } else {
             updatedProgress = Math.round(updatedProgress * 100.0) / 100.0;
         }
+
+        logger.debug("Value of updatedProgress in roundUpdatedValue: " + updatedProgress);
 
         return updatedProgress;
     }
@@ -77,6 +80,8 @@ public class ProgressTracker {
         int numberOfTasks = 0;
 
         numberOfTasks = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getTasks().size();
+
+        logger.debug("Value of numberOfTasks in getNumberOfTasks: " + numberOfTasks);
 
         return numberOfTasks;
     }

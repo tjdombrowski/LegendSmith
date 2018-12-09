@@ -54,12 +54,18 @@ public class ProgressTracker {
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
     }
 
+    /**
+     * Returns the progress rounded to 2 decimal places or sets the value to 100 if it goes above 100.
+     *
+     * @param updatedProgress the updated progress of the user
+     * @return updatedProgress the updated progress of the user
+     */
     private double roundUpdatedValue(double updatedProgress) {
 
         if (updatedProgress > 100.0) {
             updatedProgress = 100.0;
         } else {
-            //TODO find a method to round the progress to 2 decimal points
+            updatedProgress = Math.round(updatedProgress * 100.0) / 100.0;
         }
 
         return updatedProgress;

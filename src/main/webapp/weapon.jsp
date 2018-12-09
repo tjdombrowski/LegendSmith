@@ -93,13 +93,6 @@
 
 <!-- JQuery UI Script -->
 <script>
-
-    $( function() {
-        $( ".accordion" ).accordion({
-            collapsible: true
-        });
-    } );
-
     $( function() {
         $( "#itemTabs" ).tabs();
     } );

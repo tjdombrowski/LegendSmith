@@ -45,12 +45,22 @@ public class LegendaryDataTracker {
             }
 
             taskDao.saveOrUpdate(userTask);
+            updateProgress(userTaskId, completion);
 
-            //Update the progress to reflect the user's new status
-            ProgressTracker progressTracker = new ProgressTracker();
-            progressTracker.updateAllProgress(userTaskId);
         }
 
+    }
+
+    private void updateProgress(int userTaskId, int completion) {
+        boolean taskCompleted = false;
+
+        //Update the progress to reflect the user's new status
+        if (completion == 1) {
+            taskCompleted = true;
+        }
+
+        ProgressTracker progressTracker = new ProgressTracker();
+        progressTracker.updateAllProgress(userTaskId, taskCompleted);
     }
 
     /**

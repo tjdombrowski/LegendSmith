@@ -14,7 +14,7 @@ public class ProgressTracker {
      *
      * @param userTaskId the UserLegendaryPrimaryItem taskId
      */
-    public void updateAllProgress(int userTaskId) {
+    public void updateAllProgress(int userTaskId, boolean taskCompleted) {
         //Find the user's primary item with task id
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(userTaskId);
@@ -22,7 +22,7 @@ public class ProgressTracker {
         UserLegendaryPrimaryItem userPrimaryItem = userTask.getUserPrimaryItem();
 
         //Update the user's progress with the primary item
-        updatePrimaryItemProgress(userPrimaryItem);
+        updatePrimaryItemProgress(userPrimaryItem, taskCompleted);
 
         //Update the total progress of the user on the Legendary
         updateLegendaryProgress(userPrimaryItem);
@@ -103,12 +103,14 @@ public class ProgressTracker {
      *
      * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
      */
-    private void updatePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+    private void updatePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem, boolean taskCompleted) {
         GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
         double currentProgress = userLegendaryPrimaryItem.getProgress();
         int numberOfTasks = getNumberOfTasks(userLegendaryPrimaryItem);
         double progressIncrement = 1.0 / (double)numberOfTasks;
+
+        updateProgressIncrementValue(progressIncrement, taskCompleted);
         double updatedProgress = currentProgress + progressIncrement;
 
         updatedProgress = roundUpdatedValue(updatedProgress);
@@ -121,7 +123,25 @@ public class ProgressTracker {
     }
 
     /**
+     * This renders the progress increment negative if the task was unmarked for completion or leaves it a positive if
+     * the task was marked for completion. Thus, progress will be lost if the task was unmarked.
+     *
+     * @param progressIncrement
+     * @param taskCompleted
+     * @return progressIncrement
+     */
+    private double updateProgressIncrementValue(double progressIncrement, boolean taskCompleted) {
+
+        if (taskCompleted == false) {
+            progressIncrement = progressIncrement * -1.0;
+        }
+
+        return progressIncrement;
+    }
+
+    /**
      * Returns the progress rounded to 2 decimal places or sets the value to 100 if it goes above 100.
+     * TODO Sometimes the user can only get to 99% of the progress.
      *
      * @param updatedProgress the updated progress of the user
      * @return updatedProgress the updated progress of the user
@@ -129,6 +149,8 @@ public class ProgressTracker {
     private double roundUpdatedValue(double updatedProgress) {
         if (updatedProgress > 1.0) {
             updatedProgress = 1.0;
+        } else if (updatedProgress < 0) {
+            updatedProgress = 0.0;
         } else {
             updatedProgress = Math.round(updatedProgress * 100.0) / 100.0;
         }

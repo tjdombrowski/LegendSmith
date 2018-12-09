@@ -46,6 +46,9 @@ public class LegendaryDataTracker {
 
             taskDao.saveOrUpdate(userTask);
 
+            //Update the progress to reflect the user's new status
+            ProgressTracker progressTracker = new ProgressTracker();
+            progressTracker.updateAllProgress(userTaskId);
         }
 
     }

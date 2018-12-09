@@ -12,8 +12,9 @@ public class ProgressTracker {
     private int completedTasks = 0;
 
     /**
-     * Updates the user's progress
+     * Updates the user's progress for PrimaryItems and Legendaries.
      *
+     * @param userTaskId the UserLegendaryPrimaryItem taskId
      */
     public void updateAllProgress(int userTaskId) {
         //Find the user's primary item with task id
@@ -26,14 +27,53 @@ public class ProgressTracker {
         updatePrimaryItemProgress(userPrimaryItem);
 
         //Update the total progress of the user on the Legendary
-        updateLegendaryProgress(userPrimaryItem.getLegendaryPrimaryItem().getId());
+        updateLegendaryProgress(userPrimaryItem);
     }
 
-    private void updateLegendaryProgress(int legendaryPrimaryItemId) {
+    /**
+     * Updates the total progress on a legendary based on the values of each UserLegendaryPrimaryItem.
+     *
+     * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
+     */
+    public void updateLegendaryProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         //Find the progress of all the user's primary items with this legendary
-        double totalProgression = getUserPrimaryItemProgression(legendaryPrimaryItemId);
+        int userLegendaryPrimaryItemId = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getId();
+        double totalProgression = getUserPrimaryItemProgression(userLegendaryPrimaryItemId);
 
+        //There are always 4 primary items, so divide the total progress by 4
+        double legendaryProgression = totalProgression / 4;
 
+        //Round the value
+        legendaryProgression = roundUpdatedValue(legendaryProgression);
+
+        logger.debug("legendaryProgression value (rounded): " + legendaryProgression);
+
+        //Update progress in UserLegendary
+        UserLegendary userLegendary = getUserLegendary(userLegendaryPrimaryItem);
+        userLegendary.setProgress(legendaryProgression);
+
+        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        userLegendaryDao.saveOrUpdate(userLegendary);
+    }
+
+    /**
+     * Finds the UserLegendary object associated with the given UserLegendaryPrimaryItem.
+     *
+     * @param userPrimaryItem the UserLegendaryPrimaryItem
+     * @return userLegendary the UserLegendary
+     */
+    private UserLegendary getUserLegendary(UserLegendaryPrimaryItem userPrimaryItem) {
+
+        int userId = userPrimaryItem.getUser().getId();
+        int legendaryId = userPrimaryItem.getLegendaryPrimaryItem().getLegendary().getId();
+
+        UserLegendaryDataHandler dataHandler = new UserLegendaryDataHandler(UserLegendary.class);
+
+        UserLegendary userLegendary = (UserLegendary) dataHandler.returnEntityByForeignKeys("legendaryId", legendaryId, "userId", userId);
+
+        logger.debug("UserLegendary data in getUserLegendary: " + userLegendary);
+
+        return userLegendary;
     }
 
     /**

@@ -5,6 +5,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type User legendary.
+ */
 @Entity(name = "UserLegendary")
 @Table(name = "UserLegendary")
 public class UserLegendary {
@@ -28,58 +31,128 @@ public class UserLegendary {
         foreignKey = @ForeignKey(name = "UserLegendary_userId_fk"))
     private User user;
 
+    /**
+     * Instantiates a new User legendary.
+     */
     public UserLegendary() {}
 
+    /**
+     * Instantiates a new User legendary.
+     *
+     * @param user      the user
+     * @param legendary the legendary
+     * @param progress  the progress
+     */
     public UserLegendary(User user, Legendary legendary, int progress) {
         this.user = user;
         this.legendary = legendary;
         this.progress = progress;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets progress.
+     *
+     * @return the progress
+     */
     public double getProgress() {
         return progress;
     }
 
+    /**
+     * Sets progress.
+     *
+     * @param progress the progress
+     */
     public void setProgress(double progress) {
         this.progress = progress;
     }
 
+    /**
+     * Gets tracking.
+     *
+     * @return the tracking
+     */
     public int getTracking() {
         return tracking;
     }
 
+    /**
+     * Sets tracking.
+     *
+     * @param tracking the tracking
+     */
     public void setTracking(int tracking) {
         this.tracking = tracking;
     }
 
+    /**
+     * Gets priority.
+     *
+     * @return the priority
+     */
     public int getPriority() {
         return priority;
     }
 
+    /**
+     * Sets priority.
+     *
+     * @param priority the priority
+     */
     public void setPriority(int priority) {
         this.priority = priority;
     }
 
+    /**
+     * Gets legendary.
+     *
+     * @return the legendary
+     */
     public Legendary getLegendary() {
         return legendary;
     }
 
+    /**
+     * Sets legendary.
+     *
+     * @param legendary the legendary
+     */
     public void setLegendary(Legendary legendary) {
         this.legendary = legendary;
     }
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
     }
@@ -107,5 +180,15 @@ public class UserLegendary {
         result = 31 * result + tracking;
         result = 31 * result + priority;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UserLegendary{" +
+                "id=" + id +
+                ", progress=" + progress +
+                ", tracking=" + tracking +
+                ", priority=" + priority +
+                '}';
     }
 }

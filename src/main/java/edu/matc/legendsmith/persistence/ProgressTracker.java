@@ -8,8 +8,6 @@ import java.util.List;
 
 public class ProgressTracker {
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private int totalTasks = 0;
-    private int completedTasks = 0;
 
     /**
      * Updates the user's progress for PrimaryItems and Legendaries.
@@ -69,7 +67,7 @@ public class ProgressTracker {
 
         UserLegendaryDataHandler dataHandler = new UserLegendaryDataHandler(UserLegendary.class);
 
-        UserLegendary userLegendary = (UserLegendary) dataHandler.returnEntityByForeignKeys("legendaryId", legendaryId, "userId", userId);
+        UserLegendary userLegendary = (UserLegendary) dataHandler.returnEntityByForeignKeys("legendary", legendaryId, "user", userId);
 
         logger.debug("UserLegendary data in getUserLegendary: " + userLegendary);
 
@@ -84,9 +82,9 @@ public class ProgressTracker {
      */
     private double getUserPrimaryItemProgression(int legendaryPrimaryItemId) {
         double totalProgression = 0.0;
-        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
-        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = userLegendaryDao.getByIntegerProperty(legendaryPrimaryItemId, "legendaryPrimaryItemId");
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = userPrimaryItemDao.getByIntegerProperty(legendaryPrimaryItemId, "legendaryPrimaryItem");
 
         for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
             totalProgression += userLegendaryPrimaryItem.getProgress();

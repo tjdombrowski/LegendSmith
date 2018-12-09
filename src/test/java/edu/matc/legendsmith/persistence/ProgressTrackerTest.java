@@ -57,4 +57,22 @@ public class ProgressTrackerTest {
         assertEquals(1.0, progress);
     }
 
+    /**
+     * Checks whether the UserLegendary progress is correctly calculated.
+     */
+    @Test
+    void updateAllProgressSuccess() {
+        progressTracker.updateAllProgress(4);
+
+        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
+
+        GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
+        UserLegendary userLegendary = (UserLegendary) userLegendaryDao.getById(2);
+
+        double legendaryProgress = userLegendary.getProgress();
+
+        assertEquals(0.06, legendaryProgress);
+
+    }
+
 }

@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ProgressTrackerTest {
     ProgressTracker progressTracker;
+    GenericDao userPrimaryItemDao;
 
     /**
      * Sets up the tests by resetting the database and instantiating ProgressTracker.
@@ -20,20 +21,40 @@ public class ProgressTrackerTest {
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
 
+        userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
         progressTracker = new ProgressTracker();
     }
 
+    /**
+     * Checks whether the progress tracker updates primary item progress with an expected status below 100 correctly.
+     */
     @Test
-    void updateWithPrimaryItemProgressBelow100Success() {
+    void updateWithPrimaryItemProgressBelow1Success() {
         progressTracker.updateAllProgress(4);
-
-        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 
         double progress = userLegendaryPrimaryItem.getProgress();
 
         assertEquals(0.25, progress);
+    }
+
+    /**
+     * Checks whether the progress tracker updates primary item progress with an expected status above 100 correctly.
+     */
+    @Test
+    void updateWithPrimaryItemProgressAbove1Success() {
+        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4);
+
+        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
+
+        double progress = userLegendaryPrimaryItem.getProgress();
+
+        assertEquals(1.0, progress);
     }
 
 }

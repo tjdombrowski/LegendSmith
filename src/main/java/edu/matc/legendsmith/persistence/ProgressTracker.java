@@ -59,8 +59,8 @@ public class ProgressTracker {
      * @return updatedProgress the updated progress of the user
      */
     private double roundUpdatedValue(double updatedProgress) {
-        if (updatedProgress > 100.0) {
-            updatedProgress = 100.0;
+        if (updatedProgress > 1.0) {
+            updatedProgress = 1.0;
         } else {
             updatedProgress = Math.round(updatedProgress * 100.0) / 100.0;
         }

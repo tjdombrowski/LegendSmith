@@ -51,16 +51,14 @@ public class LegendaryDataTracker {
 
     }
 
-    private void updateProgress(int userTaskId, int completion) {
-        boolean taskCompleted = false;
-
-        //Update the progress to reflect the user's new status
-        if (completion == 1) {
-            taskCompleted = true;
-        }
-
+    /**
+     * Creates a ProgressTracker and calls it to update the progress.
+     *
+     * @param userTaskId the userTaskId
+     */
+    private void updateProgress(int userTaskId) {
         ProgressTracker progressTracker = new ProgressTracker();
-        progressTracker.updateAllProgress(userTaskId, taskCompleted);
+        progressTracker.updateAllProgress(userTaskId);
     }
 
     /**

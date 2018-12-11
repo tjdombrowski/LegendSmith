@@ -41,7 +41,7 @@ public class ProgressTracker {
         //There are always 4 primary items, so divide the total progress by 4
         double legendaryProgress = determineLegendaryProgress(totalProgression);
 
-        logger.debug("legendaryProgression value (rounded): " + legendaryProgress);
+        logger.info("legendaryProgression value (rounded): " + legendaryProgress);
 
         //Update progress in UserLegendary
         UserLegendary userLegendary = getUserLegendary(userLegendaryPrimaryItem);
@@ -64,7 +64,7 @@ public class ProgressTracker {
 
         progress = roundProgress(progress);
 
-        logger.debug("Value of progress in determineLegendaryProgress: " + progress);
+        logger.info("Value of progress in determineLegendaryProgress: " + progress);
 
         return progress;
     }
@@ -84,7 +84,7 @@ public class ProgressTracker {
 
         UserLegendary userLegendary = (UserLegendary) dataHandler.returnEntityByForeignKeys("legendary", legendaryId, "user", userId);
 
-        logger.debug("UserLegendary data in getUserLegendary: " + userLegendary);
+        logger.info("UserLegendary data in getUserLegendary: " + userLegendary);
 
         return userLegendary;
     }
@@ -105,7 +105,7 @@ public class ProgressTracker {
             totalProgression += userLegendaryPrimaryItem.getProgress();
         }
 
-        logger.debug("Value of the totalProgression in getUserPrimaryItemProgression: " + totalProgression);
+        logger.info("Value of the totalProgression in getUserPrimaryItemProgression: " + totalProgression);
 
         return totalProgression;
     }
@@ -122,7 +122,7 @@ public class ProgressTracker {
 
         userLegendaryPrimaryItem.setProgress(progress);
 
-        logger.debug("Rounded value of progress after calculations: " + progress);
+        logger.info("Rounded value of progress after calculations: " + progress);
 
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
     }
@@ -182,6 +182,9 @@ public class ProgressTracker {
     private double calculateProgress(int totalTasks, int completedTasks) {
         double progress = (double)completedTasks / (double)totalTasks;
 
+        logger.info("completedTasks" + completedTasks);
+        logger.info("totalTasks" + totalTasks);
+
         progress = roundProgress(progress);
 
         return progress;
@@ -202,24 +205,9 @@ public class ProgressTracker {
             progress = Math.round(progress * 100.0) / 100.0;
         }
 
-        logger.debug("Value of updatedProgress in roundUpdatedValue: " + progress);
+        logger.info("Value of updatedProgress in roundUpdatedValue: " + progress);
 
         return progress;
     }
 
-    /**
-     * Gets the number of tasks associated with a primary item based of the UserLegendaryPrimaryItem object.
-     *
-     * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
-     * @return numberOfTasks the number of tasks
-     */
-    private int getNumberOfTasks(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
-        int numberOfTasks = 0;
-
-        numberOfTasks = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getTasks().size();
-
-        logger.debug("Value of numberOfTasks in getNumberOfTasks: " + numberOfTasks);
-
-        return numberOfTasks;
-    }
 }

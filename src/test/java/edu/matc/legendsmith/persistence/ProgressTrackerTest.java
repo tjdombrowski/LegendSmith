@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProgressTrackerTest {
     ProgressTracker progressTracker;
     GenericDao userPrimaryItemDao;
+    LegendaryDataTracker legendaryDataTracker;
 
     /**
      * Sets up the tests by resetting the database and instantiating ProgressTracker.
@@ -21,6 +22,7 @@ public class ProgressTrackerTest {
 
         userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
         progressTracker = new ProgressTracker();
+        legendaryDataTracker = new LegendaryDataTracker();
     }
 
     /**
@@ -28,7 +30,9 @@ public class ProgressTrackerTest {
      */
     @Test
     void updateWithPrimaryItemProgressBelow1Success() {
-        progressTracker.updateAllProgress(4, true);
+        legendaryDataTracker.updateUserTaskStatus(3);
+
+        progressTracker.updateAllProgress(4);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 
@@ -38,21 +42,20 @@ public class ProgressTrackerTest {
     }
 
     /**
-     * Checks whether the progress tracker updates primary item progress with an expected status above 100 correctly.
+     * Checks whether the progress tracker updates primary item progress with progress lost.
      */
     @Test
-    void updateWithPrimaryItemProgressAbove1Success() {
-        progressTracker.updateAllProgress(4, true);
-        progressTracker.updateAllProgress(4, true);
-        progressTracker.updateAllProgress(4, true);
-        progressTracker.updateAllProgress(4, true);
-        progressTracker.updateAllProgress(4, true);
+    void updateWithProgressLostSuccess() {
+        legendaryDataTracker.updateUserTaskStatus(3);
+        legendaryDataTracker.updateUserTaskStatus(2);
+        legendaryDataTracker.updateUserTaskStatus(3); //Sets the task completion back to 0
+        progressTracker.updateAllProgress(4);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 
         double progress = userLegendaryPrimaryItem.getProgress();
 
-        assertEquals(1.0, progress);
+        assertEquals(0.25, progress);
     }
 
     /**
@@ -60,7 +63,8 @@ public class ProgressTrackerTest {
      */
     @Test
     void updateAllProgressSuccess() {
-        progressTracker.updateAllProgress(4, true);
+        legendaryDataTracker.updateUserTaskStatus(3);
+        progressTracker.updateAllProgress(4);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 

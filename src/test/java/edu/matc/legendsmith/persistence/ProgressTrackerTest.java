@@ -28,7 +28,7 @@ public class ProgressTrackerTest {
      */
     @Test
     void updateWithPrimaryItemProgressBelow1Success() {
-        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4, true);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 
@@ -42,11 +42,11 @@ public class ProgressTrackerTest {
      */
     @Test
     void updateWithPrimaryItemProgressAbove1Success() {
-        progressTracker.updateAllProgress(4);
-        progressTracker.updateAllProgress(4);
-        progressTracker.updateAllProgress(4);
-        progressTracker.updateAllProgress(4);
-        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4, true);
+        progressTracker.updateAllProgress(4, true);
+        progressTracker.updateAllProgress(4, true);
+        progressTracker.updateAllProgress(4, true);
+        progressTracker.updateAllProgress(4, true);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 
@@ -60,7 +60,7 @@ public class ProgressTrackerTest {
      */
     @Test
     void updateAllProgressSuccess() {
-        progressTracker.updateAllProgress(4);
+        progressTracker.updateAllProgress(4, true);
 
         UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem) userPrimaryItemDao.getById(4);
 

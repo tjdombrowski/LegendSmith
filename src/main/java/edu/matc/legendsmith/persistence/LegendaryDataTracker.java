@@ -45,7 +45,7 @@ public class LegendaryDataTracker {
             }
 
             taskDao.saveOrUpdate(userTask);
-            updateProgress(userTaskId, completion);
+            updateProgress(userTaskId);
 
         }
 

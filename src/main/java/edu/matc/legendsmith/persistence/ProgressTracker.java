@@ -14,7 +14,7 @@ public class ProgressTracker {
      *
      * @param userTaskId the UserLegendaryPrimaryItem taskId
      */
-    public void updateAllProgress(int userTaskId, boolean taskCompleted) {
+    public void updateAllProgress(int userTaskId) {
         //Find the user's primary item with task id
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);
         UserLegendaryPrimaryItemTask userTask = (UserLegendaryPrimaryItemTask)userTaskDao.getById(userTaskId);
@@ -22,7 +22,7 @@ public class ProgressTracker {
         UserLegendaryPrimaryItem userPrimaryItem = userTask.getUserPrimaryItem();
 
         //Update the user's progress with the primary item
-        updatePrimaryItemProgress(userPrimaryItem, taskCompleted);
+        updatePrimaryItemProgress(userPrimaryItem);
 
         //Update the total progress of the user on the Legendary
         updateLegendaryProgress(userPrimaryItem);
@@ -39,19 +39,34 @@ public class ProgressTracker {
         double totalProgression = getUserPrimaryItemProgression(userLegendaryPrimaryItemId);
 
         //There are always 4 primary items, so divide the total progress by 4
-        double legendaryProgression = totalProgression / 4;
+        double legendaryProgress = determineLegendaryProgress(totalProgression);
 
-        //Round the value
-        legendaryProgression = roundUpdatedValue(legendaryProgression);
-
-        logger.debug("legendaryProgression value (rounded): " + legendaryProgression);
+        logger.debug("legendaryProgression value (rounded): " + legendaryProgress);
 
         //Update progress in UserLegendary
         UserLegendary userLegendary = getUserLegendary(userLegendaryPrimaryItem);
-        userLegendary.setProgress(legendaryProgression);
+        userLegendary.setProgress(legendaryProgress);
 
         GenericDao userLegendaryDao = new GenericDao(UserLegendary.class);
         userLegendaryDao.saveOrUpdate(userLegendary);
+    }
+
+    /**
+     * Determines and returns the progress of a legendary, rounded.
+     *
+     * @param totalPrimaryItemProgress the total primary item progress
+     * @return progress the progress
+     */
+    public double determineLegendaryProgress(double totalPrimaryItemProgress) {
+        int numberOfPrimaryItems = 4; // this is always 4
+
+        double progress = totalPrimaryItemProgress / numberOfPrimaryItems;
+
+        progress = roundProgress(progress);
+
+        logger.debug("Value of progress in determineLegendaryProgress: " + progress);
+
+        return progress;
     }
 
     /**
@@ -97,67 +112,99 @@ public class ProgressTracker {
 
     /**
      * Updates an user's progress with a primary item, given the user's UserLegendaryPrimaryItem.
-     * The progress is updated by retrieving the current progress (which is initiated at 0), and finding the number of
-     * tasks associated with the primary item to find the increment percentage for each task step, since each task is
-     * set one by one. (TODO Allow user to check multiple steps at once)
      *
      * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
      */
-    private void updatePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem, boolean taskCompleted) {
+    private void updatePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
-        double currentProgress = userLegendaryPrimaryItem.getProgress();
-        int numberOfTasks = getNumberOfTasks(userLegendaryPrimaryItem);
-        double progressIncrement = 1.0 / (double)numberOfTasks;
+        double progress = determinePrimaryItemProgress(userLegendaryPrimaryItem);
 
-        updateProgressIncrementValue(progressIncrement, taskCompleted);
-        double updatedProgress = currentProgress + progressIncrement;
+        userLegendaryPrimaryItem.setProgress(progress);
 
-        updatedProgress = roundUpdatedValue(updatedProgress);
-
-        userLegendaryPrimaryItem.setProgress(updatedProgress);
-
-        logger.debug("Rounded value of updatedProgress after calculations: " + updatedProgress);
+        logger.debug("Rounded value of progress after calculations: " + progress);
 
         userPrimaryItemDao.saveOrUpdate(userLegendaryPrimaryItem);
     }
 
     /**
-     * This renders the progress increment negative if the task was unmarked for completion or leaves it a positive if
-     * the task was marked for completion. Thus, progress will be lost if the task was unmarked.
+     * Determines the progress of an user's primary item, by retrieving the total number of tasks for the item,
+     * and by getting the number of completed tasks in each one. The progress is rounded and returned.
      *
-     * @param progressIncrement
-     * @param taskCompleted
-     * @return progressIncrement
+     * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
+     * @return progress the progress
      */
-    private double updateProgressIncrementValue(double progressIncrement, boolean taskCompleted) {
+    private double determinePrimaryItemProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+        List<UserLegendaryPrimaryItemTask> userTasks = userLegendaryPrimaryItem.getUserTasks();
+        int totalTasks = userTasks.size(); //The amount of tasks here should always be the amount of tasks for that primary item
+        int completedTasks = 0;
 
-        if (taskCompleted == false) {
-            progressIncrement = progressIncrement * -1.0;
+        for (UserLegendaryPrimaryItemTask userTask : userTasks) {
+            if (checkIfTaskComplete(userTask.getCompletion())) {
+                completedTasks += 1;
+            }
         }
 
-        return progressIncrement;
+        double progress = calculateProgress(totalTasks, completedTasks);
+
+        return progress;
+    }
+
+    /**
+     * Checks whether the task has been completed by the user. If the value is 1, then it has been completed, if it's
+     * a 0 (by default), then it has not.
+     *
+     * @param taskCompletion the taskCompletion status
+     * @return completion true if completed, false if not
+     */
+    private boolean checkIfTaskComplete(int taskCompletion) {
+        boolean completion = false;
+
+        if (taskCompletion == 1) {
+            completion = true;
+        } else if (taskCompletion == 0) {
+            // do nothing, value is already 0
+        } else {
+            logger.error("Task completion status out of bounds in checkIfTaskComplete. Value of taskCompletion: " + taskCompletion);
+        }
+
+        return completion;
+    }
+
+    /**
+     * Performs a simple calculation for the progress of an item, where completed tasks is divided by total, and the
+     * result is rounded before being returned.
+     *
+     * @param totalTasks
+     * @param completedTasks
+     * @return
+     */
+    private double calculateProgress(int totalTasks, int completedTasks) {
+        double progress = (double)completedTasks / (double)totalTasks;
+
+        progress = roundProgress(progress);
+
+        return progress;
     }
 
     /**
      * Returns the progress rounded to 2 decimal places or sets the value to 100 if it goes above 100.
-     * TODO Sometimes the user can only get to 99% of the progress.
      *
-     * @param updatedProgress the updated progress of the user
-     * @return updatedProgress the updated progress of the user
+     * @param progress the updated progress of the user
+     * @return progress the updated progress of the user
      */
-    private double roundUpdatedValue(double updatedProgress) {
-        if (updatedProgress > 1.0) {
-            updatedProgress = 1.0;
-        } else if (updatedProgress < 0) {
-            updatedProgress = 0.0;
+    private double roundProgress(double progress) {
+        if (progress > 1.0) {
+            progress = 1.0;
+        } else if (progress < 0) {
+            progress = 0.0;
         } else {
-            updatedProgress = Math.round(updatedProgress * 100.0) / 100.0;
+            progress = Math.round(progress * 100.0) / 100.0;
         }
 
-        logger.debug("Value of updatedProgress in roundUpdatedValue: " + updatedProgress);
+        logger.debug("Value of updatedProgress in roundUpdatedValue: " + progress);
 
-        return updatedProgress;
+        return progress;
     }
 
     /**

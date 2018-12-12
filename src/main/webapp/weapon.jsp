@@ -30,18 +30,15 @@
         <div id="itemTabs" class="col-md-12">
             <!-- set the tab titles -->
             <ul>
-            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
-                <c:forEach var="userPrimaryItem" items="${userData.getUserPrimaryItems()}">
-                    <c:if test="${userPrimaryItem.legendaryPrimaryItem.id == legendaryPrimaryItem.id}">
-                        <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem}" scope="page" />
-                    </c:if>
-                </c:forEach>
+            <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus"><c:forEach var="userPrimaryItem" items="${userData.getUserPrimaryItems()}">
+                <c:if test="${userPrimaryItem.legendaryPrimaryItem.id == legendaryPrimaryItem.id}">
+                    <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem}" scope="page" />
+                </c:if>
+            </c:forEach>
                 <li><a href="#tab${primaryItemStatus.index}">
                         ${legendaryPrimaryItem.primaryItem.name}
                         &emsp;
-                        <c:if test="${userLegendaryPrimaryItem != null}">
-                            ${userLegendaryPrimaryItem.progress * 100}%
-                        </c:if>
+                        ${userLegendaryPrimaryItem.progress * 100}%
                 </a></li>
             </c:forEach>
             </ul>

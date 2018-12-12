@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * The type Search legendary.
+ * The type TrackLegendaryProgress.
  */
 @WebServlet(
         urlPatterns = {"/legendarytask"}

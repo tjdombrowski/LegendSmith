@@ -77,10 +77,9 @@ public class RetrieveLegendaryData extends HttpServlet {
 
             UserLegendary userLegendary = (UserLegendary) userLegendaryDao.findByPropertyEqual(userLegendaryFkMap);
 
-            //If there is no result, then the user has not started this legendary yet
-            if (userLegendary != null) {
-                req.setAttribute("userLegendaryData", userLegendary);
-            }
+            //If there is no result, then the user has not started this legendary yet and the data will be null
+            req.setAttribute("userLegendaryData", userLegendary);
+
 
         }
 

@@ -58,8 +58,7 @@ public class ProgressTracker {
      * @return progress the progress
      */
     public double determineLegendaryProgress(double totalPrimaryItemProgress) {
-        int numberOfPrimaryItems = 4; // this is always 4
-
+        double numberOfPrimaryItems = 4.0; // this is always 4
         double progress = totalPrimaryItemProgress / numberOfPrimaryItems;
 
         progress = roundProgress(progress);

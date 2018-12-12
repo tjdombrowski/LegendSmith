@@ -14,7 +14,12 @@
             <div class="col-md-12"><h3>${legendaryData.name}</h3></div>
             <div class="col-md-12">
                 <div id="progressBar">
-
+                    Progress:
+                    <c:choose>
+                        <c:when test="${userLegendaryData != null}">${userLegendaryData.progress * 100}</c:when>
+                        <c:when test="${userLegendaryData == null}">0</c:when>
+                    </c:choose>
+                    %
                 </div>
             </div>
         </div>
@@ -26,7 +31,18 @@
             <!-- set the tab titles -->
             <ul>
             <c:forEach var="legendaryPrimaryItem" items="${legendaryData.getPrimaryItems()}" varStatus="primaryItemStatus">
-                <li><a href="#tab${primaryItemStatus.index}">${legendaryPrimaryItem.primaryItem.name}</a></li>
+                <c:forEach var="userPrimaryItem" items="${userData.getUserPrimaryItems()}">
+                    <c:if test="${userPrimaryItem.legendaryPrimaryItem.id == legendaryPrimaryItem.id}">
+                        <c:set var="userLegendaryPrimaryItem" value="${userPrimaryItem}" scope="page" />
+                    </c:if>
+                </c:forEach>
+                <li><a href="#tab${primaryItemStatus.index}">
+                        ${legendaryPrimaryItem.primaryItem.name}
+                        &emsp;
+                        <c:if test="${userLegendaryPrimaryItem != null}">
+                            ${userLegendaryPrimaryItem.progress * 100}%
+                        </c:if>
+                </a></li>
             </c:forEach>
             </ul>
 
@@ -67,7 +83,7 @@
                                             <button class="btn btn-sm btn-dark">Done</button>
                                         </c:when>
                                         <c:when test="${userTask.completion == 1}">
-                                            <button class="btn btn-sm btn-dark">Reset</button>
+                                            <button class="btn btn-sm btn-dark">Undo</button>
                                         </c:when>
                                         <c:otherwise>
                                             <button class="btn btn-sm btn-dark">Done</button>
@@ -97,10 +113,10 @@
         $( "#itemTabs" ).tabs();
     } );
 
-    $( "#progressBar" ).progressbar({
+  /*  $( "#progressBar" ).progressbar({
         value: false
     });
-
+    */
 </script>
 
 

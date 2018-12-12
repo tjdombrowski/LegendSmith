@@ -21,7 +21,7 @@ import java.util.List;
  * The type Search legendary.
  */
 @WebServlet(
-        urlPatterns = {"/taskMarkOff"}
+        urlPatterns = {"/legendarytask"}
 )
 
 public class TrackLegendaryProgress extends HttpServlet {
@@ -43,12 +43,13 @@ public class TrackLegendaryProgress extends HttpServlet {
 
         if (req.getParameter("userTaskId").isEmpty()) {
             //If there is no user task data, assume that the user has not yet started this legendary and instantiate everything
-            //Retrieve User
+            //Retrieve User id
             String username = req.getUserPrincipal().getName();
             GenericDao userDao = new GenericDao(User.class);
             List<User> users = userDao.getByProperty(username, "username");
             User user = users.get(0);
 
+            //Retrieve Legendary id
             int legendaryId = Integer.parseInt(req.getParameter("legendaryId"));
 
             //Instantiate everything using the user id and legendary id

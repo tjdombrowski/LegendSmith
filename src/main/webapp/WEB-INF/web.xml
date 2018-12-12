@@ -14,7 +14,7 @@
     </form-login-config>
   </login-config>
 
-  <!-- Protect all pages except about search page. -->
+  <!-- Protect all pages except about.jsp page. -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>dashboard</web-resource-name>
@@ -33,6 +33,24 @@
       <role-name>user</role-name>
     </auth-constraint>
   </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>weapon</web-resource-name>
+      <url-pattern>/legendary</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+  </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>weapon</web-resource-name>
+            <url-pattern>/legendarytask</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
 
 
   <security-role>

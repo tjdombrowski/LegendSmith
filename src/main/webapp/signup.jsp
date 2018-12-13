@@ -15,11 +15,20 @@
     <div class="row">
         <!-- signup form -->
         <div class="col-md-5">
-            <form action="/signup" method="post">
-                <input type="username" name="username" />
-                <input type="password1" name="password1" />
-                <input type="password2" name="password2" />
-                <input type="submit" value="Sign Up" />
+            <form action="/legendsmith/signup" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                </div>
+                <div class="form-group">
+                    <label for="pass1">Password</label>
+                    <input type="password" id="pass1" name="password1" />
+                </div>
+                <div class="form-group">
+                    <label for="pass2">Retype Password</label>
+                    <input type="password" id="pass2" name="password2" />
+                </div>
+                <input type="submit" class="btn btn-dark" name="submit" value="Sign Up" />
             </form>
         </div>
     </div>

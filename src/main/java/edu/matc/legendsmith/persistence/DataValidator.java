@@ -5,6 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * The type Data validator.
@@ -19,6 +21,36 @@ public class DataValidator {
     public DataValidator() {
         errorMsg = ""; //This stays blank if there is nothing wrong
 
+    }
+
+    /**
+     * This method can be used to validate a set of user data. It checks whether they're empty, have any white space,
+     * exceed 20 characters, if the username is unique or if the passwords don't match,
+     * and returns an error message on the first one to meet those conditions.
+     *
+     * TODO consider breaking this method up
+     *
+     * @param userDataMap the string set
+     * @return errorMsg the error message
+     */
+    public String validateAll(Map<String, String> userDataMap) {
+        for (Map.Entry entry : userDataMap.entrySet()) {
+            if (entry.getKey().equals("username")) {
+                errorMsg = checkIfUsernameIsUnique((String)entry.getValue());
+            }
+
+            errorMsg = checkWhetherPasswordsMatch(userDataMap.get("password1"), userDataMap.get("password2"));
+
+            while (errorMsg.isEmpty()) {
+                String text = (String)entry.getValue();
+
+                errorMsg = checkWhetherStringIsEmpty(text);
+                errorMsg = checkForNoWhiteSpace(text);
+                errorMsg = checkWhetherStringSizeOver20(text);
+            }
+        }
+
+        return errorMsg;
     }
 
     /**

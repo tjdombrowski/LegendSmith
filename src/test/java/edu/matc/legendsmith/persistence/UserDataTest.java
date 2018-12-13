@@ -38,7 +38,7 @@ public class UserDataTest {
     @Test
     void getUserLegendaryPrimaryItemTasSuccess() {
         GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
-        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemDao.getById(1);
+        UserLegendaryPrimaryItem userLegendaryPrimaryItem = (UserLegendaryPrimaryItem)userPrimaryItemDao.getById(4);
         UserLegendaryPrimaryItemTask userLegendaryPrimaryItemTask = userLegendaryPrimaryItem.getUserTasks().get(0);
 
         GenericDao userTaskDao = new GenericDao(UserLegendaryPrimaryItemTask.class);

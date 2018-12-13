@@ -15,6 +15,12 @@ import javax.ws.rs.core.MediaType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Gw2ApiTest {
+    private Gw2ApiUser gw2ApiUser;
+
+    @BeforeEach
+    public void setUp() {
+        gw2ApiUser = new Gw2ApiUser();
+    }
 
     /**
      * Tests whether the commerce/prices results are being correctly retrieved and mapped.

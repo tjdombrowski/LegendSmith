@@ -76,7 +76,6 @@ class Gw2ApiTest {
      */
     @Test
     public void testSellOrderResponseMethod() {
-        Gw2ApiUser gw2ApiUser = new Gw2ApiUser();
         int price = 0;
 
         price = gw2ApiUser.getSellOrderPrice(19709);

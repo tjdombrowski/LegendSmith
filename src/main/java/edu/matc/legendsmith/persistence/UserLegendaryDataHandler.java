@@ -31,20 +31,4 @@ public class UserLegendaryDataHandler<T> {
 
         return entity;
     }
-
-    public boolean checkIfEntryAlreadyExists(String fk1name, int fk1, String fk2name, int fk2) {
-        boolean entryFound = false;
-
-        T entity = returnEntityByForeignKeys(fk1name, fk1, fk2name, fk2);
-
-        if (entity != null) {
-            entryFound = true;
-        }
-
-        return entryFound;
-
-    }
-
-
-
 }

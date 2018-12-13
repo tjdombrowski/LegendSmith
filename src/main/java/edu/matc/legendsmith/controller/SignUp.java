@@ -24,6 +24,7 @@ public class SignUp extends HttpServlet {
         String password1 = req.getParameter("password1");
         String password2 = req.getParameter("password2");
 
+        String errorMsg;
         boolean allDataValid = false;
 
 

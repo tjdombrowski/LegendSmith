@@ -57,6 +57,9 @@ public class SignUp extends HttpServlet {
             dispatcher.forward(req, resp);
         } else {
             //Redirect to index to log in
+            String url = "/legendsmith";
+
+            resp.sendRedirect(url);
         }
     }
 }

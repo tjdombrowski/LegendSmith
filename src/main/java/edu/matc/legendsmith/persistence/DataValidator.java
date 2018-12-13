@@ -59,13 +59,13 @@ public class DataValidator {
     }
 
     /**
-     * Checks whether the string is empty and returns an error message if it is.
+     * Checks whether the string is empty or null and returns an error message if it is.
      *
      * @param text the text
      * @return errorMsg the error message
      */
     public String checkWhetherStringIsEmpty(String text) {
-        if (text.isEmpty()) {
+        if (text.isEmpty() || text == null) {
             errorMsg = "Please enter your information in each field.";
         }
 

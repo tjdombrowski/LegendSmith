@@ -1,6 +1,8 @@
 package edu.matc.legendsmith.controller;
 
+import edu.matc.legendsmith.entity.User;
 import edu.matc.legendsmith.persistence.DataValidator;
+import edu.matc.legendsmith.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,14 +37,26 @@ public class SignUp extends HttpServlet {
         //If the error message is empty, then there were no issues with the validation.
         if (errorMsg.isEmpty()) {
             //Enter data in the db
+            User user = new User(req.getParameter("username"), req.getParameter("password1"));
 
-            //Redirect to index to log in
-        } else {
+            GenericDao userDao = new GenericDao(User.class);
+
+            int userId = userDao.insert(user);
+
+            //If the insert performs correctly, userId should not be 0
+            if (userId == 0) {
+                errorMsg = "Something went wrong with the creating your account. Please try again later.";
+            }
+        }
+
+        if (errorMsg.isEmpty()) {
             //Forward to sign up page with error message
             req.setAttribute("errorMsg", errorMsg);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/signup.jsp");
             dispatcher.forward(req, resp);
+        } else {
+            //Redirect to index to log in
         }
     }
 }

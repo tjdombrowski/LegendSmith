@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The type Data validator.
@@ -34,11 +36,12 @@ public class DataValidator {
      */
     public String validateAll(Map<String, String> userDataMap) {
         for (Map.Entry entry : userDataMap.entrySet()) {
+            //Check if passwords match, but this will be overwritten first
+            errorMsg = checkWhetherPasswordsMatch(userDataMap.get("password1"), userDataMap.get("password2"));
+
             if (entry.getKey().equals("username")) {
                 errorMsg = checkIfUsernameIsUnique((String)entry.getValue());
             }
-
-            errorMsg = checkWhetherPasswordsMatch(userDataMap.get("password1"), userDataMap.get("password2"));
 
             while (errorMsg.isEmpty()) {
                 String text = (String)entry.getValue();
@@ -46,6 +49,9 @@ public class DataValidator {
                 errorMsg = checkWhetherStringIsEmpty(text);
                 errorMsg = checkForNoWhiteSpace(text);
                 errorMsg = checkWhetherStringSizeOver20(text);
+                logger.info("validateAll errorMsg value in while loop: {}, with key: {}", errorMsg, (String)entry.getKey());
+
+                break;
             }
         }
 
@@ -88,8 +94,12 @@ public class DataValidator {
      * @return errorMsg the error message
      */
     public String checkForNoWhiteSpace(String text) {
-        if (text.matches("\\s")) {
-            errorMsg = "You cannot enter any white spaces.";
+        String msg = "You cannot enter any white spaces.";
+
+        Pattern pattern = Pattern.compile("\\s");
+        Matcher matcher = pattern.matcher(text);
+        if (matcher.find()) {
+            errorMsg = msg;
         }
 
         return errorMsg;
@@ -124,7 +134,7 @@ public class DataValidator {
      * @return errorMsg the error message
      */
     public String checkWhetherPasswordsMatch(String pass1, String pass2) {
-        if (pass1.equals(pass2) == false) {
+        if (!pass1.equals(pass2)) {
             errorMsg = "Please make sure your passwords match.";
         }
 

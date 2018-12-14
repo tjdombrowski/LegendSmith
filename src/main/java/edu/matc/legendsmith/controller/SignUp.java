@@ -56,6 +56,7 @@ public class SignUp extends HttpServlet {
                 resp.sendRedirect(url);
             } else {
                 //Forward to sign up page with error message
+                //TODO in might be nice to have valid data fields returned or do client side evaluation first
                 req.setAttribute("errorMsg", errorMsg);
 
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/signup.jsp");

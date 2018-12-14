@@ -14,7 +14,7 @@
     </form-login-config>
   </login-config>
 
-  <!-- Protect all pages except about.jsp page. -->
+  <!-- Protect all pages except sign up -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>dashboard</web-resource-name>

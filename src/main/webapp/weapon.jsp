@@ -9,9 +9,10 @@
 
     <!-- Legendary -->
     <div class="row">
-        <div class="col-md-1">image</div>
-        <div class="row">
-            <div class="col-md-12"><h3>${legendaryData.name}</h3></div>
+            <div class="col-md-12">
+                <img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">
+                <h3>${legendaryData.name}</h3>
+            </div>
             <div class="col-md-12">
                 <div id="progressBar">
                     Progress:
@@ -22,7 +23,6 @@
                     %
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- Items -->

@@ -217,52 +217,52 @@ INSERT into UserRole VALUES (
 
 
 -- insert data for Legendary
-INSERT into Legendary (name, type) values(
-  'Bolt', 'Sword'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Bolt', 'Sword', 'images/Bolt.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'The Shining Blade', 'Sword'
+INSERT into Legendary (name, type, pictureReference) values(
+  'The Shining Blade', 'Sword', 'images/The_Shining_Blade.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Twilight', 'Greatsword'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Twilight', 'Greatsword', 'images/Twilight.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Kudzu', 'Longbow'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Kudzu', 'Longbow', 'images/Kudzu.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Xiuquatl', 'Scepter'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Xiuquatl', 'Scepter', 'images/Xiuquatl.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Sunrise', 'Greatsword'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Sunrise', 'Greatsword', 'images/Sunrise.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Astralaria', 'Axe'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Astralaria', 'Axe', 'images/Astralaria.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Sharur', 'Hammer'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Sharur', 'Hammer', 'images/Sharur.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Chuka and Champawat', 'Shortbow'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Chuka and Champawat', 'Shortbow', 'images/Chuka_and_Champawat.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Frostfang', 'Axe'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Frostfang', 'Axe', 'images/Frostfang.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'The Binding of Ipos', 'Focus'
+INSERT into Legendary (name, type, pictureReference) values(
+  'The Binding of Ipos', 'Focus', 'images/The_Binding_of_Ipos.png'
 );
 
-INSERT into Legendary (name, type) values(
-  'Incinerator', 'Dagger'
+INSERT into Legendary (name, type, pictureReference) values(
+  'Incinerator', 'Dagger', 'images/Incinerator.png'
 );
 
 -- insert data for Game

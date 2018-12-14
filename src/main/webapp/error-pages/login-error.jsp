@@ -4,7 +4,7 @@
 
 <body>
 <!-- Menu here -->
-<%@include file="../sections/menu.jsp"%>
+<%@include file="../sections/header.jsp"%>
 <div class="container">
     <!--Intro -->
     <%@include file="../sections/login-intro.jsp"%>

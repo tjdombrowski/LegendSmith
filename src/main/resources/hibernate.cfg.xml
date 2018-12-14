@@ -22,6 +22,7 @@
 
         <mapping class="edu.matc.legendsmith.entity.Legendary"/>
         <mapping class="edu.matc.legendsmith.entity.User"/>
+        <mapping class="edu.matc.legendsmith.entity.UserRole"/>
         <mapping class="edu.matc.legendsmith.entity.Game"/>
         <mapping class="edu.matc.legendsmith.entity.Task"/>
         <mapping class="edu.matc.legendsmith.entity.LegendaryPrimaryItem"/>

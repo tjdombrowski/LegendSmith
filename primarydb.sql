@@ -53,7 +53,7 @@
   (
     id int primary key AUTO_INCREMENT,
     userId int,
-    role VARCHAR(15),
+    role VARCHAR(15) default 'user',
     username VARCHAR(20),
     CONSTRAINT UserRole_fk
     FOREIGN KEY (userId) REFERENCES User(id)
@@ -193,26 +193,26 @@ INSERT INTO User (username, password) VALUES (
 
 
 -- insert data for UserRole
-INSERT into UserRole (id, userId, role, username) VALUES (
-  1, 1, 'user', 'valence'
+INSERT into UserRole (id, role, username) VALUES (
+  1, 'user', 'valence'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  2, 2, 'user', 'silkie'
+INSERT into UserRole (id, role, username) VALUES (
+  2, 'user', 'silkie'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  3, 3, 'user', 'vinzio'
+INSERT into UserRole (id, role, username) VALUES (
+  3, 'user', 'vinzio'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  4, 4, 'user', 'thylaeza'
+INSERT into UserRole (id, role, username) VALUES (
+  4, 'user', 'thylaeza'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  5, 5, 'user', 'ajnya'
+INSERT into UserRole (id, role, username) VALUES (
+  5, 'user', 'ajnya'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  6, 6, 'user', 'sophrosyne'
+INSERT into UserRole (id, role, username) VALUES (
+  6, 'user', 'sophrosyne'
 );
-INSERT into UserRole (id, userId, role, username) VALUES (
-  7, 7, 'user', 'lex'
+INSERT into UserRole (id, role, username) VALUES (
+  7, 'user', 'lex'
 );
 
 

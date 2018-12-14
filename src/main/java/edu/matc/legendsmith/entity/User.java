@@ -21,6 +21,9 @@ public class User {
     private String username;
     private String password;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private UserRole userRole;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<UserLegendary> userLegendaries = new ArrayList<>();
 
@@ -77,6 +80,24 @@ public class User {
     }
 
     /**
+     * Gets user role.
+     *
+     * @return the user role
+     */
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    /**
+     * Sets user role.
+     *
+     * @param userRole the user role
+     */
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    /**
      * Gets username.
      *
      * @return the username
@@ -113,19 +134,39 @@ public class User {
     }
 
 
+    /**
+     * Gets user legendaries.
+     *
+     * @return the user legendaries
+     */
     public List<UserLegendary> getUserLegendaries() {
         return userLegendaries;
     }
 
+    /**
+     * Sets user legendaries.
+     *
+     * @param userLegendaries the user legendaries
+     */
     public void setUserLegendaries(List<UserLegendary> userLegendaries) {
         this.userLegendaries = userLegendaries;
     }
 
+    /**
+     * Add user legendary.
+     *
+     * @param userLegendary the user legendary
+     */
     public void addUserLegendary(UserLegendary userLegendary) {
         userLegendaries.add(userLegendary);
         userLegendary.setUser(this);
     }
 
+    /**
+     * Remove user legendary.
+     *
+     * @param userLegendary the user legendary
+     */
     public void removeUserLegendary(UserLegendary userLegendary) {
         userLegendaries.remove(userLegendary);
         userLegendary.setUser(null);
@@ -140,15 +181,30 @@ public class User {
         return userPrimaryItems;
     }
 
+    /**
+     * Sets user primary items.
+     *
+     * @param userPrimaryItems the user primary items
+     */
     public void setUserPrimaryItems(List<UserLegendaryPrimaryItem> userPrimaryItems) {
         this.userPrimaryItems = userPrimaryItems;
     }
 
+    /**
+     * Add user primary item.
+     *
+     * @param userLegendaryPrimaryItem the user legendary primary item
+     */
     public void addUserPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         userPrimaryItems.add(userLegendaryPrimaryItem);
         userLegendaryPrimaryItem.setUser(this);
     }
 
+    /**
+     * Remove user primary item.
+     *
+     * @param userLegendaryPrimaryItem the user legendary primary item
+     */
     public void removeUserPrimaryItem(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         userPrimaryItems.remove(userLegendaryPrimaryItem);
         userLegendaryPrimaryItem.setUser(null);

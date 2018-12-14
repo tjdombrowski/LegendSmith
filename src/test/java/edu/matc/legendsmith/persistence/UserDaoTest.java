@@ -60,12 +60,14 @@ public class UserDaoTest {
     public void addUserSuccess() {
         User newUser = new User("cyclone", "securepassword");
 
-        int insertedId  = dao.insert(newUser);
+        int insertedId = dao.insert(newUser);
+        User user = (User) dao.getById(insertedId);
 
         assertEquals(5, dao.getAll().size());
-        assertEquals(newUser, (User)dao.getById(insertedId));
-    }
+        assertEquals(newUser, user);
 
+
+    }
     /**
      * Tests whether updating an user is successful.
      */
@@ -115,5 +117,6 @@ public class UserDaoTest {
 
         assertEquals(primaryItem, userPrimaryItem);
     }
+
 
 }

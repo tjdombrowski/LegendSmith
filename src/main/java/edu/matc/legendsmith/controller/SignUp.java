@@ -1,6 +1,7 @@
 package edu.matc.legendsmith.controller;
 
 import edu.matc.legendsmith.entity.User;
+import edu.matc.legendsmith.entity.UserRole;
 import edu.matc.legendsmith.persistence.DataValidator;
 import edu.matc.legendsmith.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -46,14 +47,20 @@ public class SignUp extends HttpServlet {
             //If the error message is empty, then there were no issues with the validation.
             if (errorMsg.isEmpty()) {
                 //Enter data in the db
-                User user = new User(req.getParameter("username"), req.getParameter("password1"));
-
                 GenericDao userDao = new GenericDao(User.class);
-
+                User user = new User(req.getParameter("username"), req.getParameter("password1"));
                 int userId = userDao.insert(user);
 
+                GenericDao userRoleDao = new GenericDao(UserRole.class);
+                UserRole userRole = new UserRole();
+                userRole.setRole("user");
+                userRole.setUsername(req.getParameter("username"));
+                userRole.setUser((User)userDao.getById(userId));
+
+                int userRoleId = userRoleDao.insert(userRole);
+
                 //If the insert performs correctly, userId should not be 0
-                if (userId == 0) {
+                if (userId == 0 || userRoleId == 0) {
                     errorMsg = "Something went wrong with the creating your account. Please try again later.";
                 }
             }

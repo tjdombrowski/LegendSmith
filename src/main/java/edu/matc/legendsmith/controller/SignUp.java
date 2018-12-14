@@ -18,6 +18,11 @@ import java.util.Map;
 @WebServlet(
         urlPatterns = {"/signup"}
 )
+/**
+ * This servlet is responsible for handling the user sign up page. If nothing was submitted, the page is displayed.
+ * Once submitted, the information is processed, validated, and if everything's fine, it is inserted to the db. If
+ * anything goes wrong, an error message is displayed instead.
+ */
 public class SignUp extends HttpServlet {
 
     private final Logger logger = LogManager.getLogger(this.getClass());

@@ -4,7 +4,7 @@
 
 <body>
 <!-- Menu here -->
-<%@include file="sections/menu.jsp"%>
+<%@include file="sections/header.jsp"%>
 <div class="container">
     <!--Intro -->
     <div class="row">
@@ -32,6 +32,7 @@
                     <input type="password" id="pass2" name="password2" maxlength="20"/>
                 </div>
                 <input type="submit" class="btn btn-dark" name="submit" value="Sign Up" />
+                <a href="/legendsmith"><button class="btn btn-dark">Return</button></a>
             </form>
         </div>
     </div>

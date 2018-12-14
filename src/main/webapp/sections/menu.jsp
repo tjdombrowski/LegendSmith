@@ -1,7 +1,7 @@
 
 <%@include file="header.jsp"%>
 <div class="container-fluid">
-        <nav class="navbar bg-light">
+        <nav class="navbar navbar-dark bg-dark">
             <ul class="navbar nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/legendsmith">Home</a>

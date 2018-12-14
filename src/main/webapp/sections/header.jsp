@@ -1,6 +1,6 @@
 <div class="jumbotron-fluid">
     <div class="container-fluid">
-        <h2>Heading</h2>
-        <p>Subheading</p>
+        <h2>LegendSmith</h2>
+        <p class="subtitle">Build Your Weapon</p>
     </div>
 </div>

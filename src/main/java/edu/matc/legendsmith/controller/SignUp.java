@@ -29,6 +29,7 @@ public class SignUp extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/signup.jsp");
             dispatcher.forward(req, resp);
         } else {
+            //Process, validate and insert user data
             Map<String, String> userDataMap = new HashMap<>();
             userDataMap.put("username", req.getParameter("username"));
             userDataMap.put("password1", req.getParameter("password1"));
@@ -45,7 +46,6 @@ public class SignUp extends HttpServlet {
             if (errorMsg.isEmpty()) {
                 //Enter data in the db
                 UserCreator userCreator = new UserCreator();
-
                 errorMsg = userCreator.addUser(req.getParameter("username"), req.getParameter("password1"));
             }
 

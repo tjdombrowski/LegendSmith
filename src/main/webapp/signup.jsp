@@ -14,8 +14,11 @@
 
     <div class="row">
         <!-- signup form -->
+        <div class="col-md-8">
+            ${errorMsg}
+        </div>
         <div class="col-md-5">
-            <form action="/legendsmith/signup" method="post">
+            <form action="/legendsmith/signup" method="get">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" />

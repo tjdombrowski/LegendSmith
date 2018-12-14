@@ -24,7 +24,7 @@ public class SignUp extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Simply direct the user to the sign up page if nothing was submitted to the form
         if (req.getParameter("submit") == null) {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/signup.jsp");
@@ -35,9 +35,13 @@ public class SignUp extends HttpServlet {
             userDataMap.put("password1", req.getParameter("password1"));
             userDataMap.put("password2", req.getParameter("password2"));
 
+            logger.info("userDataMap {}", userDataMap);
+
             DataValidator dataValidator = new DataValidator();
 
             String errorMsg = dataValidator.validateAll(userDataMap);
+
+            logger.info("errorMsg: {}", errorMsg);
 
             //If the error message is empty, then there were no issues with the validation.
             if (errorMsg.isEmpty()) {
@@ -54,7 +58,7 @@ public class SignUp extends HttpServlet {
                 }
             }
 
-            if (errorMsg.isEmpty()) {
+            if (!errorMsg.isEmpty()) {
                 //Forward to sign up page with error message
                 req.setAttribute("errorMsg", errorMsg);
 

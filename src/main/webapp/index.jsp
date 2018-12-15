@@ -16,43 +16,30 @@
             </div>
         </div>
 
-
         <div class="row">
-            <!-- An overview of tasks is displayed here. -->
-            <div class="col-sm-5">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores, autem consequuntur dolore ea illum incidunt magni minima minus nemo nesciunt nihil obcaecati porro reiciendis reprehenderit sed veritatis voluptas voluptatem?
-            </div>
-
-            <div class="col-sm-5">
-                <table id="dataTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="legendary" items="${legendaries}">
-                            <tr>
-                                <!-- TODO picture should link to the page -->
-                                <td>
-                                    <a href="/legendsmith/legendary?legendaryId=${legendary.id}">
-                                        <img src="${legendary.pictureReference}" alt="${legendary.name} tooltip="${legendary.name}" >
-                                    </a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
+                <c:forEach var="legendary" items="${legendaries}">
+                    <div class="col-sm-2 legendary-grid-item">
+                        <div>
+                            <a href="/legendsmith/legendary?legendaryId=${legendary.id}">
+                                <img src="${legendary.pictureReference}" alt="${legendary.name} tooltip="${legendary.name}" >
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/legendsmith/legendary?legendaryId=${legendary.id}">
+                            ${legendary.name}
+                            </a>
+                        </div>
+                    </div>
+                </c:forEach>
         </div>
 
     </div>
 </body>
 
-<script>
+<script>/*
     $(document).ready( function () {
         $('#dataTable').DataTable();
-    } );
+    } );*/
 </script>
 
 </html>

@@ -3,16 +3,18 @@
 <%@include file="sections/head.jsp"%>
 
 <body>
-    <!-- Menu here -->
+    <%@include file="sections/header.jsp"%>
     <%@include file="sections/menu.jsp"%>
-    <div class="container">
-        <h3>Welcome</h3>
+    <div class="container container2">
+
+
         <!--Intro -->
         <div class="row">
-            <div class="col-md-12">
-                Ready to start (or finish) your legendary weapon? You can search through and find any legendary here.
-                All you need to do to start working on a legendary is start marking off tasks and your progress will be
-                tracked.
+            <div class="col-md-8">
+                    <h3>Welcome</h3>
+                    Ready to start (or finish) your legendary weapon? You can search through and find any legendary here.
+                    All you need to do to start working on a legendary is start marking off tasks and your progress will be
+                    tracked.
             </div>
         </div>
 
@@ -26,7 +28,7 @@
                         </div>
                         <div>
                             <a href="/legendsmith/legendary?legendaryId=${legendary.id}">
-                            ${legendary.name}
+                                    ${legendary.name}
                             </a>
                         </div>
                     </div>

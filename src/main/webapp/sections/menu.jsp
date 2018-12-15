@@ -1,14 +1,11 @@
-
-<%@include file="header.jsp"%>
-<div class="container-fluid">
-        <nav class="navbar navbar-dark bg-dark">
-            <ul class="navbar nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/legendsmith">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/legendsmith/logout">Log Out</a>
-                </li>
-            </ul>
-        </nav>
+<div class="container container1">
+    <div class="row">
+        <div class="col-md-10 home-button">
+            <a href="/legendsmith">Home</a>
+        </div>
+        <div class="col-md-2 logout-button">
+            <a href="/legendsmith/logout">Log Out</a>
+        </div>
+    </div>
 </div>
+

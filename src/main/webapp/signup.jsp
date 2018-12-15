@@ -5,7 +5,7 @@
 <body>
 <!-- Menu here -->
 <%@include file="sections/header.jsp"%>
-<div class="container">
+<div class="container container2">
     <!--Intro -->
     <div class="row">
         <div class="col-md-12">Welcome to LegendSmith. Please fill out each field to sign up and get started!</div>

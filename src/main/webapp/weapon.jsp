@@ -3,14 +3,13 @@
 <%@include file="sections/head.jsp"%>
 
 <body>
-<!-- Menu -->
+<%@include file="sections/header.jsp"%>
 <%@include file="sections/menu.jsp"%>
-<div class="container">
-
+<div class="container container2">
     <!-- Legendary -->
     <div class="row">
         <div class="legendary">
-            <h3><img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">${legendaryData.name}</h3>
+            <h3><img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">&nbsp&nbsp${legendaryData.name}</h3>
             <div class="col-md-12">
                 <div id="progressBar">
                     Progress:

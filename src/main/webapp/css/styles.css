@@ -3,9 +3,9 @@ body {
     color: ghostwhite;
 }
 
-.container {
+.container2 {
     background-color: rgba(102, 110, 113, 0.2);
-    padding: 40px;
+    padding: 30px;
 }
 
 h3 {
@@ -16,21 +16,8 @@ button {
     margin: 10px;
 }
 
-.progressLabel {
-    position: absolute;
-    left: 50%;
-    top: -20px;
-    font-weight: bold;
-    text-shadow: 1px 1px 0 #fff;
-}
-
 .form {
     padding: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.form-buttons {
     margin-left: auto;
     margin-right: auto;
 }
@@ -54,7 +41,6 @@ label {
 }
 
 .subtitle {
-    font-family: "century gothic", Verdana, Arial, sans-serif;
     font-size: 0.95em;
     letter-spacing: 1px;
 }
@@ -63,9 +49,12 @@ a {
     color: #3d82d5;
 }
 
+.legendary-grid-item a {
+    color: ghostwhite;
+}
+
 a:hover {
     text-decoration: none;
-    font-weight: bold;
     color: #75B7D5;
 }
 
@@ -87,12 +76,31 @@ p, .error, .instruction, .legendary, .progressBar {
     padding: 15px;
 }
 
-.row {
+.container1 {
+    margin-top: 30px;
+    background-color: #222222;
+    border-bottom: 2px solid #65161f;
+    border-top: 2px solid #65161f;
+    padding: 0;
+}
+
+.home-button, .logout-button {
+    background-color: #222222;
     padding: 15px;
 }
 
-.container {
-    margin-top: 18px;
+.home-button a,  .logout-button a {
+    font-size: 1.1em;
+    color: ghostwhite;
+}
+
+.logout-button {
+    text-align: right;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 @font-face {

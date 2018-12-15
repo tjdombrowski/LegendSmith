@@ -5,7 +5,7 @@
 <body>
 <!-- Menu here -->
 <%@include file="../sections/menu.jsp"%>
-<div class="container">
+<div class="container container2">
 
     <div class="row">
         <!-- display error information -->

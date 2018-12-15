@@ -8,10 +8,11 @@
 <div class="container">
 
     <!-- Legendary -->
-    <div class="row">
+    <div class="row legendary">
+        <div class="col-md-6">
             <div class="col-md-12">
-                <img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">
-                <h3>${legendaryData.name}</h3>
+                <div class="weapon-img"><img src="${legendaryData.pictureReference}" alt="${legendaryData.name}"></div>
+                <h3 class="legendary-name">${legendaryData.name}</h3>
             </div>
             <div class="col-md-12">
                 <div id="progressBar">
@@ -23,6 +24,7 @@
                     %
                 </div>
             </div>
+        </div>
     </div>
 
     <!-- Items -->

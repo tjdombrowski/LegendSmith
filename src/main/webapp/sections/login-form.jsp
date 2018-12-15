@@ -1,4 +1,4 @@
-<div class="col-md-5 form">
+<div class="col-md-6 form">
     <form action="j_security_check" method="post">
         <div class="form-group">
             <label for="username">Username</label>

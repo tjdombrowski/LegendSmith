@@ -1,10 +1,11 @@
 body {
-    background-color: #222222;
+    background-color: #18181a;
     color: ghostwhite;
 }
 
 .container {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(102, 110, 113, 0.2);
+    padding: 40px;
 }
 
 h3 {
@@ -29,32 +30,63 @@ button {
     margin-right: auto;
 }
 
-form-buttons {
+.form-buttons {
     margin-left: auto;
     margin-right: auto;
 }
 
 label {
+    width: 100px;
     padding: 10px;
 }
 
 .jumbotron {
-    background-image: url("../images/sparks2.png");
-    padding: 25px;
+    background-image: url("../images/sparks.png");
+    padding: 30px;
     color: ghostwhite;
+    border-bottom: 3px solid #65161f;
+    margin-bottom: 0;
 }
 
 .jumbotron h1 {
     font-family: kevlarunderwear, Norasi, Verdana, Arial, sans-serif;
-    text-shadow: #ffe0db;
+    text-shadow: 2px 2px 4px #ffe0db;
 }
 
 .subtitle {
+    font-family: "century gothic", Verdana, Arial, sans-serif;
     font-size: 0.95em;
+    letter-spacing: 1px;
+}
+
+a {
+    color: #3d82d5;
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #75B7D5;
+}
+
+p, .error, .instruction, .legendary {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.legendary-name {
+    display: inline-block;
+}
+
+.error {
+    margin: 10px;
+    font-weight: bold;
 }
 
 @font-face {
     font-family: kevlarunderwear;
     src: url(../fonts/kevlarunderwear.otf);
 }
+
+
 

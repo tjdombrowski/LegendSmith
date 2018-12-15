@@ -6,10 +6,14 @@
     <!-- Menu here -->
     <%@include file="sections/menu.jsp"%>
     <div class="container">
-        <h2>Hello World!</h2>
+        <h3>Welcome</h3>
         <!--Intro -->
         <div class="row">
-            <div class="col-md-12">Welcome to your dashboard. Here's how to use it!</div>
+            <div class="col-md-12">
+                Ready to start (or finish) your legendary weapon? You can search through and find any legendary here.
+                All you need to do to start working on a legendary is start marking off tasks and your progress will be
+                tracked.
+            </div>
         </div>
 
 
@@ -30,7 +34,11 @@
                         <c:forEach var="legendary" items="${legendaries}">
                             <tr>
                                 <!-- TODO picture should link to the page -->
-                                <td><a href="/legendsmith/legendary?legendaryId=${legendary.id}">${legendary.name}</a></td>
+                                <td>
+                                    <a href="/legendsmith/legendary?legendaryId=${legendary.id}">
+                                        <img src="${legendary.pictureReference}" alt="${legendary.name} tooltip="${legendary.name}" >
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

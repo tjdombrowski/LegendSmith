@@ -8,6 +8,8 @@
             <label for="pass">Password</label>
             <input type="password" id="pass" name="j_password" maxlength="20" />
         </div>
-        <input type="submit" class="btn btn-dark" name="submit" value="Log In" />
+        <div class="form-buttons" >
+            <input type="submit" class="btn btn-dark" name="submit" value="Log In" />
+        </div>
     </form>
 </div>

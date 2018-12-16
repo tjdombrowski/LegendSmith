@@ -10,11 +10,18 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.util.Properties;
 
-public class Gw2ApiUser {
+public class Gw2ApiUser implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private final String GW2API_URL = "https://api.guildwars2.com/v2/commerce/prices/";
+    private static final String propertiesPath = "/legendsmith.properties";
+    private String gw2ApiUrl;
+
+    public Gw2ApiUser() {
+        Properties properties = loadProperties(propertiesPath);
+        gw2ApiUrl = properties.getProperty("gw2.commerce.api.url");
+    }
 
     /**
      * Calls the Guild Wars 2 API and retrieves the lowest sell order (sell orders are the listed items) in coins.
@@ -29,7 +36,7 @@ public class Gw2ApiUser {
         Client client = ClientBuilder.newClient();
 
         WebTarget target =
-                client.target(GW2API_URL + gw2ItemId);
+                client.target(gw2ApiUrl + gw2ItemId);
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
 
         try {

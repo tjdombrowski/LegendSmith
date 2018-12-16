@@ -103,10 +103,11 @@
 
 <!-- JQuery UI Script -->
 <script>
+    var tabStatus = 1;
 
     $( function() {
         $( "#itemTabs" ).tabs({
-            active: 0
+            active: tabStatus
             }
 
         );

@@ -4,6 +4,7 @@ import edu.matc.legendsmith.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgressTracker {
@@ -36,7 +37,7 @@ public class ProgressTracker {
     public void updateLegendaryProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         //Find the progress of all the user's primary items with this legendary
         int userLegendaryPrimaryItemId = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getId();
-        double totalProgression = getUserPrimaryItemProgression(userLegendaryPrimaryItemId);
+        double totalProgression = getUserPrimaryItemProgression(userLegendaryPrimaryItem);
 
         //There are always 4 primary items, so divide the total progress by 4
         double legendaryProgress = determineLegendaryProgress(totalProgression);
@@ -91,14 +92,13 @@ public class ProgressTracker {
     /**
      * Calculates the sum of all the progress of each UserLegendaryPrimaryItem associated with a given Legendary.
      *
-     * @param legendaryPrimaryItemId the legendary primary item id
+     * @param userPrimaryItem the user legendary primary item
      * @return totalProgression the total progression of each primary item of the userlegendary
      */
-    private double getUserPrimaryItemProgression(int legendaryPrimaryItemId) {
+    private double getUserPrimaryItemProgression(UserLegendaryPrimaryItem userPrimaryItem) {
         double totalProgression = 0.0;
-        GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
-        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = userPrimaryItemDao.getByIntegerProperty(legendaryPrimaryItemId, "legendaryPrimaryItem");
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = getUserPrimaryItems(userPrimaryItem);
 
         for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
             totalProgression += userLegendaryPrimaryItem.getProgress();
@@ -107,6 +107,34 @@ public class ProgressTracker {
         logger.info("Value of the totalProgression in getUserPrimaryItemProgression: " + totalProgression);
 
         return totalProgression;
+    }
+
+    /**
+     * Retrieves the 4 UserLegendaryPrimaryItem objects associated with the current Legendary and User.
+     *
+     * @param userPrimaryItem the UserLegendaryPrimaryItem
+     * @return userLegendaryPrimaryItems the list of UserLegendaryPrimaryItem objects
+     */
+    private List<UserLegendaryPrimaryItem> getUserPrimaryItems(UserLegendaryPrimaryItem userPrimaryItem) {
+        GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
+        int legendaryId = userPrimaryItem.getLegendaryPrimaryItem().getLegendary().getId();
+
+        User user = userPrimaryItem.getUser();
+
+        List<UserLegendaryPrimaryItem> userLegendaryPrimaryItems = user.getUserPrimaryItems();
+        List<UserLegendaryPrimaryItem> userPrimaryItemsForThisLegendary = new ArrayList<>();
+
+        for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
+            int currentLegendaryId = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getLegendary().getId();
+
+            if (currentLegendaryId == legendaryId) {
+                userPrimaryItemsForThisLegendary.add(userLegendaryPrimaryItem);
+            }
+        }
+
+        logger.info("Size of the list of UserLegendaryPrimaryItems: " + userLegendaryPrimaryItems.size());
+
+        return userLegendaryPrimaryItems;
     }
 
     /**

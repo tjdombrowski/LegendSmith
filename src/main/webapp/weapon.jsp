@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<%@include file="sections/head.jsp"%>
 
 <body>
-<%@include file="sections/header.jsp"%>
 <%@include file="sections/menu.jsp"%>
 <div class="container container2">
     <!-- Legendary -->

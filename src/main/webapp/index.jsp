@@ -2,7 +2,7 @@
 <html>
 <%@include file="sections/head.jsp"%>
 
-<body>>
+<body>
 <%@include file="sections/menu.jsp"%>
 <div class="container container2">
 

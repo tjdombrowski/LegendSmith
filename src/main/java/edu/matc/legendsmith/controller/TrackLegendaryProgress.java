@@ -80,6 +80,11 @@ public class TrackLegendaryProgress extends HttpServlet {
         //Update user task data
         legendaryDataTracker.updateUserTaskStatus(userTaskId);
 
+        //Tabs are 0 index based in jquery
+        int tabNumber = Integer.parseInt(req.getParameter("tab"));
+
+        req.setAttribute("tabNumber", tabNumber);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/legendary");
         dispatcher.forward(req, resp);
     }

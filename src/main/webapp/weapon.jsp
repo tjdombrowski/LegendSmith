@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     <c:set var="userTask" value="${userLegendaryPrimaryItem.getUserTasks().get(taskStatus.index)}" />
-                                    <a href="/legendsmith/legendarytask?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}">
+                                    <a href="/legendsmith/legendarytask?userTaskId=${userTask.id}&legendaryId=${legendaryData.id}&taskId=${task.id}&tab=${primaryItemStatus.index}">
                                     <c:choose>
                                         <c:when test="${userTask == null || userTask.completion == 0}">
                                             <button class="btn btn-sm btn-dark">Done</button>
@@ -103,8 +103,13 @@
 
 <!-- JQuery UI Script -->
 <script>
+
     $( function() {
-        $( "#itemTabs" ).tabs();
+        $( "#itemTabs" ).tabs({
+            active: 0
+            }
+
+        );
     } );
 
   /*  $( "#progressBar" ).progressbar({

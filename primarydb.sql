@@ -500,7 +500,109 @@ insert into Item (name, gw2ItemId) VALUES (
     'Glob of Ectoplasm', 19721
   );
 
--- ItemTask data with Mystic Coins and Amalgamated Gemstones
+  -- --------------------------------------------------------------------------------------------------------------------
+  -- insert data for PrimaryItem
+  -- for The Binding of Ipos (ids 5-6)
+  insert into PrimaryItem (name) VALUES(
+    'Ars Goetia'
+  );
+
+  insert into PrimaryItem (name) VALUES(
+    'Gift of Ipos'
+  );
+
+  -- insert data for LegendaryPrimaryItem
+  -- for the Binding of Ipos (ids 5,6,7,8)
+  insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    3,11
+  );
+  insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    4,11
+  );
+  insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    6,11
+  );
+  insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
+    5,11
+  );
+
+  -- insert data for Task
+  -- for the Binding of Ipos, Ars Goetia
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Mark of the Unnamed', 'The first tier precursor of The Binding of Ipos.', 8
+  );
+  insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+    'The True Name', 'The second tier precursor of The Binding of Ipos.', 8
+  );
+  insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+    'Ars Goetia', 'The precursor for The Binding of Ipos.', 8
+  );
+
+  -- for the Binding of Ipos, Gift of Ipos
+  insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+    'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
+  );
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+    'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Arts</li><li>1 Mystic Curio</li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
+  );
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
+    'Mystic Runestone', 'Purchased from Miyani for 1g.', 7, 100
+  );
+  insert into Task (name, description, legendaryPrimaryItemId) VALUES (
+    'Gift of Energy', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
+  );
+
+  -- for the Binding of Ipos, Mystic Tribute
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+    'Gift of Condensed Magic', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
+  );
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+    'Gift of Condensed Might', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
+  );
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+    'Mystic Clover', 'Created in the mystic forge, earned through PvP reward tracks, or from log-in rewards.', 6, 77
+  );
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+    'Mystic Coin', 'Earned from log-in rewards or purchasable on the trading post.', 6, 250
+  );
+
+  -- for The Binding of Ipos, Gift of Maguuma Mastery
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of Insights', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
+    'Crystalline Ingot', 'Crafted by weaponsmiths. <div class="recipe">Recipe</div>', 5, 250
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of the Fleet', 'Obtained upon map completion of Verdant Brink.', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of Tarir', 'Obtained upon map completion of Auric Basin.', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 5
+  );
+
+  insert into Task (name, description, legendaryPrimaryItemId) values (
+    'Gift of the Jungle', 'Obtained upon map completion of Dragon\'s Stand.', 5
+  );
+
+  -- insert data for Sunrise
+
+
+  -- ItemTask data with Mystic Coins and Amalgamated Gemstones
 insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
   19976,30, 1
 );
@@ -531,103 +633,3 @@ insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
   -- linseed oil for Vengeance
 
 
--- --------------------------------------------------------------------------------------------------------------------
--- insert data for PrimaryItem
--- for The Binding of Ipos (ids 5-6)
-insert into PrimaryItem (name) VALUES(
-  'Ars Goetia'
-);
-
-insert into PrimaryItem (name) VALUES(
-  'Gift of Ipos'
-);
-
--- insert data for LegendaryPrimaryItem
--- for the Binding of Ipos (ids 5,6,7,8)
-insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
-  3,11
-);
-insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
-  4,11
-);
-insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
-    6,11
-);
-insert into LegendaryPrimaryItem (primaryItemId, legendaryId) VALUES (
-    5,11
-);
-
--- insert data for Task
--- for the Binding of Ipos, Ars Goetia
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Mark of the Unnamed', 'The first tier precursor of The Binding of Ipos.', 8
-);
-insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'The True Name', 'The second tier precursor of The Binding of Ipos.', 8
-);
-insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Ars Goetia', 'The precursor for The Binding of Ipos.', 8
-);
-
--- for the Binding of Ipos, Gift of Ipos
-insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Gift of the Mists', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
-);
-insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Shard of the Dark Arts', 'Crafted by Artificers. Requires 450 skill.<div class="recipe">Recipe<ul><li>1 Tribute to the Dark Arts</li><li>1 Mystic Curio</li><li>30 Mithril Ingots</li><li>20 Elder Wood Planks</li></ul></div>', 7, 100
-);
-insert into Task (name, description, legendaryPrimaryItemId, quantity) VALUES (
-  'Mystic Runestone', 'Purchased from Miyani for 1g.', 7, 100
-);
-insert into Task (name, description, legendaryPrimaryItemId) VALUES (
-  'Gift of Energy', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>.', 7
-);
-
--- for the Binding of Ipos, Mystic Tribute
-insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-'Gift of Condensed Magic', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
-);
-insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Gift of Condensed Might', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 6, 2
-);
-insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Mystic Clover', 'Created in the mystic forge, earned through PvP reward tracks, or from log-in rewards.', 6, 77
-);
-insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Mystic Coin', 'Earned from log-in rewards or purchasable on the trading post.', 6, 250
-);
-
--- for The Binding of Ipos, Gift of Maguuma Mastery
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of Maguuma', 'Combine Gift of the Jungle, Gift of the Chak, Gift of Tarir, and Gift of the Fleet together in the Mystic Forge.', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of Insights', 'Created in the Mystic Forge. <div class="recipe">Recipe</div>', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Bloodstone Shard', 'Purchased from Miyani or any Mystic Forge Attendant for 200 Spirit Shards.', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId, quantity) values (
-  'Crystalline Ingot', 'Crafted by weaponsmiths. <div class="recipe">Recipe</div>', 5, 250
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of the Fleet', 'Obtained upon map completion of Verdant Brink.', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of Tarir', 'Obtained upon map completion of Auric Basin.', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of the Chak', 'Obtained upon map completion of Tangled Depths.', 5
-);
-
-insert into Task (name, description, legendaryPrimaryItemId) values (
-  'Gift of the Jungle', 'Obtained upon map completion of Dragon\'s Stand.', 5
-);
-
--- insert data for Sunrise

@@ -9,7 +9,7 @@
 
     <div class="row">
         <!-- display error information -->
-        <div class="col-md-12">Sorry, something went wrong. Try again later?</div>
+        <div class="col-md-12 error">Sorry, something went wrong. Try again later?</div>
     </div>
 
 </div>

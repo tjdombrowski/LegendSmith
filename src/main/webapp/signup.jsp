@@ -4,11 +4,11 @@
 
 <body>
 <!-- Menu here -->
-<%@include file="sections/header.jsp"%>
+<%@include file="sections/menu-logged-out.jsp"%>
 <div class="container container2">
     <!--Intro -->
     <div class="row">
-        <div class="col-md-12">Welcome to LegendSmith. Please fill out each field to sign up and get started!</div>
+        <div class="col-md-8 section">Welcome to LegendSmith. Please fill out each field to sign up and get started!</div>
         <div class="col-md-6 error">
             ${errorMsg}
         </div>
@@ -32,7 +32,6 @@
                 </div>
                 <input type="submit" class="btn btn-dark" name="submit" value="Sign Up" />
             </form>
-            <a href="/legendsmith"><button class="btn btn-dark">Return</button></a>
         </div>
     </div>
 

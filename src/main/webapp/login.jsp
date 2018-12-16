@@ -4,11 +4,10 @@
 
 <body>
 <!-- Menu here -->
-<%@include file="sections/header.jsp"%>
-<div class="container container2s">
+<%@include file="sections/menu-logged-out.jsp"%>
+<div class="container container2">
     <!--Intro -->
     <%@include file="sections/login-intro.jsp" %>
-
 
     <div class="row">
         <!-- login form -->

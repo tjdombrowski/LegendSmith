@@ -4,7 +4,7 @@
 
 <body>
 <!-- Menu here -->
-<%@include file="../sections/menu.jsp"%>
+<%@include file="../sections/menu-logged-out.jsp"%>
 <div class="container container2">
 
     <div class="row">

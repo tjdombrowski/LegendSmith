@@ -478,8 +478,29 @@ insert into Item (name, gw2ItemId) VALUES (
 insert into Item (name, gw2ItemId) VALUES (
   'Mystic Coin', 19976
 );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Large Bone', 24341
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Incandescent Dust', 24356
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Large Claw', 24350
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Intricate Totem', 24299
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Potent Venom Sac', 24282
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Large Scale', 24288
+  );
+  insert into Item (name, gw2ItemId) VALUES (
+    'Glob of Ectoplasm', 19721
+  );
 
--- ItemTask data for The Shining Blade
+-- ItemTask data with Mystic Coins and Amalgamated Gemstones
 insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
   19976,30, 1
 );
@@ -489,6 +510,25 @@ insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
 insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
   68063, 4, 1
 );
+  insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+    68063, 34, 1
+  );
+  -- mithril for Vengeance
+  insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+    19684, 10, 2700
+  );
+
+  -- wood for Vengeance
+  insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+    19709, 10, 1800
+  );
+
+  -- t5 w/ totems for Vengeance
+  insert into TaskItem (gw2ItemId, taskId, quantity) VALUES (
+    24299, 10, 2100
+  );
+  -- orichalcum for Vengeance
+  -- linseed oil for Vengeance
 
 
 -- --------------------------------------------------------------------------------------------------------------------

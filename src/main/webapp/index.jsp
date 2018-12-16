@@ -13,7 +13,7 @@
             <h3>Welcome</h3>
             Ready to start (or finish) your legendary weapon? You can search through and find any legendary here.
             All you need to do to start working on a legendary is start marking off tasks and your progress will be
-            tracked.
+            tracked. 
         </div>
     </div>
 

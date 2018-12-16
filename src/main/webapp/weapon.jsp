@@ -23,7 +23,7 @@
     </div>
 
     <!-- Items -->
-    <div class="row">
+    <div class="row legendary-tabs">
         <div id="itemTabs" class="col-md-12">
             <!-- set the tab titles -->
             <ul>
@@ -96,6 +96,14 @@
         </div>
     </div>
 
+<c:choose>
+    <c:when test="${tabNumber != null}">
+        <c:set var="tabStatus" value="${tabNumber}" scope="page" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="tabStatus" value="0" scope="page" />
+    </c:otherwise>
+</c:choose>
 
 
 </div>
@@ -103,7 +111,9 @@
 
 <!-- JQuery UI Script -->
 <script>
-    var tabStatus = 1;
+
+
+    var tabStatus = ${tabStatus};
 
     $( function() {
         $( "#itemTabs" ).tabs({

@@ -89,13 +89,18 @@ a:hover {
 }
 
 .home-button, .logout-button {
-    background-color: #222222;
+    background-color: #111111;
     padding: 15px;
+    font-family: kevlarunderwear, verdana, sans-serif;
 }
 
 .home-button a,  .logout-button a {
     font-size: 1.1em;
     color: ghostwhite;
+}
+
+.home-button a:hover, .logout-button a:hover {
+    text-shadow: 2px 2px 2px #eee8e5;
 }
 
 .logout-button {
@@ -105,6 +110,10 @@ a:hover {
 .row {
     margin-left: 0;
     margin-right: 0;
+}
+
+.legendary-grid, .legendary-tabs {
+    margin-top: 30px;
 }
 
 @font-face {

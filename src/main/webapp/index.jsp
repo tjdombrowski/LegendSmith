@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row legendary-grid">
         <c:forEach var="legendary" items="${legendaries}">
             <div class="col-sm-2 legendary-grid-item">
                 <div>
@@ -36,11 +36,5 @@
 
 </div>
 </body>
-
-<script>/*
-    $(document).ready( function () {
-        $('#dataTable').DataTable();
-    } );*/
-</script>
 
 </html>

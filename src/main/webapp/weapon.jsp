@@ -1,7 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <%@include file="sections/head.jsp"%>
-
+<style>
+    .progressLabel {
+        position: absolute;
+        left: 50%;
+        top: 4px;
+        font-weight: bold;
+    }
+</style>
 <body>
 <%@include file="sections/menu.jsp"%>
 <div class="container container2">
@@ -11,12 +18,7 @@
             <h3><img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">&nbsp&nbsp${legendaryData.name}</h3>
             <div class="col-md-12">
                 <div id="progressBar">
-                    Progress:
-                    <c:choose>
-                        <c:when test="${userLegendaryData != null}">${userLegendaryData.progress * 100}</c:when>
-                        <c:when test="${userLegendaryData == null}">0</c:when>
-                    </c:choose>
-                    %
+                    <div class="progressLabel"></div>
                 </div>
             </div>
         </div>
@@ -105,15 +107,22 @@
     </c:otherwise>
 </c:choose>
 
-
+<c:choose>
+    <c:when test="${userLegendaryData != null}">
+        <c:set var="progressStatus" value="${userLegendaryData.progress * 100}" scope="page" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="progressStatus" value="0" scope="page" />
+    </c:otherwise>
+</c:choose>
 </div>
 </body>
 
 <!-- JQuery UI Script -->
 <script>
 
-
     var tabStatus = ${tabStatus};
+    var progressStatus = Math.round(${progressStatus});
 
     $( function() {
         $( "#itemTabs" ).tabs({
@@ -123,10 +132,18 @@
         );
     } );
 
-  /*  $( "#progressBar" ).progressbar({
-        value: false
-    });
-    */
+    $( function() {
+        var progressBar = $( "#progressBar" ),
+            progressLabel = $( ".progressLabel" );
+
+
+        progressBar.progressbar({
+            value: progressStatus
+
+        });
+
+        progressLabel.text(progressBar.progressbar("value") + "%");
+    } );
 </script>
 
 

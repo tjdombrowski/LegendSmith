@@ -29,7 +29,6 @@ public class DataValidator {
      * exceed 20 characters, if the username is unique or if the passwords don't match,
      * and returns an error message on the first one to meet those conditions.
      *
-     * TODO consider breaking this method up
      *
      * @param userDataMap the string set
      * @return errorMsg the error message

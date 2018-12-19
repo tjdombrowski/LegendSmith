@@ -34,9 +34,8 @@ public class ProgressTracker {
      *
      * @param userLegendaryPrimaryItem the UserLegendaryPrimaryItem
      */
-    public void updateLegendaryProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
+    private void updateLegendaryProgress(UserLegendaryPrimaryItem userLegendaryPrimaryItem) {
         //Find the progress of all the user's primary items with this legendary
-        int userLegendaryPrimaryItemId = userLegendaryPrimaryItem.getLegendaryPrimaryItem().getId();
         double totalProgression = getUserPrimaryItemProgression(userLegendaryPrimaryItem);
 
         //There are always 4 primary items, so divide the total progress by 4
@@ -58,7 +57,7 @@ public class ProgressTracker {
      * @param totalPrimaryItemProgress the total primary item progress
      * @return progress the progress
      */
-    public double determineLegendaryProgress(double totalPrimaryItemProgress) {
+    private double determineLegendaryProgress(double totalPrimaryItemProgress) {
         double numberOfPrimaryItems = 4.0; // this is always 4
         double progress = totalPrimaryItemProgress / numberOfPrimaryItems;
 
@@ -102,6 +101,7 @@ public class ProgressTracker {
 
         for (UserLegendaryPrimaryItem userLegendaryPrimaryItem : userLegendaryPrimaryItems) {
             totalProgression += userLegendaryPrimaryItem.getProgress();
+            logger.info("id: " + userLegendaryPrimaryItem.getId() + " and progress: " + userLegendaryPrimaryItem.getProgress());
         }
 
         logger.info("Value of the totalProgression in getUserPrimaryItemProgression: " + totalProgression);
@@ -116,8 +116,8 @@ public class ProgressTracker {
      * @return userLegendaryPrimaryItems the list of UserLegendaryPrimaryItem objects
      */
     private List<UserLegendaryPrimaryItem> getUserPrimaryItems(UserLegendaryPrimaryItem userPrimaryItem) {
-        GenericDao legendaryPrimaryItemDao = new GenericDao(LegendaryPrimaryItem.class);
         int legendaryId = userPrimaryItem.getLegendaryPrimaryItem().getLegendary().getId();
+        logger.info("Value of legendaryId in getUserPrimaryItems: {}", legendaryId);
 
         User user = userPrimaryItem.getUser();
 
@@ -129,12 +129,13 @@ public class ProgressTracker {
 
             if (currentLegendaryId == legendaryId) {
                 userPrimaryItemsForThisLegendary.add(userLegendaryPrimaryItem);
+                logger.info(userLegendaryPrimaryItem.getId());
             }
         }
 
-        logger.info("Size of the list of UserLegendaryPrimaryItems: " + userLegendaryPrimaryItems.size());
+        logger.info("Size of the list of userPrimaryItemsForThisLegendary: " + userPrimaryItemsForThisLegendary.size());
 
-        return userLegendaryPrimaryItems;
+        return userPrimaryItemsForThisLegendary;
     }
 
     /**
@@ -202,9 +203,9 @@ public class ProgressTracker {
      * Performs a simple calculation for the progress of an item, where completed tasks is divided by total, and the
      * result is rounded before being returned.
      *
-     * @param totalTasks
-     * @param completedTasks
-     * @return
+     * @param totalTasks the total tasks
+     * @param completedTasks the completed tasks
+     * @return progress the progress
      */
     private double calculateProgress(int totalTasks, int completedTasks) {
         double progress = (double)completedTasks / (double)totalTasks;

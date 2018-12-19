@@ -1,14 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <%@include file="sections/head.jsp"%>
-<style>
-    .progressLabel {
-        position: absolute;
-        left: 50%;
-        top: 4px;
-        font-weight: bold;
-    }
-</style>
+
 <body>
 <%@include file="sections/menu.jsp"%>
 <div class="container container2">

@@ -4,10 +4,7 @@ import edu.matc.legendsmith.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class is used to track changes to the user's legendary data.
@@ -110,8 +107,6 @@ public class LegendaryDataTracker {
         List<LegendaryPrimaryItem> primaryItems = legendaryPrimaryItemDao.getByIntegerProperty(legendaryId,"legendary");
 
         for (LegendaryPrimaryItem primaryItem : primaryItems) {
-            int primaryItemId = primaryItem.getId();
-
             GenericDao userPrimaryItemDao = new GenericDao(UserLegendaryPrimaryItem.class);
 
             UserLegendaryPrimaryItem userLegendaryPrimaryItem = new UserLegendaryPrimaryItem(user, primaryItem, 0);

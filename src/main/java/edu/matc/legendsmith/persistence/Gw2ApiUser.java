@@ -27,7 +27,7 @@ public class Gw2ApiUser implements PropertiesLoader {
      * Calls the Guild Wars 2 API and retrieves the lowest sell order (sell orders are the listed items) in coins.
      * This may return a 0 if something goes wrong with the response, which will cause all task costs generated to show as a 0.
      *
-     * @param gw2ItemId
+     * @param gw2ItemId the gw2 item id
      * @return sellOrderPrice the sell order price
      */
     public int getSellOrderPrice(int gw2ItemId) {

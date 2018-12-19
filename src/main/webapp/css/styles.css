@@ -116,6 +116,13 @@ a:hover {
     margin-top: 30px;
 }
 
+.progressLabel {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+}
+
 @font-face {
     font-family: kevlarunderwear;
     src: url(../fonts/kevlarunderwear.otf);

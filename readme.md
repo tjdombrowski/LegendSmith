@@ -6,6 +6,9 @@ Guild Wars 2 is an MMORPG - an online game - offering a diverse array of challen
 
 The plan is to create a website that can be used to easily see the requirements of making a legendary, and assist with organizing and keeping track of the various tasks required. 
 
+### Video Demonstration
+[Youtube Link](https://www.youtube.com/watch?v=Ge06-ezFxJ0&feature=youtu.be)
+
 ### AWS Site
 [LegendSmith](http://ec2-18-223-180-40.us-east-2.compute.amazonaws.com:8080/legendsmith/)
 
@@ -13,7 +16,7 @@ The plan is to create a website that can be used to easily see the requirements 
  * Security and Authentication
     * Tomcat JDBC Realm Authentication
  * Data Validation
-    * Either custom or possibly using bootstrap
+    * Custom
  * Database
     * MySQL
  * CSS

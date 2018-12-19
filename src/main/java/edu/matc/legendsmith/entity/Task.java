@@ -32,7 +32,7 @@ public class Task {
 
     //The task cost represents the total cost of the task in gold, silver, and copper
     @Transient
-    ItemPrice taskCost;
+    private ItemPrice taskCost;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "legendaryPrimaryItemId",

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="legendary">
             <h3><img src="${legendaryData.pictureReference}" alt="${legendaryData.name}">&nbsp&nbsp${legendaryData.name}</h3>
-            <div class="col-md-12">
+            <div class="col-md-12 progressBarContainer">
                 <div id="progressBar">
                     <div class="progressLabel"></div>
                 </div>

@@ -116,6 +116,10 @@ a:hover {
     margin-top: 30px;
 }
 
+.progressBarContainer {
+   padding: 0;
+}
+
 .progressLabel {
     position: absolute;
     left: 50%;

@@ -198,3 +198,43 @@ Redid how the jsps were displaying the data and stopped using the accordion widg
 
 Dec 4. 2.5 hours
 Completed week 13's exercise. 
+
+Dec 5. 2.5 hours
+Worked with getting the item price being calculated and displayed. 
+
+Dec 7. 2.5 hours
+Fixed some issues with the data in the database and tracking progress related features. Also spent some time fixing some minor things. 
+
+Dec 8. 1.5 hours
+Working on adding the progress tracking capabilities and displaying the progress to the page. 
+
+Dec 9. 2.5 hours
+Worked on implementing the progress tracking feature, including being able to subtract progress and change the button for completing or undoing. 
+
+Dec 11. 2 hours
+Worked with the progress calculation features and testing. 
+
+Dec 12. 1.5 hours
+Created a sign up page, with a related controller and set progress to being displayed on the page and upated the security constraints. 
+
+Dec 13. 2.5 hours
+Added some classes for instantiating the user and validating the data. Added a lot more tests for these methods as well. 
+
+Dec 14. 4.5 hours
+Added the pictures and picture references in the database. Spent some time working on the CSS and HTML elements of the pages and added some error pages as well. Added the UserRole entity for signing up. Switched some code from a controller to a new class, and did some testing.
+
+Dec 15. 1.5 hours
+Worked on some of the CSS, HTML, and actual page text. I also added a log out controller, loading the pictures for each legendary, and some additional data. Finally, I spent time fixing some issues with how progress was calculated. 
+
+Dec 16. 2.5 hours
+Switched to using a properties file for loading the api url I need, and updated intellij to use java 8. I also adjusted some of the data in the database and set some data for ensuring that the user stays on the same tab when updating a task's status. 
+
+Dec 17. 5.5 hours
+Worked on getting the CSS finished for the project. Removed the data table in favor of generating a clickable grid with the pictures of each legendary and name, as well as changing how the menu is displayed and altering some of the templating. I also messed with the color scheme, added a font for the main logo, and an image for the header. 
+
+Dec 18. 2.5 hours
+Fixed a bug that was causing the total progress of a legendary to be calculated incorrectly when multiple legendaries were being tracked. Added the jquery progress bar. Also added some javadoc and did some general cleanup. 
+
+Dec 19. 2.5 hours
+Fixed some small things in the project and did some testing. Redeployed it to AWS and recorded a video and uploaded it. 
+
